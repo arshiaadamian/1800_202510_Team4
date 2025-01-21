@@ -63,7 +63,7 @@ project-name/
 
 ## Contributors
 
-- Arshia Adamian: BCIT CST student, passionate about coding and back-end development.
+- Hi my name is Arshia Adamian. I am a student at BCIT studying CST, passionate about coding and back-end development.
 
 - Hi, my name is Justice! I love to program back-end, and develop games in my free time. I also read, probably way too much, and game a lot.
 
