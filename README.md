@@ -62,11 +62,7 @@ project-name/
 ---
 
 ## Contributors
-My name is Cali
-
-- **Your Name** - BCIT CST Student with a passion for creating user-friendly applications. Fun fact: Loves solving Rubik's Cubes in under a minute.
-- **Teammate Name** - BCIT CST Student, Frontend enthusiast with a knack for creative design. Fun fact: Has a collection of over 50 houseplants.
-
+- Hello, my name is Cali and I like game development.
 
 - Hi my name is Arshia Adamian. I am a student at BCIT studying CST, passionate about coding and back-end development.
 
