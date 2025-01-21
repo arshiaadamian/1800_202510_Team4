@@ -68,7 +68,7 @@ My name is Cali
 - **Teammate Name** - BCIT CST Student, Frontend enthusiast with a knack for creative design. Fun fact: Has a collection of over 50 houseplants.
 
 
-- Arshia Adamian: BCIT CST student, passionate about coding and back-end development.
+- Hi my name is Arshia Adamian. I am a student at BCIT studying CST, passionate about coding and back-end development.
 
 - Hi, my name is Justice! I love to program back-end, and develop games in my free time. I also read, probably way too much, and game a lot.
 
