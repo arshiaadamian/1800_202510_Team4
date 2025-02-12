@@ -18,7 +18,6 @@
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
         crossorigin="anonymous"></script>
 
->>>>>>> refs/remotes/origin/main
     <!-- Other libraries go here -->
     <!-- Google Icons (Material Design)-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
@@ -35,23 +34,41 @@
     <nav class="navbar navbar-expand-lg navbar-light bg-light custom-navbar">
         <div class="container">
             <a data-bs-toggle="offcanvas" href="#sidebar"><span class="material-icons">menu</span></a>
-            <a href="#"><span class="material-icons">home</span></a>
-            <a href="#"><span class="material-icons">settings</span></a>
+            <a href="#"><img class="logo" src="./JAC logo.png" height="35">
+            </a>
         </div>
+        <div class="offcanvas offcanvas-start" tabindex="-1" id="sidebar" aria-labelledby="sidebarLabel">
+          <div class="offcanvas-header">
+              <h5 class="offcanvas-title" id="sidebarLabel">Menu</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+              <div>
+                <ul class="navbar-nav">
+                  <li class="nav-item">
+                    <a class="nav-link" href="#"><span class="material-icons" id="nav1">account_circle
+                    </span>Your Profile</a>                  
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#"><span class="material-icons" id="nav2">chat
+                    </span>Messages</a>                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#"><span class="material-icons" id="nav3">groups
+                    </span>Communities</a>                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#"><span class="material-icons" id="nav4">event
+                    </span>Events</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#"><span class="material-icons" id="nav5">settings
+                    </span>Settings</a>
+                  </li>
+                </ul>
+              </div>
+          </div>
+      </div>
     </nav>
 
-    <div class="offcanvas offcanvas-start" tabindex="-1" id="sidebar" aria-labelledby="sidebarLabel">
-        <div class="offcanvas-header">
-            <h5 class="offcanvas-title" id="sidebarLabel">Sidebar</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-        </div>
-        <div class="offcanvas-body">
-            <div>
-                Some text as placeholder. In real life you can have the elements you have chosen. Like, text, images,
-                lists, etc.
-            </div>
-        </div>
-    </div>
 
     <!-- <div class="px-4 py-5 my-5 text-center">
       <img
