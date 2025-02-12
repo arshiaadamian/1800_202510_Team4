@@ -35,9 +35,11 @@ a {
   height: 100%;
   padding-left: 2%;
   padding-right: 2%;
-  width: 96%;
+  width: 100%;
+  background-color: #1B3A4B;
 }
 
 .nav-bar i {
   font-size: 2rem;
 }
+
