@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <title>Team 4 project</title>
+
+<head>
+    <title>My BCIT Project</title>
     <meta name="comp1800 template" content="My 1800 App" />
 
     <!-- Required meta tags -->
@@ -10,38 +11,90 @@
 
     <!-- Bootstrap Library CSS CDN go here -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
+
     <!-- Boostrap Library JS CDN  go here -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous">
-    </script>
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+
+>>>>>>> refs/remotes/origin/main
     <!-- Other libraries go here -->
-    <script
-      src="https://kit.fontawesome.com/d7cb9c87e6.js"
-      crossorigin="anonymous"
-    ></script>
+    <!-- Google Icons (Material Design)-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
 
     <!-- Link to styles of your own -->
     <link rel="stylesheet" href="./styles/style.css" />
-  </head>
+</head>
 
-  <body>
+<body>
     <!------------------------------>
     <!-- Your HTML Layout go here -->
-    <div class="nav-container">
-      <nav class="nav-bar">
-        <a href="#" class="bar-icon"><i class="fa-solid fa-bars"></i></a>
-        <img class="logo" src="./JAC logo.png" height="67"></a>
-      </nav>
-    </div>
     <!------------------------------>
-    <!-- Stuff for body goes here -->
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light custom-navbar">
+        <div class="container">
+            <a data-bs-toggle="offcanvas" href="#sidebar"><span class="material-icons">menu</span></a>
+            <a href="#"><span class="material-icons">home</span></a>
+            <a href="#"><span class="material-icons">settings</span></a>
+        </div>
+    </nav>
+
+    <div class="offcanvas offcanvas-start" tabindex="-1" id="sidebar" aria-labelledby="sidebarLabel">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="sidebarLabel">Sidebar</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+            <div>
+                Some text as placeholder. In real life you can have the elements you have chosen. Like, text, images,
+                lists, etc.
+            </div>
+        </div>
+    </div>
+
+    <!-- <div class="px-4 py-5 my-5 text-center">
+      <img
+        class="d-block mx-auto mb-4"
+        src="./images/image.jpg"
+        alt=""
+        width="72"
+        height="57"
+      />
+      <h1 class="display-5 fw-bold">Welcome to JAC</h1>
+      <div class="col-lg-6 mx-auto">
+        <p class="lead mb-4">
+          Join a community of hikers looking for new places to explore.
+        </p>
+        <h2>The view is better, together.</h2>
+        <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+          <button type="button" class="btn btn-info btn-lg px-4 gap-3">
+            Login/Signup
+          </button>
+        </div>
+      </div>
+    </div> -->
+
+    <!-- copyright footer -->
+    <!-- <footer
+      class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top"
+    >
+      <p class="col-md-4 mb-0 text-muted">&copy; 2025 BCIT COMP1800</p>
+      <a
+        href="/"
+        class="col-md-4 d-flex align-items-center justify-content-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none"
+      >
+        <svg class="bi me-2" width="40" height="32">
+          <use xlink:href="#bootstrap" />
+        </svg>
+      </a>
+    </footer> -->
 
     <!---------------------------------------------->
     <!-- Your own JavaScript functions go here    -->
     <!---------------------------------------------->
-
     <!-- Link to scripts of your own -->
     <!-- <script src="./scripts/script.js"></script> -->
-  </body>
+</body>
+
 </html>

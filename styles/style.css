@@ -1,26 +1,17 @@
-* {
-  font-size: 3vw;
-}
-
-body,
-html {
-  margin: 0px;
-  padding: 0px;
-  height: 100vh;
-  width: 100%;
-}
-
 body {
-  display: grid;
-  grid-template-columns: 100%;
-  grid-template-rows: 10vh 80vh 10vh;
+  background-color: #3e1f47;
+}
+
+.navbar {
+  background-color: #212f45;
 }
 
 a {
-  text-decoration: none;
+  text-decoration: nones;
   color: black;
 }
 
+<<<<<<< HEAD
 .nav-container {
   background-color: gray;
   grid-column: 1;
@@ -41,5 +32,9 @@ a {
 
 .nav-bar i {
   font-size: 2rem;
+=======
+.custom-navbar {
+  /* background-color: red !important; */
+>>>>>>> refs/remotes/origin/main
 }
 
