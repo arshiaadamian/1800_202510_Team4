@@ -1,0 +1,24 @@
+.search {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#search-bar {
+  width: 100%;
+}
+
+.card {
+  display: flex;
+  flex-direction: row;
+  width: 80%;
+  margin-top: 10%;
+}
+
+.card-body {
+  padding-left: 0;
+}
+
+.suggestion-box {
+  width: 60%;
+}

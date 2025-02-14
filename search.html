@@ -32,6 +32,7 @@
 
     <!-- Link to styles of your own -->
     <link rel="stylesheet" href="./styles/style.css" />
+    <link rel="stylesheet" href="./styles/search.css" />
   </head>
 
   <body>
@@ -99,12 +100,68 @@
       </div>
     </nav>
 
+    <!-- search bar -->
+    <div class="search">
+      <nav class="navbar bg-body-tertiary" id="search-bar">
+        <div class="container-fluid">
+          <form class="d-flex" role="search">
+            <input
+              class="form-control me-2"
+              type="search"
+              placeholder="Search"
+              aria-label="Search"
+            />
+            <button class="btn btn-outline-success" type="submit">
+              Search
+            </button>
+          </form>
+        </div>
+      </nav>
+
+      <div class="suggestion-box">
+        <div class="card">
+          <div class="card-body">People you might know.</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <a class="nav-link" href="#"
+          ><span class="material-icons" id="nav2"
+            ><span class="material-symbols-outlined">
+              account_circle
+            </span></span
+          ></a
+        >
+        <div class="card-body"><a href="#">Arshia Adamian</a></div>
+      </div>
+
+      <div class="card">
+        <a class="nav-link" href="#"
+          ><span class="material-icons" id="nav2"
+            ><span class="material-symbols-outlined">
+              account_circle
+            </span></span
+          ></a
+        >
+        <div class="card-body"><a href="#">Justice</a></div>
+      </div>
+
+      <div class="card">
+        <a class="nav-link" href="#"
+          ><span class="material-icons" id="nav2"
+            ><span class="material-symbols-outlined">
+              account_circle
+            </span></span
+          ></a
+        >
+        <div class="card-body"><a href="#">Cali</a></div>
+      </div>
+    </div>
+
     <footer>
       <nav class="navbar" style="background-color: #e3f2fd">
         <div class="container">
-          <a data-bs-toggle="offcanvas" href="#"
-            ><span class="material-icons">home</span></a
-          >
+          <a href="index.html"><span class="material-icons">home</span></a>
           <a data-bs-toggle="offcanvas" href="#"
             ><span class="material-icons">add</span></a
           >

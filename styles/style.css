@@ -22,32 +22,8 @@ a {
   color: black;
 }
 
-.nav-bar {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  height: 100%;
-  padding-left: 2%;
-  padding-right: 2%;
-  width: 100%;
-  background-color: #1b3a4b;
-}
-
-.nav-bar i {
-  font-size: 2rem;
-}
-
 .btn-close {
   height: 150%;
-}
-
-.logo {
-  padding-left: 80%;
-}
-
-.navbar-nav {
-  font-size: 2em;
 }
 
 .nav-link {
