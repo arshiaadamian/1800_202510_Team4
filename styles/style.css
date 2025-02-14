@@ -44,12 +44,17 @@ footer {
 }
 
 .hero {
-  margin-top: 14%;
+  margin-top: 25%;
   width: 100%;
 }
 
-h1, h2 {
-  margin: 5%;
+#jynx {
+  font-size: 60pt;
+  margin-bottom: 10%;
+  background-color: #212F45;
+  border-radius: 60%;
+  text-shadow: 5pt 5pt black;
 }
+
 
 
