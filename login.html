@@ -39,17 +39,21 @@
 
     <img src="./images/JAC logo.png" class="float-start img-fluid" alt="JAC Logo">
     <div class="mb-3">
-        <h2 class="text-center text-bg-light rounded">Login to JAC:</h2>
+        <h2 id="login-message" class="text-center text-bg-light rounded">Login to JAC:</h2>
+    </div>
+    <div class="mb-3">
+        <h2 class="text-danger"><span id="warning-message"></span></h2>
     </div>
     <div id="login-placeholder">
         <form id="log-in-ui" action="/main.html">
             <div class="mb-3">
                 <input id="emailInput" type="email" class="form-control" placeholder="Email..." required>
             </div>
-            
+            <div class="mb-3" id="username-placeholder"></div>
             <div class="mb-3">
                 <input id="passwordInput" type="password" class="form-control" placeholder="Password..." required>
             </div>
+            <div class="mb-3" id="confirm-password-placeholder"></div>
             <div class="mb-3 text-center">
                 <input id="loginButton" type="submit" class="btn btn-light" value="Login">
             </div>

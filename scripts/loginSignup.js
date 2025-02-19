@@ -1,54 +1,41 @@
 const loginForm = document.querySelector("#log-in-ui");
+var signup = false;
 
 loginForm.addEventListener('submit', (e) => {
   e.preventDefault();
   // Get the user's info
   const email = loginForm['emailInput'].value;
   const password = loginForm['passwordInput'].value;
-  const username = "Testing...";
-
-  auth.signInWithEmailAndPassword(email, password).then((cred) => {
-    
-    console.log("Signed in", cred);
-  }).catch((err) => {
-    if (err.message == "There is no user record corresponding to this identifier. The user may have been deleted.") {
-      // Otherwise, sign up the user
-      auth.createUserWithEmailAndPassword(email, password).then(cred => {
-        console.log("Signed up", cred);
-        db.collection("users").doc(cred.user.uid).set({
-          username: username,
-          games: [],
-        });
-      });
+  if (signup) {
+    if (password != loginForm['confirmPasswordInput'].value) {
+      document.getElementById('warning-message').innerHTML = "Passwords do not match, please try again."
+      return Promise.reject(new Error("Passwords do not match"));
     }
-  }).then((cred) => {
-    document.querySelector('#log-in-ui').submit();
-  });
+    const username = loginForm['usernameInput'].value;
+    auth.createUserWithEmailAndPassword(email, password).then(cred => {
+      console.log("Signed up", cred);
+      db.collection("users").doc(cred.user.uid).set({
+        username: username,
+        games: [],
+      });
+    }).then((cred) => {
+      loginForm.submit();
+    });
 
-  // let docRef = db.collection("users").doc(email);
-  // docRef.get().then((doc) => {
-  //   if (doc.exists) {
-  //     // Sign in the user if they exist
-  //     auth.signInWithEmailAndPassword(email, password).then((cred) => {
-  //       cred.user.uid;
-  //       console.log("Signed in", cred);
-  //     });
-  //   } else {
-  //     // Otherwise, sign up the user
-  //     auth.createUserWithEmailAndPassword(email, password).then(cred => {
-  //       console.log("Signed up", cred);
-  //       db.collection("users").doc(email).set({
-  //         username: username,
-  //         games: [],
-  //       });
-  //     });
-  //   }
-  //   //document.querySelector('#log-in-ui').submit();
-  // });
+  } else {
+    auth.signInWithEmailAndPassword(email, password).then((cred) => {
 
-
-
-
-
+      console.log("Signed in", cred);
+    }).catch((err) => {
+      if (err.message == "There is no user record corresponding to this identifier. The user may have been deleted.") {
+        signup = true;
+        document.getElementById('username-placeholder').innerHTML = '<input id="usernameInput" type="text" class="form-control" placeholder="Username..." required>'
+        document.getElementById('confirm-password-placeholder').innerHTML = '<input id="confirmPasswordInput" type="password" class="form-control" placeholder="Confirm Password..." required>'
+        document.getElementById('login-message').innerText = "Sign up for JAC"
+        return Promise.reject(err);
+      }
+    }).then((cred) => {
+      loginForm.submit();
+    });
+  }
 });
-// code: "auth/email-already-in-use", message: "The email address is already in use by another account."
