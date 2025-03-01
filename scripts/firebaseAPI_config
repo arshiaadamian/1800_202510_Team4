@@ -1,10 +1,10 @@
 var firebaseConfig = {
-    apiKey: "AIzaSyAVhhOJhh4u1BR4C-DYA7eexk9un27WJLo",
+    apiKey: "AIzaSyA7iOzUi64X0mOrkiEbNlWf3RDiQzncpCA",
     authDomain: "jac-app-2c28c.firebaseapp.com",
     projectId: "jac-app-2c28c",
     storageBucket: "jac-app-2c28c.firebasestorage.app",
     messagingSenderId: "845246226123",
-    appId: "1:845246226123:web:9fea45c5f12e5121a8454e"
+    appId: "1:845246226123:web:a604cd8677744e6ba8454e"
 };
 
 // Initialize Firebase

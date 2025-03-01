@@ -56,29 +56,29 @@ footer {
   text-shadow: 5pt 5pt black;
   font-size: 141px;
   color: hsla(138,0%,0%,1);
-text-shadow:  0px 0px 0px hsla(188,54%,42%,1),
-     0px 0.6818181818181819px 0px hsla(190,54%,42%,1),
-     0px 1.3636363636363638px 0px hsla(192,55%,41%,1),
-     0px 2.0454545454545454px 0px hsla(194,55%,41%,1),
-     0px 2.7272727272727275px 0px hsla(196,56%,40%,1),
-     0px 3.409090909090909px 0px hsla(198,56%,39%,1),
-     0px 4.090909090909091px 0px hsla(200,57%,39%,1),
-     0px 4.7727272727272725px 0px hsla(203,57%,38%,1),
-     0px 5.454545454545455px 0px hsla(205,58%,38%,1),
-     0px 6.136363636363637px 0px hsla(207,59%,37%,1),
-     0px 6.818181818181818px 0px hsla(209,59%,36%,1),
-     0px 7.5px 0px hsla(211,60%,36%,1),
-     0px 8.181818181818182px 0px hsla(213,60%,35%,1),
-     0px 8.863636363636363px 0px hsla(215,61%,35%,1),
-     0px 9.545454545454545px 0px hsla(217,61%,34%,1),
-     0px 10.227272727272727px 0px hsla(219,62%,34%,1),
-     0px 10.90909090909091px 0px hsla(221,62%,33%,1),
-     0px 11.59090909090909px 0px hsla(224,63%,32%,1),
-     0px 12.272727272727273px 0px hsla(226,63%,32%,1),
-     0px 12.954545454545455px 0px hsla(228,64%,31%,1),
-     0px 13.636363636363637px 0px hsla(230,64%,31%,1),
-     0px 14.318181818181818px 0px hsla(232,65%,30%,1),
-     0px 15px 0px hsla(234,65%,29%,1);
+  text-shadow:  0px 0px 0px hsla(188,68%,31%,1),
+  0px 0.6818181818181819px 0px hsla(190,68%,30%,1),
+  0px 1.3636363636363638px 0px hsla(192,69%,29%,1),
+  0px 2.0454545454545454px 0px hsla(195,69%,28%,1),
+  0px 2.7272727272727275px 0px hsla(197,69%,26%,1),
+  0px 3.409090909090909px 0px hsla(199,69%,25%,1),
+  0px 4.090909090909091px 0px hsla(202,70%,24%,1),
+  0px 4.7727272727272725px 0px hsla(204,70%,23%,1),
+  0px 5.454545454545455px 0px hsla(206,70%,21%,1),
+  0px 6.136363636363637px 0px hsla(208,70%,20%,1),
+  0px 6.818181818181818px 0px hsla(211,70%,19%,1),
+  0px 7.5px 0px hsla(213,71%,17%,1),
+  0px 8.181818181818182px 0px hsla(215,71%,16%,1),
+  0px 8.863636363636363px 0px hsla(218,71%,15%,1),
+  0px 9.545454545454545px 0px hsla(220,71%,14%,1),
+  0px 10.227272727272727px 0px hsla(222,72%,12%,1),
+  0px 10.90909090909091px 0px hsla(225,72%,11%,1),
+  0px 11.59090909090909px 0px hsla(227,72%,10%,1),
+  0px 12.272727272727273px 0px hsla(229,72%,9%,1),
+  0px 12.954545454545455px 0px hsla(231,73%,7%,1),
+  0px 13.636363636363637px 0px hsla(234,73%,6%,1),
+  0px 14.318181818181818px 0px hsla(236,73%,5%,1),
+  0px 15px 0px hsla(238,73%,4%,1);
 }
 
 h2 {
@@ -86,7 +86,55 @@ h2 {
 }
 
 .nav_gif {
+  position: absolute;
   width: 50%;
 }
 
+.carousel {
+  border-bottom: 20px solid hsla(234,88%,17%,1);
+  border-top: 20px solid hsla(234,88%,17%,1);
+  border-radius: 10px;
+}
+
+.dropbtn {
+  color: #212f45;;
+  padding: 16px;
+  font-size: 20px;
+  border: none;
+  cursor: pointer;
+}
+
+.dropbtn:hover, .dropbtn:focus {
+  background-color: #272640;
+  color: white;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: white;
+  min-width: 160px;
+  overflow: auto;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {background-color: #f1f1f1}
+
+.show {display:block;}
+
+.dropdown-content {
+  bottom: 60px;
+}
 
