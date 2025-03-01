@@ -17,7 +17,9 @@ loginForm.addEventListener('submit', (e) => {
       db.collection("users").doc(cred.user.uid).set({
         username: username,
         games: [],
+        messages: []
       });
+      cred.user.displayname = username;
     }).then((cred) => {
       loginForm.submit();
     });
@@ -32,10 +34,12 @@ loginForm.addEventListener('submit', (e) => {
         document.getElementById('username-placeholder').innerHTML = '<input id="usernameInput" type="text" class="form-control" placeholder="Username..." required>'
         document.getElementById('confirm-password-placeholder').innerHTML = '<input id="confirmPasswordInput" type="password" class="form-control" placeholder="Confirm Password..." required>'
         document.getElementById('login-message').innerText = "Sign up for JAC"
-        return Promise.reject(err);
       }
+      return Promise.reject(err);
     }).then((cred) => {
-      loginForm.submit();
+      if (cred){
+        loginForm.submit();
+      }
     });
   }
 });
