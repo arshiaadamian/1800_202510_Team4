@@ -2,21 +2,19 @@ function getNameFromAuth() {
     auth.onAuthStateChanged(user => {
         // Checks if a user is signed in
         if (user) {
-            // Do something for the currently logged-in user here
+            // Display the user's name
             console.log(user.uid);
-            console.log(user.displayName)
+            console.log(user.displayname);
             let docRef = db.collection("users").doc(user.uid);
-            let userName;
             docRef.get().then((doc => {
-                userName = doc.data().username;
+                let userName = doc.data().username;
                 console.log(userName);
                 document.getElementById('name-goes-here').innerText = userName;
-            }))
-            
-            
+            }));
         } else {
-            // No user is signed in
+            // No user is signed in, go to the login page
             console.log("No user is signed in.");
+            window.location.href = '/login.html';
         }
     });
 }
