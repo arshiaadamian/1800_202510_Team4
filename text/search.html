@@ -36,14 +36,14 @@
 </head>
 
 <body>
-  <!------------------------------>
-  <!-- Your HTML Layout go here -->
-  <!------------------------------>
+  <!--============================-->
+  <!-- Your HTML Layout goes here -->
+  <!--============================-->
 
   <nav class="navbar navbar-expand-lg navbar-light bg-light custom-navbar">
     <div class="container">
       <a data-bs-toggle="offcanvas" href="#sidebar"><span class="material-icons">menu</span></a>
-      <a href="#"><img class="logo" src="./images/JAC logo.png" height="35" />
+      <a href="#"><img class="logo" src="./images/jacLogo.png" height="35" alt="Jac Logo" />
       </a>
     </div>
     <div class="offcanvas offcanvas-start" tabindex="-1" id="sidebar" aria-labelledby="sidebarLabel">
@@ -58,7 +58,7 @@
               <a class="nav-link" href="#"><span class="material-icons" id="nav1">account_circle </span>Your Profile</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#"><span class="material-icons" id="nav2">chat </span>Messages</a>
+              <a class="nav-link" href="#"><span class="material-icons nav2">chat </span>Messages</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#"><span class="material-icons" id="nav3">groups </span>Communities</a>
@@ -81,8 +81,7 @@
       <div class="container-fluid">
         <form class="d-flex" role="search">
           <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
-          <button class="btn btn-outline-success" type="submit">
-            <a href="search2.html">Search</a>
+          <button class="btn btn-outline-success" type="submit" onclick="window.location.href='search2.html'">
           </button>
         </form>
       </div>
@@ -95,21 +94,21 @@
     </div>
 
     <div class="card">
-      <a class="nav-link" href="#"><span class="material-icons" id="nav2"><span class="material-symbols-outlined">
+      <a class="nav-link" href="#"><span class="material-icons nav2"><span class="material-symbols-outlined">
             account_circle
           </span></span></a>
       <div class="card-body"><a href="#">Arshia Adamian</a></div>
     </div>
 
     <div class="card">
-      <a class="nav-link" href="#"><span class="material-icons" id="nav2"><span class="material-symbols-outlined">
+      <a class="nav-link" href="#"><span class="material-icons nav2"><span class="material-symbols-outlined">
             account_circle
           </span></span></a>
       <div class="card-body"><a href="#">Justice</a></div>
     </div>
 
     <div class="card">
-      <a class="nav-link" href="#"><span class="material-icons" id="nav2"><span class="material-symbols-outlined">
+      <a class="nav-link" href="#"><span class="material-icons nav2"><span class="material-symbols-outlined">
             account_circle
           </span></span></a>
       <div class="card-body"><a href="#">Cali</a></div>
@@ -128,9 +127,9 @@
     </nav>
   </footer>
 
-  <!---------------------------------------------->
+  <!--==========================================-->
   <!-- Your own JavaScript functions go here    -->
-  <!---------------------------------------------->
+  <!--==========================================-->
   <!-- Link to scripts of your own -->
   <!-- <script src="./scripts/script.js"></script> -->
   <script src="./scripts/firebaseAPI_config.js"></script>
