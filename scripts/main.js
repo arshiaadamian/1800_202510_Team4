@@ -14,7 +14,7 @@ function getNameFromAuth() {
         } else {
             // No user is signed in, go to the login page
             console.log("No user is signed in.");
-            window.location.href = '/login.html';
+            window.location.href = '/text/login.html';
         }
     });
 }

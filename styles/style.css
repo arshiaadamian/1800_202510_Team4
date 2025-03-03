@@ -49,6 +49,7 @@ footer {
 }
 
 #jynx {
+  display: block;
   font-size: 60pt;
   margin-top: -40%;
   margin-bottom: 10%;

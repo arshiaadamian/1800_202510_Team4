@@ -49,7 +49,7 @@
 }
 
 .fig1, .fig2, .fig3 {
-    margin: 10%;
+    margin: 5%;
 }
 
 
@@ -116,4 +116,12 @@
       background-repeat: round;
       background-position: 0em;
     }
+
+  }
+
+  #com1p {
+    float: right;
+    background-color: #006466;
+    color: black;
+    border: black 2px solid;
   }
