@@ -9,17 +9,35 @@
 }
 
 .card {
-  display: flex;
-  flex-direction: row;
-  width: 80%;
   margin-top: 10%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.card-body {
-  padding-left: 0;
+.btn-primary{
+  background-color: #3e1f47;
+  border-color: #3e1f47;
+  transition-duration: 0.4s;
+  cursor: pointer;
 }
 
-.suggestion-box {
-  width: 60%;
-  text-align: center;
+.btn-primary:hover{
+  background-color: lightblue;
+  color: #3e1f47; 
 }
+
+.card-img-top{
+  width: 90%;
+  border-radius: 50%;
+  border: #3e1f47 solid 2px;
+  
+}
+
+.btn-outline-success{
+  color: black;
+  border-color: #3e1f47;
+}
+
+
+
