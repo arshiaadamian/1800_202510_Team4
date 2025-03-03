@@ -1,129 +1,195 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <title>My BCIT Project</title>
+    <meta name="comp1800 template" content="My 1800 App" />
 
-<head>
-  <title>My BCIT Project</title>
-  <meta name="comp1800 template" content="My 1800 App" />
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <!-- Required meta tags -->
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- Bootstrap Library CSS CDN go here -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
 
-  <!-- Bootstrap Library CSS CDN go here -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
+    <!-- Boostrap Library JS CDN  go here -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+      crossorigin="anonymous"
+    ></script>
 
-  <!-- Boostrap Library JS CDN  go here -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
-    crossorigin="anonymous"></script>
+    <!-- Bootstrap Library FIREBASE CDN go here -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.js"></script>
+    <link
+      type="text/css"
+      rel="stylesheet"
+      href="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.css"
+    />
 
-  <!-- Bootstrap Library FIREBASE CDN go here -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.js"></script>
-  <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.css" />
+    <!-- Other libraries go here -->
+    <!-- Google Icons (Material Design)-->
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
 
-  <!-- Other libraries go here -->
-  <!-- Google Icons (Material Design)-->
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <!-- Link to styles of your own -->
+    <link rel="stylesheet" href="/styles/style.css" />
+    <link rel="stylesheet" href="/styles/join_com.css" />
+  </head>
 
-  <!-- Link to styles of your own -->
-  <link rel="stylesheet" href="/styles/style.css"/>
-  <link rel="stylesheet" href="/styles/join_com.css"/>
-</head>
+  <body>
+    <!------------------------------>
+    <!-- Your HTML Layout go here -->
+    <!------------------------------>
 
-<body>
-  <!------------------------------>
-  <!-- Your HTML Layout go here -->
-  <!------------------------------>
-
-  <nav class="navbar navbar-expand-lg navbar-light bg-light custom-navbar">
-    <div class="container">
-      <a data-bs-toggle="offcanvas" href="#sidebar"><span class="material-icons">menu</span></a>
-      <a href="#"><img class="logo" src="/images/JAC logo.png" height="35" alt="JAC Logo" />
-      </a>
-    </div>
-    <div class="offcanvas offcanvas-start" tabindex="-1" id="sidebar" aria-labelledby="sidebarLabel">
-      <div class="offcanvas-header">
-        <h5 class="offcanvas-title" id="sidebarLabel">Menu</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-      </div>
-      <div class="offcanvas-body">
-        <div>
-          <ul class="navbar-nav">
-            <li class="nav-item">
-              <a class="nav-link" href="#"><span class="material-icons" id="nav1">account_circle </span>Your Profile</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#"><span class="material-icons" id="nav2">chat </span>Messages</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#"><span class="material-icons" id="nav3">groups </span>Communities</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#"><span class="material-icons" id="nav4">event </span>Events</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#"><span class="material-icons" id="nav5">settings </span>Settings</a>
-            </li>
-          </ul>
-        </div>
-      </div>
-      <div>
-        <img class="nav_gif" src="/images/nav.gif" alt="walking gif">
-      </div>
-    </div>
-  </nav>
-
-  
-
-<h1>Insanity in a Game <span class="fancy text-secondary">Community</span></p></h1>
-<div class="fig1">
-<figure class="figure">
-    <a href="/text/command1_detail.html"><img src="/images/command1.png" class="figure-img img-fluid rounded" alt="A generic square placeholder image with rounded corners in a figure."></a>
-    <figcaption class="figure-caption text-white"><p class="text-secondary">8,993 Members (Public Group) </br> Organized by SHakeR13 and 2 others</p></figcaption>
-    <a href="/text/command1.html"><button id="com1p" type="button" class="btn">Join!</button></a>
-    <h4 class="text-white">About Us</h4><p class="text-white">Join us and be part of our Valorant Discord Server Community you are more than welcome!
-        You can discuss your Valorant games, news, updates or literally anything game related.
-        You can talk about your strategies or even discover new ones, debate about the agents and much more!
-        We also have a looking for games channel where you can find other players to play with and practice until ranked is released.
-        Hope to see you there!</p>
-
-</figure>
-</div>
-
-  <footer>
-    <nav class="navbar" style="background-color: white">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light custom-navbar">
       <div class="container">
-        <a href="/text/main.html"><span class="material-icons">home</span></a>
-        <div class="dropdown">
-          <button id="myBtn" class="dropbtn material-icons">add</button>     
-          <div id="myDropdown" class="dropdown-content">
-            <a href="add_community.html">Add Community</a>
+        <a data-bs-toggle="offcanvas" href="#sidebar"
+          ><span class="material-icons">menu</span></a
+        >
+        <a href="#"
+          ><img
+            class="logo"
+            src="/images/JAC_logo.png"
+            height="35"
+            alt="JAC Logo"
+          />
+        </a>
+      </div>
+      <div
+        class="offcanvas offcanvas-start"
+        tabindex="-1"
+        id="sidebar"
+        aria-labelledby="sidebarLabel"
+      >
+        <div class="offcanvas-header">
+          <h5 class="offcanvas-title" id="sidebarLabel">Menu</h5>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="offcanvas"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div class="offcanvas-body">
+          <div>
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link" href="#"
+                  ><span class="material-icons" id="nav1">account_circle </span
+                  >Your Profile</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#"
+                  ><span class="material-icons" id="nav2">chat </span
+                  >Messages</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#"
+                  ><span class="material-icons" id="nav3">groups </span
+                  >Communities</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#"
+                  ><span class="material-icons" id="nav4">event </span>Events</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#"
+                  ><span class="material-icons" id="nav5">settings </span
+                  >Settings</a
+                >
+              </li>
+            </ul>
           </div>
         </div>
-        <a href="/text/search.html"><span class="material-icons"><span class="material-symbols-outlined">
-              person_search
-            </span></span></a>
-      </div>
+        <div>
+          <img class="nav_gif" src="/images/nav.gif" alt="walking gif" />
+        </div>
       </div>
     </nav>
-  </footer>
 
-  <!---------------------------------------------->
-  <!-- Your own JavaScript functions go here    -->
-  <!---------------------------------------------->
-  <!-- Link to scripts of your own -->
-  <!-- <script src="./scripts/script.js"></script> -->
-  <script src="./scripts/firebaseAPI_config.js"></script>
-  <script src="/scripts/main.js"></script>
-  <script src="/scripts/add.js"></script>
+    <h1>
+      Insanity in a Game
+      <p><span class="fancy text-secondary">Community</span></p>
+    </h1>
+    <div class="fig1">
+      <figure class="figure">
+        <a href="/text/command1_detail.html"
+          ><img
+            src="/images/command1.png"
+            class="figure-img img-fluid rounded"
+            alt="A generic square placeholder image with rounded corners in a figure."
+        /></a>
+        <figcaption class="figure-caption text-white">
+          <p class="text-secondary">
+            8,993 Members (Public Group) <br />
+            Organized by SHakeR13 and 2 others
+          </p>
+        </figcaption>
+        <button
+          id="com1p"
+          type="button"
+          class="btn"
+          onclick="location.href='/text/command1.html'"
+        >
+          Join!
+        </button>
 
+        <h4 class="text-white">About Us</h4>
+        <p class="text-white">
+          Join us and be part of our Valorant Discord Server Community you are
+          more than welcome! You can discuss your Valorant games, news, updates
+          or literally anything game related. You can talk about your strategies
+          or even discover new ones, debate about the agents and much more! We
+          also have a looking for games channel where you can find other players
+          to play with and practice until ranked is released. Hope to see you
+          there!
+        </p>
+      </figure>
+    </div>
 
-  
-</body>
+    <footer>
+      <nav class="navbar" style="background-color: white">
+        <div class="container">
+          <a href="/text/main.html"><span class="material-icons">home</span></a>
+          <div class="dropdown">
+            <button id="myBtn" class="dropbtn material-icons">add</button>
+            <div id="myDropdown" class="dropdown-content">
+              <a href="add_community.html">Add Community</a>
+            </div>
+          </div>
+          <a href="/text/search.html"
+            ><span class="material-icons"
+              ><span class="material-symbols-outlined">
+                person_search
+              </span></span
+            ></a
+          >
+        </div>
+      </nav>
+    </footer>
 
+    <!---------------------------------------------->
+    <!-- Your own JavaScript functions go here    -->
+    <!---------------------------------------------->
+    <!-- Link to scripts of your own -->
+    <!-- <script src="./scripts/script.js"></script> -->
+    <script src="./scripts/firebaseAPI_config.js"></script>
+    <script src="/scripts/main.js"></script>
+    <script src="/scripts/add.js"></script>
+  </body>
 </html>
