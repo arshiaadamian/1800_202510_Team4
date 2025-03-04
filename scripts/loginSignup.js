@@ -14,6 +14,7 @@ loginForm.addEventListener('submit', (e) => {
     const username = loginForm['usernameInput'].value;
     auth.createUserWithEmailAndPassword(email, password).then(cred => {
       console.log("Signed up", cred);
+      cred.user.displayname = username;
       db.collection("users").doc(cred.user.uid).set({
         username: username,
         games: [],
@@ -29,11 +30,11 @@ loginForm.addEventListener('submit', (e) => {
         massMultiplayer: false,
         casual: false,
         horror: false
-      });
-      cred.user.displayname = username;
-    }).then((cred) => {
-      loginForm.submit();
-    });
+      }).then(() => {
+        loginForm.submit();
+      })});
+
+    
 
   } else {
     auth.signInWithEmailAndPassword(email, password).then((cred) => {
