@@ -1,4 +1,4 @@
-const loginForm = document.querySelector("#log-in-ui");
+var loginForm = document.querySelector("#log-in-ui");
 var signup = false;
 
 loginForm.addEventListener('submit', (e) => {
@@ -17,11 +17,22 @@ loginForm.addEventListener('submit', (e) => {
       db.collection("users").doc(cred.user.uid).set({
         username: username,
         games: [],
-        messages: []
+        messages: [],
+        description: "",
+        name: "",
+        email: email,
+        country: "",
+        language: "English",
+        age: 0,
+        firstPersonShooter: false,
+        rolePlaying: false,
+        massMultiplayer: false,
+        casual: false,
+        horror: false
       });
       cred.user.displayname = username;
     }).then((cred) => {
-      loginForm.submit();
+      //loginForm.submit();
     });
 
   } else {
@@ -38,8 +49,9 @@ loginForm.addEventListener('submit', (e) => {
       return Promise.reject(err);
     }).then((cred) => {
       if (cred){
-        loginForm.submit();
+        //loginForm.submit();
       }
     });
   }
 });
+console.log("TEst");
