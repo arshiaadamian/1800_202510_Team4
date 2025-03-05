@@ -25,11 +25,14 @@ function getUserPicture() {
             console.log(user.uid);
             console.log(user.displayname);
 
-            let img = document.getElementById("pfp");
+            let imgs = document.querySelectorAll("#pfp");
             storageRef.child(`pfps/${user.uid}.png`).getDownloadURL()
                 .then((url) => {
-                    img.src = url;
-                    console.log("Tried to set the user's pfp");
+                    for (let img of imgs) {
+                        img.src = url;
+                        console.log("Tried to set the user's pfp");
+                    }
+                    
                 }).catch((err) => {
                     if (err.code === 'storage/object-not-found') {
                         storageRef.child(`pfps/default.png`).getDownloadURL()
