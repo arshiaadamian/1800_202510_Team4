@@ -35,24 +35,31 @@
       href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet"
     />
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet"/>
+
 
     <!-- Link to styles of your own -->
     <link rel="stylesheet" href="/styles/style.css" />
+    <link rel="stylesheet" href="/styles/login.css"/>
   </head>
 
   <body>
     <!--============================-->
     <!-- Your HTML Layout goes here -->
     <!--============================-->
+    <div class="container">
     <img
       src="/images/jacLogo.png"
+      id="avatar"
       class="float-start img-fluid"
       alt="JAC Logo"
-    />
+/>
     <div class="mb-3">
-      <h2 id="login-message" class="text-center text-bg-light rounded">
-        Login to JAC:
-      </h2>
+      <header class="header">
+        <h1 class="header__title">WELCOME TO JAC!</h1>
+        <h2 class="header__subtitle" id="login-message">LOGIN</h2>
+      </header>
     </div>
 
     <div class="mb-3">
@@ -91,6 +98,18 @@
       </form>
     </div>
     <div id="firebaseui-auth-container"></div>
+    
+  </div>
+
+  <div class="pacman"></div>
+	<div class="dots">
+		<div class="dot"></div>
+		<div class="dot"></div>
+		<div class="dot"></div>
+	</div>
+	<div class="ghost ghost--blue"></div>
+	<div class="ghost ghost--pink"></div>
+	<div class="ghost ghost--orange"></div>
 
     <!--==========================================-->
     <!-- Your own JavaScript functions go here    -->
