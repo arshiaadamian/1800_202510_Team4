@@ -23,6 +23,7 @@
   <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
   <script src="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.js"></script>
   <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.css" />
 
@@ -88,11 +89,12 @@
             <div class="account-settings">
               <div class="user-profile">
                 <div class="user-avatar">
-                  <img src="/images/pfp3.jpg" alt="Maxwell Admin">
+                  <img id="pfp" src="/images/pfp3.jpg" alt="Maxwell Admin">
                 </div>
-                <h5 class="user-name text-white">Yuki Hayashi</h5>
+                <h5 class="user-name text-white"><span id="name-goes-here">Yuki Hayashi</span></h5>
                 <label id="up_title" for="avatar">Choose a profile picture:</label>
-                <input type="file" id="avatar" name="avatar" accept="image/png, image/jpeg" />
+                <input id="pfp-input" type="file" id="avatar" name="avatar" accept="image/png"/>
+
               </div>
               <div class="about">
                 <h5 class="mb-2 text-primary text-white">About</h5>
@@ -201,9 +203,11 @@
   <!--==========================================-->
   <!-- Link to scripts of your own -->
   <!-- <script src="./scripts/script.js"></script> -->
-  <script src="./scripts/firebaseAPI_config.js"></script>
+  <script src="/scripts/firebaseAPI_config.js"></script>
   <script src="/scripts/main.js"></script>
   <script src="/scripts/add.js"></script>
+  <script src="/scripts/profile.js"></script>
+  <script src="/scripts/functions.js"></script>
 
 
 
