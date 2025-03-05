@@ -43,12 +43,12 @@ fileInput.addEventListener("change", event => {
                 
                 pfpRef.put(blob).then((picture) => {
                     console.log("Saving users picture");
-
+                    getUserPicture();
                 });
             });
             reader.readAsDataURL(pfp);
 
-            //location.reload();
+            
 
         }
     });
