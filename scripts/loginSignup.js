@@ -1,4 +1,4 @@
-const loginForm = document.querySelector("#log-in-ui");
+var loginForm = document.querySelector("#log-in-ui");
 var signup = false;
 
 loginForm.addEventListener('submit', (e) => {
@@ -14,15 +14,27 @@ loginForm.addEventListener('submit', (e) => {
     const username = loginForm['usernameInput'].value;
     auth.createUserWithEmailAndPassword(email, password).then(cred => {
       console.log("Signed up", cred);
+      cred.user.displayname = username;
       db.collection("users").doc(cred.user.uid).set({
         username: username,
         games: [],
-        messages: []
-      });
-      cred.user.displayname = username;
-    }).then((cred) => {
-      loginForm.submit();
-    });
+        messages: [],
+        description: "",
+        name: "",
+        email: email,
+        country: "",
+        language: "English",
+        age: 0,
+        firstPersonShooter: false,
+        rolePlaying: false,
+        massMultiplayer: false,
+        casual: false,
+        horror: false
+      }).then(() => {
+        loginForm.submit();
+      })});
+
+    
 
   } else {
     auth.signInWithEmailAndPassword(email, password).then((cred) => {
@@ -31,9 +43,9 @@ loginForm.addEventListener('submit', (e) => {
     }).catch((err) => {
       if (err.message == "There is no user record corresponding to this identifier. The user may have been deleted.") {
         signup = true;
-        document.getElementById('username-placeholder').innerHTML = '<input id="usernameInput" type="text" class="form-control" placeholder="Username..." required>'
-        document.getElementById('confirm-password-placeholder').innerHTML = '<input id="confirmPasswordInput" type="password" class="form-control" placeholder="Confirm Password..." required>'
-        document.getElementById('login-message').innerText = "Sign up for JAC"
+        document.getElementById('username-placeholder').innerHTML = '<input id="usernameInput" type="text" class="form-control" placeholder="Username..." required>';
+        document.getElementById('confirm-password-placeholder').innerHTML = '<input id="confirmPasswordInput" type="password" class="form-control" placeholder="Confirm Password..." required>';
+        document.getElementById('login-message').innerText = "Sign up for JAC";
       }
       return Promise.reject(err);
     }).then((cred) => {
@@ -43,3 +55,4 @@ loginForm.addEventListener('submit', (e) => {
     });
   }
 });
+console.log("TEst");
