@@ -32,10 +32,8 @@ loginForm.addEventListener('submit', (e) => {
         horror: false
       }).then(() => {
         loginForm.submit();
-      })});
-
-    
-
+      })
+    });
   } else {
     auth.signInWithEmailAndPassword(email, password).then((cred) => {
 
@@ -48,11 +46,8 @@ loginForm.addEventListener('submit', (e) => {
         document.getElementById('login-message').innerText = "Sign up for JAC";
       }
       return Promise.reject(err);
-    }).then((cred) => {
-      if (cred){
-        loginForm.submit();
-      }
+    }).then(() => {
+      loginForm.submit();
     });
   }
 });
-console.log("TEst");
