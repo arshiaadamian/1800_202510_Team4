@@ -18,23 +18,30 @@ loginForm.addEventListener('submit', (e) => {
       db.collection("users").doc(cred.user.uid).set({
         username: username,
         games: [],
-        messages: [],
+        genres: {
+          firstPersonShooter: false,
+          rolePlaying: false,
+          massMultiplayer: false,
+          casual: false,
+          horror: false
+        },
+        sent_messages: [],
+        received_messages: [],
+        friends: [],
+        communities: [],
+        owned_communities: [],
         description: "",
         name: "",
         email: email,
         country: "",
         language: "English",
         age: 0,
-        firstPersonShooter: false,
-        rolePlaying: false,
-        massMultiplayer: false,
-        casual: false,
-        horror: false
       }).then(() => {
         loginForm.submit();
-      })});
+      })
+    });
 
-    
+
 
   } else {
     auth.signInWithEmailAndPassword(email, password).then((cred) => {
@@ -49,7 +56,7 @@ loginForm.addEventListener('submit', (e) => {
       }
       return Promise.reject(err);
     }).then((cred) => {
-      if (cred){
+      if (cred) {
         loginForm.submit();
       }
     });
