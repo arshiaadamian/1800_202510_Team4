@@ -35,6 +35,7 @@ fileInput.addEventListener("change", event => {
             var reader = new FileReader();
             reader.addEventListener('load', (e) => {
                 let pfpRef = storage.ref().child(`/pfps/${user.uid}.png`);
+                
                 console.log(e.target.result);
                 let data = e.target.result;
                 data = data.split(";")[1].split(",")[1];
@@ -43,7 +44,7 @@ fileInput.addEventListener("change", event => {
                 
                 pfpRef.put(blob).then((picture) => {
                     console.log("Saving users picture");
-                    getUserPicture();
+                    setUserPicture();
                 });
             });
             reader.readAsDataURL(pfp);

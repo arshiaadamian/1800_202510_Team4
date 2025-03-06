@@ -1,6 +1,16 @@
 var loginForm = document.querySelector("#log-in-ui");
 var signup = false;
 
+async function createImage(url, fileName){
+  let response = await fetch(url);
+  let data = await response.blob();
+  let metadata = {
+    type: 'image/png'
+  };
+  let file = new File([data], fileName, metadata);
+  return file
+}
+
 loginForm.addEventListener('submit', (e) => {
   e.preventDefault();
   // Get the user's info
@@ -12,11 +22,14 @@ loginForm.addEventListener('submit', (e) => {
       return Promise.reject(new Error("Passwords do not match"));
     }
     const username = loginForm['usernameInput'].value;
+    let uid;
     auth.createUserWithEmailAndPassword(email, password).then(cred => {
       console.log("Signed up", cred);
       cred.user.displayname = username;
-      db.collection("users").doc(cred.user.uid).set({
+      uid = cred.user.uid;
+      db.collection("users").doc(uid).set({
         username: username,
+        super: false,
         games: [],
         genres: {
           firstPersonShooter: false,
@@ -37,7 +50,13 @@ loginForm.addEventListener('submit', (e) => {
         language: "English",
         age: 0,
       }).then(() => {
-        loginForm.submit();
+        let pfpRef = storage.ref().child(`/pfps/${uid}.png`);
+        createImage('/images/default.png', `${uid}.png`).then((img) => {
+          pfpRef.put(img).then((img) => {
+            console.log("Yay?");
+            loginForm.submit();
+          });
+        });
       })
     });
   } else {
