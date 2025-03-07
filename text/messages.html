@@ -112,12 +112,13 @@
                               <div class="users-container">
                                   <div class="chat-search-box">
                                       <div class="input-group">
-                                          <input class="form-control" placeholder="Search">
+                                          <input id="searchTxt" class="form-control" placeholder="Search">
                                           <div class="input-group-btn">
-                                              <button type="button" class="btn btn-info">
+                                              <button id="searchButton" type="button" class="btn btn-info">
                                                   <i class="fa fa-search"></i>
                                               </button>
                                           </div>
+                                          <div id="user-cards" class="container user"></div>
                                       </div>
                                   </div>
                                   <ul class="users">
@@ -265,7 +266,9 @@
           </div>  
       </div>  
   </div>
-                    
+  
+  
+
   <footer>
     <nav class="navbar" style="background-color: white">
       <div class="container">
@@ -282,9 +285,21 @@
             </span></span></a>
       </div>
     </nav>
-
-
   </footer>
+
+  <template id="user-card">
+    <div class="container text-center">
+        <div class="row">
+            <div class="col-sm-3 text-end">
+                <img src="/images/default.png" alt="" class="pfp">
+            </div>
+            <div class="col-sm-auto text-center">
+                <span id="username-goes-here" class="text-primary-emphasis">Username Here</span><br>
+                <span id="description-goes-here" class="text-primary text-wrap">A description of the person that the user has set, could be longish, but it could be shorter as well, who knows.</span>
+            </div>
+        </div>
+      </div>
+  </template>
 
   <!--==========================================-->
   <!-- Your own JavaScript functions go here    -->
@@ -293,6 +308,7 @@
   <!-- <script src="./scripts/script.js"></script> -->
   <script src="/scripts/firebaseAPI_config.js"></script>
   <script src="/scripts/functions.js"></script>
+  <script src="/scripts/messages.js"></script>
   <script src="/scripts/add.js"></script>
 
 
