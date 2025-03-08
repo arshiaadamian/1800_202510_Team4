@@ -1,56 +1,65 @@
-var fileInput = document.getElementById("pfp-input");
-var pfpDisplay = document.getElementById("pfp");
+// Ensure file input exists before adding event listener
+const fileInput = document.getElementById("pfp-input");
+if (fileInput) {
+  fileInput.addEventListener("change", async function (event) {
+    const file = event.target.files[0]; // Get selected file
+    if (!file) return;
 
-
-function b64toBlob(b64Data, contentType, sliceSize) {
-    contentType = contentType || '';
-    sliceSize = sliceSize || 512;
-
-    var byteCharacters = atob(b64Data);
-    var byteArrays = [];
-
-    for (var offset = 0; offset < byteCharacters.length; offset += sliceSize) {
-        var slice = byteCharacters.slice(offset, offset + sliceSize);
-
-        var byteNumbers = new Array(slice.length);
-        for (var i = 0; i < slice.length; i++) {
-            byteNumbers[i] = slice.charCodeAt(i);
-        }
-
-        var byteArray = new Uint8Array(byteNumbers);
-
-        byteArrays.push(byteArray);
+    const user = auth.currentUser;
+    if (!user) {
+      alert("You need to be logged in to change your profile picture.");
+      return;
     }
 
-    var blob = new Blob(byteArrays, { type: contentType });
-    return blob;
+    const storageRef = firebase
+      .storage()
+      .ref(`profile_pictures/${user.uid}.png`);
+
+    try {
+      // Upload file
+      const snapshot = await storageRef.put(file);
+      const downloadURL = await snapshot.ref.getDownloadURL();
+
+      // Update Firestore with new image URL
+      await db.collection("users").doc(user.uid).update({ img: downloadURL });
+
+      // Update all profile picture elements at once
+      document.querySelectorAll(".pfp").forEach((img) => {
+        img.src = downloadURL + "?t=" + new Date().getTime(); // Force refresh
+      });
+
+      console.log("Profile picture updated successfully.");
+    } catch (error) {
+      console.error("Error updating profile picture:", error);
+    }
+  });
 }
 
-fileInput.addEventListener("change", event => {
-    auth.onAuthStateChanged(user => {
-        // Checks if a user is signed in
-        if (user) {
-            let pfp = fileInput.files[0];
+// Load the profile picture on all pages with a sidebar
+auth.onAuthStateChanged(async (user) => {
+  if (user) {
+    try {
+      const doc = await db.collection("users").doc(user.uid).get();
 
-            var reader = new FileReader();
-            reader.addEventListener('load', (e) => {
-                let pfpRef = storage.ref().child(`/pfps/${user.uid}.png`);
-                console.log(e.target.result);
-                let data = e.target.result;
-                data = data.split(";")[1].split(",")[1];
+      if (doc.exists) {
+        const userData = doc.data();
+        const profilePicURL = userData.img ? userData.img : "/images/pfp3.jpg";
 
-                let blob = b64toBlob(data, "img/png")
-                
-                pfpRef.put(blob).then((picture) => {
-                    console.log("Saving users picture");
-                    getUserPicture();
-                });
-            });
-            reader.readAsDataURL(pfp);
+        // Update all profile pictures at once
+        document.querySelectorAll(".pfp").forEach((img) => {
+          img.src = profilePicURL;
+        });
 
-            
-
+        // Update username if the element exists
+        const usernameField = document.getElementById("name-goes-here");
+        if (usernameField) {
+          usernameField.innerText = userData.username || "User";
         }
-    });
+      }
+    } catch (error) {
+      console.error(" Error fetching user data:", error);
+    }
+  } else {
+    console.log("No user is signed in.");
+  }
 });
-

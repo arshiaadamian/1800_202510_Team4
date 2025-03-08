@@ -1,175 +1,252 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <title>My BCIT Project</title>
+    <meta name="comp1800 template" content="My 1800 App" />
 
-<head>
-  <title>My BCIT Project</title>
-  <meta name="comp1800 template" content="My 1800 App" />
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <!-- Required meta tags -->
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- Bootstrap Library CSS CDN go here -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
 
-  <!-- Bootstrap Library CSS CDN go here -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
+    <!-- Boostrap Library JS CDN  go here -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+      crossorigin="anonymous"
+    ></script>
 
-  <!-- Boostrap Library JS CDN  go here -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
-    crossorigin="anonymous"></script>
+    <!-- Bootstrap Library FIREBASE CDN go here -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.js"></script>
+    <link
+      type="text/css"
+      rel="stylesheet"
+      href="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.css"
+    />
 
-  <!-- Bootstrap Library FIREBASE CDN go here -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.js"></script>
-  <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.css" />
+    <!-- Other libraries go here -->
+    <!-- Google Icons (Material Design)-->
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
 
-  <!-- Other libraries go here -->
-  <!-- Google Icons (Material Design)-->
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <!-- Link to styles of your own -->
+    <link rel="stylesheet" href="/styles/style.css" />
+    <link rel="stylesheet" href="/styles/join_com.css" />
+  </head>
 
-  <!-- Link to styles of your own -->
-  <link rel="stylesheet" href="/styles/style.css" />
-  <link rel="stylesheet" href="/styles/join_com.css" />
-</head>
+  <body>
+    <!--============================-->
+    <!-- Your HTML Layout goes here -->
+    <!--============================-->
 
-<body>
-  <!--============================-->
-  <!-- Your HTML Layout goes here -->
-  <!--============================-->
-
-  <nav class="navbar navbar-expand-lg navbar-light bg-light custom-navbar">
-    <div class="container">
-      <a data-bs-toggle="offcanvas" href="#sidebar"><span class="material-icons">menu</span></a>
-      <a href="#"><img class="logo" src="/images/jacLogo.png" height="35" alt="JAC Logo" />
-      </a>
-    </div>
-    <div class="offcanvas offcanvas-start" tabindex="-1" id="sidebar" aria-labelledby="sidebarLabel">
-      <div class="offcanvas-header">
-        <h5 class="offcanvas-title" id="sidebarLabel">Menu</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-      </div>
-      <div class="offcanvas-body">
-        <div>
-          <ul class="navbar-nav">
-            <li class="nav-item">
-              <a class="nav-link" href="#"><img class="pfp" src="" id="pfp" alt="Profile Picture">Your Profile</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#"><span class="material-icons" id="nav2">chat </span>Messages</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#"><span class="material-icons" id="nav3">groups </span>Communities</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#"><span class="material-icons" id="nav4">event </span>Events</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#"><span class="material-icons" id="nav5">settings </span>Settings</a>
-            </li>
-          </ul>
-        </div>
-      </div>
-      <div>
-        <img class="nav_gif" src="/images/nav.gif" alt="walking gif">
-      </div>
-    </div>
-  </nav>
-
-  <div class="container">
-    <div class="row justify-content-center">
-      <div class="col-12 col-md-8 col-lg-6">
-        <div class="search-container position-relative">
-          <form class="d-flex align-items-center">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
-              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-              class="search-icon feather feather-search">
-              <circle cx="11" cy="11" r="8"></circle>
-              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-            </svg>
-            <input class="form-control search-input ps-5" type="search" placeholder="Search Community..."
-              aria-label="Search">
-            <button class="btn btn-search ms-2" type="submit">Search</button>
-          </form>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <h1>Top Suggested <span class="fancy">Communities</span>
-  </h1>
-  <div class="fig1">
-    <figure class="figure">
-      <a href="/text/community1_detail.html"><img src="/images/command1.png" class="figure-img img-fluid rounded"
-          alt="A generic square placeholder image with rounded corners in a figure."></a>
-      <figcaption class="figure-caption text-white">
-        <h4><b>Insanity in a Game</b></h4>
-        <p class="text-secondary">8,993 Members</p>
-      </figcaption>
-    </figure>
-  </div>
-
-  <div class="fig2">
-    <figure class="figure">
-      <img src="/images/command2.jpg" class="figure-img img-fluid rounded"
-        alt="A generic square placeholder image with rounded corners in a figure.">
-      <figcaption class="figure-caption text-white">
-        <h4><b>Rivalers LF Friends</b></h4>
-        <p class="text-secondary">6,094 Members</p>
-      </figcaption>
-    </figure>
-  </div>
-
-  <div class="fig2">
-    <figure class="figure">
-      <img src="/images/command3.jpg" class="figure-img img-fluid rounded"
-        alt="A generic square placeholder image with rounded corners in a figure.">
-      <figcaption class="figure-caption text-white">
-        <h4><b>Let's Learn Together</b></h4>
-        <p class="text-secondary">5,245 Members</p>
-      </figcaption>
-    </figure>
-  </div>
-
-  <ul class="pagination justify-content-center">
-    <li class="page-item"><a class="page-link text-secondary" href="#">Previous</a></li>
-    <li class="page-item"><a class="page-link text-secondary" href="#">1</a></li>
-    <li class="page-item"><a class="page-link text-secondary" href="#">2</a></li>
-    <li class="page-item"><a class="page-link text-secondary" href="#">3</a></li>
-    <li class="page-item"><a class="page-link text-secondary" href="#">Next</a></li>
-  </ul>
-
-  <footer>
-    <nav class="navbar" style="background-color: white">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light custom-navbar">
       <div class="container">
-        <a href="/text/main.html"><span class="material-icons">home</span></a>
-        <div class="dropdown">
-          <button id="myBtn" class="dropbtn material-icons">add</button>
-          <div id="myDropdown" class="dropdown-content">
-            <a href="add_community.html">Create Community</a>
+        <a data-bs-toggle="offcanvas" href="#sidebar"
+          ><span class="material-icons">menu</span></a
+        >
+        <a href="#"
+          ><img
+            class="logo"
+            src="/images/jacLogo.png"
+            height="35"
+            alt="JAC Logo"
+          />
+        </a>
+      </div>
+      <div
+        class="offcanvas offcanvas-start"
+        tabindex="-1"
+        id="sidebar"
+        aria-labelledby="sidebarLabel"
+      >
+        <div class="offcanvas-header">
+          <h5 class="offcanvas-title" id="sidebarLabel">Menu</h5>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="offcanvas"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div class="offcanvas-body">
+          <div>
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link" href="#"
+                  ><img class="pfp" src="" id="pfp" alt="Profile Picture" />Your
+                  Profile</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#"
+                  ><span class="material-icons" id="nav2">chat </span
+                  >Messages</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#"
+                  ><span class="material-icons" id="nav3">groups </span
+                  >Communities</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#"
+                  ><span class="material-icons" id="nav4">event </span>Events</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#"
+                  ><span class="material-icons" id="nav5">settings </span
+                  >Settings</a
+                >
+              </li>
+            </ul>
           </div>
         </div>
-        <a href="/text/search.html"><span class="material-icons"><span class="material-symbols-outlined">
-              person_search
-            </span></span></a>
+        <div>
+          <img class="nav_gif" src="/images/nav.gif" alt="walking gif" />
+        </div>
       </div>
     </nav>
-  </footer>
 
-  <!--==========================================-->
-  <!-- Your own JavaScript functions go here    -->
-  <!--==========================================-->
-  <!-- Link to scripts of your own -->
-  <!-- <script src="./scripts/script.js"></script> -->
-  <script src="/scripts/firebaseAPI_config.js"></script>
-  <script src="/scripts/functions.js"></script>
-  <script src="/scripts/add.js"></script>
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-12 col-md-8 col-lg-6">
+          <div class="search-container position-relative">
+            <form class="d-flex align-items-center">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="search-icon feather feather-search"
+              >
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+              </svg>
+              <input
+                class="form-control search-input ps-5"
+                type="search"
+                placeholder="Search Community..."
+                aria-label="Search"
+              />
+              <button class="btn btn-search ms-2" type="submit">Search</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
 
+    <h1>Top Suggested <span class="fancy">Communities</span></h1>
+    <div class="fig1">
+      <figure class="figure">
+        <a href="/text/community1_detail.html"
+          ><img
+            src="/images/command1.png"
+            class="figure-img img-fluid rounded"
+            alt="A generic square placeholder image with rounded corners in a figure."
+        /></a>
+        <figcaption class="figure-caption text-white">
+          <h4><b>Insanity in a Game</b></h4>
+          <p class="text-secondary">8,993 Members</p>
+        </figcaption>
+      </figure>
+    </div>
 
+    <div class="fig2">
+      <figure class="figure">
+        <img
+          src="/images/command2.jpg"
+          class="figure-img img-fluid rounded"
+          alt="A generic square placeholder image with rounded corners in a figure."
+        />
+        <figcaption class="figure-caption text-white">
+          <h4><b>Rivalers LF Friends</b></h4>
+          <p class="text-secondary">6,094 Members</p>
+        </figcaption>
+      </figure>
+    </div>
 
-</body>
+    <div class="fig2">
+      <figure class="figure">
+        <img
+          src="/images/command3.jpg"
+          class="figure-img img-fluid rounded"
+          alt="A generic square placeholder image with rounded corners in a figure."
+        />
+        <figcaption class="figure-caption text-white">
+          <h4><b>Let's Learn Together</b></h4>
+          <p class="text-secondary">5,245 Members</p>
+        </figcaption>
+      </figure>
+    </div>
 
+    <ul class="pagination justify-content-center">
+      <li class="page-item">
+        <a class="page-link text-secondary" href="#">Previous</a>
+      </li>
+      <li class="page-item">
+        <a class="page-link text-secondary" href="#">1</a>
+      </li>
+      <li class="page-item">
+        <a class="page-link text-secondary" href="#">2</a>
+      </li>
+      <li class="page-item">
+        <a class="page-link text-secondary" href="#">3</a>
+      </li>
+      <li class="page-item">
+        <a class="page-link text-secondary" href="#">Next</a>
+      </li>
+    </ul>
+
+    <footer>
+      <nav class="navbar" style="background-color: white">
+        <div class="container">
+          <a href="/text/main.html"><span class="material-icons">home</span></a>
+          <div class="dropdown">
+            <button id="myBtn" class="dropbtn material-icons">add</button>
+            <div id="myDropdown" class="dropdown-content">
+              <a href="add_community.html">Create Community</a>
+            </div>
+          </div>
+          <a href="/text/search.html"
+            ><span class="material-icons"
+              ><span class="material-symbols-outlined">
+                person_search
+              </span></span
+            ></a
+          >
+        </div>
+      </nav>
+    </footer>
+
+    <!--==========================================-->
+    <!-- Your own JavaScript functions go here    -->
+    <!--==========================================-->
+    <!-- Link to scripts of your own -->
+    <!-- <script src="./scripts/script.js"></script> -->
+    <script src="/scripts/firebaseAPI_config.js"></script>
+    <script src="/scripts/functions.js"></script>
+    <script src="/scripts/add.js"></script>
+    <script src="/scripts/profile.js"></script>
+  </body>
 </html>
