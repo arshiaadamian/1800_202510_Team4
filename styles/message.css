@@ -364,7 +364,8 @@ ul {
     User Cards
     */
 #user-cards {
-    margin-left: -3%;
+    margin-left: -4%;
+    margin-top: -5%;
 }
 
 #user-cards * {

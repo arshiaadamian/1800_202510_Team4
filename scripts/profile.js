@@ -43,7 +43,7 @@ auth.onAuthStateChanged(async (user) => {
 
       if (doc.exists) {
         const userData = doc.data();
-        const profilePicURL = userData.img ? userData.img : "/images/pfp3.jpg";
+        const profilePicURL = await getUserPicture(user.uid) ? await getUserPicture(user.uid) : "/images/pfp3.jpg";
 
         // Update all profile pictures at once
         document.querySelectorAll(".pfp").forEach((img) => {
