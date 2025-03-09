@@ -40,4 +40,3 @@ searchButton.addEventListener("click", (event) => {
     });
 
 });
-console.log("Loaded messages");

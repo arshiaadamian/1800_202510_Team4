@@ -371,11 +371,11 @@ ul {
     z-index: 1;
     max-width: 88%;
 }
-#user-card {
+.user-card {
     background: #ccc; 
     margin: 0 auto; 
     padding: 20px; 
     width: 500px; 
     text-align: center; 
-    position:absolute;
+    position: absolute;
 }
