@@ -11,9 +11,9 @@ if (fileInput) {
       return;
     }
 
-    const storageRef = firebase
-      .storage()
-      .ref(`profile_pictures/${user.uid}.png`);
+    const storageRef = storage
+      .ref()
+      .child(`pfps/${user.uid}.png`);
 
     try {
       // Upload file
@@ -43,12 +43,7 @@ auth.onAuthStateChanged(async (user) => {
 
       if (doc.exists) {
         const userData = doc.data();
-        const profilePicURL = await getUserPicture(user.uid) ? await getUserPicture(user.uid) : "/images/pfp3.jpg";
-
-        // Update all profile pictures at once
-        document.querySelectorAll(".pfp").forEach((img) => {
-          img.src = profilePicURL;
-        });
+        
 
         // Update username if the element exists
         const usernameField = document.getElementById("name-goes-here");

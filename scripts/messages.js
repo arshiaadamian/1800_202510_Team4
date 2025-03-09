@@ -48,8 +48,6 @@ function populateFriends() {
     });
 }
 
-
-
 searchButton.addEventListener("click", (event) => {
     cardLocation.innerHTML = "";
     let userCard = cardTemplate.content.cloneNode(true);

@@ -14,6 +14,7 @@ function setUserPicture() {
             let imgs = document.querySelectorAll("#pfp");
             getUserPicture(user.uid).then((url) => {
                 imgs.forEach(img => {
+                    console.log(url);
                     img.setAttribute("src", url);
                 });
             });
@@ -21,8 +22,6 @@ function setUserPicture() {
             console.log("Not logged in, redirecting");
             window.location.href = "/text/login.html"
         }
-
-
     });
 }
 
