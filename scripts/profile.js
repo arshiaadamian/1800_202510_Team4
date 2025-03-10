@@ -58,3 +58,49 @@ auth.onAuthStateChanged(async (user) => {
     console.log("No user is signed in.");
   }
 });
+
+
+const updateButton = document.getElementById("submit1");
+if(updateButton){
+  updateButton.addEventListener("click", async function(){
+
+    // update name
+    const fullNameField = document.getElementById("fullName");
+    const fullName = fullNameField.value;
+    
+    // update email
+    const emailField = document.getElementById("email");
+    const newEmail = emailField.value;
+
+    //update country
+    const CountryField = document.getElementById("Country");
+    const newCountry = CountryField.value;
+
+    //update language
+    const langField = document.getElementById("lang");
+    const newLang = langField.value;
+
+    //update age
+    const ageField = document.getElementById("age");
+    const newAge = ageField.value;
+
+    if(!fullName || !newEmail || !newCountry || !newLang || !newAge){
+      alert("Please fill in the required boxes.")
+      return;
+    }
+
+    const user = auth.currentUser;
+    if (!user) {
+      alert("You need to be logged in to change your profile picture.");
+      return;
+    }
+    await db.collection("users").doc(user.uid).update({name: fullName, email: newEmail, country: newCountry, language: newLang, age: newAge});
+  });
+}
+
+const updateButton2 = document.getElementById("submit2");
+if(updateButton2){
+  updateButton2.addEventListener("click", async function(){
+    // to be completed
+  })
+}
