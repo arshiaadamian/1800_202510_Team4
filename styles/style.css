@@ -28,12 +28,10 @@ a {
   top: 0;
 }
 
-footer {
+footer{
   position: sticky;
   bottom: 0;
-  background-color: #212f45;
-  padding: 10px;
-  text-align: center;
+  z-index: 100;
 }
 
 #nav1,

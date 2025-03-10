@@ -1,0 +1,31 @@
+
+
+  #c1 {
+    border: 20px solid #1B3A4B;
+    margin-top: 10%;
+    padding: 5%;
+}
+
+.card-header {
+    font-size: 30px;
+    margin-bottom: 5%;
+}
+
+.details {
+    font-size: 20px;
+}
+
+#server_logo {
+    padding-left: 5%;
+    padding-bottom: 5%;
+}
+
+.p_server {
+    margin-right: 10%;
+    display: inline;
+}
+
+#button {
+    margin: 10%;
+    background-color: #3E1F47;
+}
