@@ -38,9 +38,11 @@ function populateFriends() {
                     let newUser = userTemplate.content.cloneNode(true);
                     getUserPicture(friend).then((img) => {
                         newUser.querySelector(".name").innerHTML = friendData.username;
+                        newUser.querySelector(".name").id = friend;
                         newUser.querySelector(".pfp").src = img;
                         let curDate = new Date();
                         newUser.querySelector(".time").innerHTML = curDate.toLocaleString().split(",")[0];
+                        newUser.querySelector(".person-click").addEventListener("click", () => populateMessages(friend));
                         usersLocation.insertBefore(newUser, usersLocation.firstChild);
                     });
                 });
@@ -52,7 +54,9 @@ function populateFriends() {
 const messagesDiv = document.getElementById("messages");
 const messageLeftTemplate = document.getElementById("chat-message-left-template");
 const messageRightTemplate = document.getElementById("chat-message-right-template");
+const toUsername = document.getElementById("to-username");
 async function populateMessages(otherUserID) {
+    
     messagesDiv.innerHTML = "";
     auth.onAuthStateChanged(async (thisUser) => {
         let messages = [];
@@ -73,6 +77,12 @@ async function populateMessages(otherUserID) {
             return a.timestamp.toDate().valueOf() - b.timestamp.toDate().valueOf();
         });
 
+        let otherDoc = await db.collection("users").doc(otherUserID).get();
+        let thisDoc = await db.collection("users").doc(thisUser.uid).get();
+        toUsername.innerHTML = otherDoc.username;
+
+        let thisImg = await getUserPicture(thisUser.uid);
+        let otherImg = await getUserPicture(otherUserID);
 
         for (let messageData of messages) {
             let message;
@@ -80,13 +90,11 @@ async function populateMessages(otherUserID) {
 
             if (messageData.from_uid == otherUserID) {
                 message = messageLeftTemplate.content.cloneNode(true);
-                img = await getUserPicture(otherUserID);
-                let otherDoc = await db.collection("users").doc(otherUserID).get();
+                img = otherImg;
                 message.querySelector(".chat-name").innerHTML = otherDoc.data().username;
             } else {
                 message = messageRightTemplate.content.cloneNode(true);
-                img = await getUserPicture(thisUser.uid);
-                thisDoc = await db.collection("users").doc(thisUser.uid).get();
+                img = thisImg;
                 message.querySelector(".chat-name").innerHTML = thisDoc.data().username;
             }
             message.querySelector(".chat-picture").src = img;
