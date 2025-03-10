@@ -47,21 +47,6 @@
     top: 50%;
     transform: translateY(-50%);
 }
-
-.fig1, .fig2, .fig3 {
-    margin: 5%;
-}
-
-
-.fig3 {
-    position: relative;
-    width: 50%;
-  }
-  
-  .image {
-    display: block;
-    width: 100%;
-  }
   
   .overlay {
     position: absolute;
@@ -98,6 +83,7 @@
     text-align: center;
     line-height: 1;
     color: white;
+    margin-bottom: 10%;
   }
   
   .fancy {
@@ -125,3 +111,10 @@
     color: black;
     border: black 2px solid;
   }
+
+  .container1 {
+    margin-top: 10%;
+    margin-left: 13%;
+  }
+
+  
