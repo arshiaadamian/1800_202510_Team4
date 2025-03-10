@@ -1,23 +1,24 @@
-function sendMessage(from_uid, to_uid, message) {
-    let fromDocRef = db.collection("users").doc(from_uid);
-    let toDocRef = db.collection("users").doc(to_uid);
-    let msg_uid = from_uid + "-" + to_uid + "-" + firebase.firestore.FieldValue.serverTimestamp();
-    db.collection("messages").doc(msg_uid).set({
-        content: message,
-        timestamp: firebase.firestore.FieldValue.serverTimestamp(),
-        from_uid: from_uid,
-        to_uid: to_uid
-    }).then(() => {
-        fromDocRef.update({
-            sent_messages: firebase.firestore.FieldValue.arrayUnion(msg_uid)
-        });
-        toDocRef.update({
-            received_messages: firebase.firestore.FieldValue.arrayUnion(msg_uid)
+function sendMessage(to_uid, message) {
+    auth.onAuthStateChanged((user) => {
+        let fromDocRef = db.collection("users").doc(user.uid);
+        let toDocRef = db.collection("users").doc(to_uid);
+        let msg_uid = user.uid + "-" + to_uid + "-" + new Date().toLocaleString();
+        db.collection("messages").doc(msg_uid).set({
+            content: message,
+            timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+            from_uid: user.uid,
+            to_uid: to_uid
+        }).then(() => {
+            fromDocRef.update({
+                sent_messages: firebase.firestore.FieldValue.arrayUnion(msg_uid)
+            });
+            toDocRef.update({
+                received_messages: firebase.firestore.FieldValue.arrayUnion(msg_uid)
+            });
+            populateMessages(to_uid);
         });
     });
 }
-
-
 
 const searchButton = document.getElementById("searchButton");
 const searchTxt = document.getElementById("searchTxt");
@@ -36,11 +37,11 @@ function populateFriends() {
                     let friendData = friendDoc.data();
                     let newUser = userTemplate.content.cloneNode(true);
                     getUserPicture(friend).then((img) => {
-                    newUser.querySelector(".name").innerHTML = friendData.username;
-                    newUser.querySelector(".pfp").src = img;
-                    let curDate = new Date();
-                    newUser.querySelector(".time").innerHTML = curDate.toLocaleString().split(",")[0];
-                    usersLocation.insertBefore(newUser, usersLocation.firstChild);
+                        newUser.querySelector(".name").innerHTML = friendData.username;
+                        newUser.querySelector(".pfp").src = img;
+                        let curDate = new Date();
+                        newUser.querySelector(".time").innerHTML = curDate.toLocaleString().split(",")[0];
+                        usersLocation.insertBefore(newUser, usersLocation.firstChild);
                     });
                 });
             });
@@ -48,8 +49,55 @@ function populateFriends() {
     });
 }
 
-searchButton.addEventListener("click", (event) => {
-    cardLocation.innerHTML = "";
+const messagesDiv = document.getElementById("messages");
+const messageLeftTemplate = document.getElementById("chat-message-left-template");
+const messageRightTemplate = document.getElementById("chat-message-right-template");
+async function populateMessages(otherUserID) {
+    messagesDiv.innerHTML = "";
+    auth.onAuthStateChanged(async (thisUser) => {
+        let messages = [];
+        let messagesDoc = db.collection("messages").orderBy("timestamp", "asc");
+        let sentQuery = messagesDoc.where("from_uid", "==", thisUser.uid).where("to_uid", "==", otherUserID);
+        let sentResult = await sentQuery.get();
+
+        sentResult.forEach((messageDoc) => {
+            messages.push(messageDoc.data());
+        });
+
+        let receivedQuery = messagesDoc.where("from_uid", "==", otherUserID).where("to_uid", "==", thisUser.uid);
+        let receivedResult = await receivedQuery.get();
+        receivedResult.forEach((message) => {
+            messages.push(message.data());
+        })
+        messages.sort((a, b) => {
+            return a.timestamp.toDate().valueOf() - b.timestamp.toDate().valueOf();
+        });
+
+
+        for (let messageData of messages) {
+            let message;
+            let img;
+
+            if (messageData.from_uid == otherUserID) {
+                message = messageLeftTemplate.content.cloneNode(true);
+                img = await getUserPicture(otherUserID);
+                let otherDoc = await db.collection("users").doc(otherUserID).get();
+                message.querySelector(".chat-name").innerHTML = otherDoc.data().username;
+            } else {
+                message = messageRightTemplate.content.cloneNode(true);
+                img = await getUserPicture(thisUser.uid);
+                thisDoc = await db.collection("users").doc(thisUser.uid).get();
+                message.querySelector(".chat-name").innerHTML = thisDoc.data().username;
+            }
+            message.querySelector(".chat-picture").src = img;
+            message.querySelector(".chat-hour").innerHTML = messageData.timestamp.toDate().toLocaleTimeString();
+            message.querySelector(".chat-text").innerHTML = messageData.content;
+            messagesDiv.appendChild(message);
+        }
+    });
+}
+
+searchTxt.addEventListener("change", (event) => {
     let userCard = cardTemplate.content.cloneNode(true);
     let users = db.collection("users");
     let query = users.where("username", "==", searchTxt.value);

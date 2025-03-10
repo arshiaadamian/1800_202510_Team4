@@ -132,10 +132,10 @@
               </div>
               <div class="col-xl-8 col-lg-8 col-md-8 col-sm-9 col-9">
                 <div class="selected-user">
-                  <span>To: <span class="name">Emily Russell</span></span>
+                  <span>To: <span class="name" id="to_username">Emily Russell</span></span>
                 </div>
                 <div class="chat-container">
-                  <ul class="chat-box chatContainerScroll">
+                  <ul class="chat-box chatContainerScroll" id="messages">
                     <li class="chat-left">
                       <div class="chat-avatar">
                         <img src="https://www.bootdey.com/img/Content/avatar/avatar3.png" alt="Retail Admin" />
@@ -271,8 +271,8 @@
       </div>
     </div>
   </button>
-    
   </template>
+
   <template class="user-template">
     <li class="person" data-chat="person1">
       <div class="user">
@@ -285,6 +285,37 @@
       </p>
     </li>
   </template>
+
+  <template id="chat-message-left-template">
+    <li class="chat-left">
+        <div class="chat-avatar">
+            <img class="chat-picture" src="https://www.bootdey.com/img/Content/avatar/avatar3.png" alt="Retail Admin" />
+            <div class="chat-name">Russell</div>
+        </div>
+        <div class="chat-text">
+            Hello, I'm Russell. <br />How can I help you today?
+        </div>
+        <div class="chat-hour">
+            08:55 <span class="fa fa-check-circle"></span>
+        </div>
+    </li>
+</template>
+<template id="chat-message-right-template">
+    <li class="chat-right">
+        <div class="chat-hour">
+            08:56 <span class="fa fa-check-circle"></span>
+        </div>
+        <div class="chat-text">
+            Hi, Russell <br />
+            I need more information about Developer Plan.
+        </div>
+        <div class="chat-avatar">
+            <img class="chat-picture" src="https://www.bootdey.com/img/Content/avatar/avatar3.png" alt="Retail Admin" />
+            <div class="chat-name">Sam</div>
+        </div>
+    </li>
+</template>
+
 
   <!--==========================================-->
   <!-- Your own JavaScript functions go here    -->
