@@ -101,6 +101,30 @@ if(updateButton){
 const updateButton2 = document.getElementById("submit2");
 if(updateButton2){
   updateButton2.addEventListener("click", async function(){
-    // to be completed
+    // checking the boolean values of checkboxes.
+    const firstPersonShooter = document.getElementById("pref1");
+    const firstPersonShooterValue = firstPersonShooter.checked;
+
+    const rolePlay = document.getElementById("pref2");
+    const rolePlayValue = rolePlay.checked;
+
+    const mass = document.getElementById("pref3");
+    const massValue = mass.checked;
+
+    const casual = document.getElementById("pref4");
+    const casualValue = casual.checked;
+
+    const horror = document.getElementById("pref5");
+    const horrorValue = horror.checked;
+
+    const user = auth.currentUser;
+
+    await db.collection("users").doc(user.uid).update({genres: {
+      casual: casualValue,
+      firstPersonShooter: firstPersonShooterValue,
+      horror: horrorValue,
+      massMultiplayer: massValue,
+      rolePlaying: rolePlayValue
+  }})
   })
 }
