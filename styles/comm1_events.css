@@ -1,3 +1,32 @@
 #card1 {
     margin: 10%;
 }
+
+#c1, #c2, #c3 {
+    border: 20px solid #1B3A4B;
+}
+#ev1, #ev2, #ev3 {
+    padding-left: 5px;
+    color: #006466;
+}
+
+#ev1:hover, #ev2:hover, #ev3:hover {
+    color: #144552;
+    font-size: 40px;
+}
+
+.card-title {
+    color: #272640;
+}
+
+#side1 {
+    padding-left: 2px;
+}
+
+#side2 {
+    padding-right: 10px;
+}
+
+#side3 {
+    padding-right: 10px;
+}

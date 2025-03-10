@@ -1,0 +1,17 @@
+#card1 {
+    margin: 10%;
+}
+
+#c1, #c2, #c3 {
+    border: 20px solid #1B3A4B;
+}
+
+.card-title {
+    color: #272640;
+}
+
+#title {
+    margin: 10%;
+    line-height: 70px;
+}
+
