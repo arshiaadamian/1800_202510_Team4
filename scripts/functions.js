@@ -1,18 +1,28 @@
-function sendMessage(to_uid, from_uid, message) {
-    let fromDocRef = db.collection("users").doc(from_uid);
-    let toDocRef = db.collection("users").doc(to_uid);
-    let msg_uid = from_uid + "-" + to_uid + "-" + firebase.firestore.FieldValue.serverTimestamp();
-    db.collection("messages").doc(msg_uid).set({
-        content: message,
-        timestamp: firebase.firestore.FieldValue.serverTimestamp(),
-        from_uid: from_uid,
-        to_uid: to_uid
-    }).then(() => {
-        fromDocRef.update({
-            sent_messages: firebase.firestore.FieldValue.arrayUnion(msg_uid)
-        });
-        toDocRef.update({
-            received_messages: firebase.firestore.FieldValue.arrayUnion(msg_uid)
-        });
+const storageRef = storage.ref();
+async function getUserPicture(user_uid) {
+    let url = await storageRef.child(`pfps/${user_uid}.png`).getDownloadURL();
+    return url;
+}
+
+function setUserPicture() {
+    auth.onAuthStateChanged(user => {
+        // Checks if a user is signed in
+        if (user) {
+            // Display the user's name
+            console.log(user.uid);
+            console.log(user.displayname);
+            let imgs = document.querySelectorAll("#pfp");
+            getUserPicture(user.uid).then((url) => {
+                imgs.forEach(img => {
+                    console.log(url);
+                    img.setAttribute("src", url);
+                });
+            });
+        } else {
+            console.log("Not logged in, redirecting");
+            window.location.href = "/text/login.html"
+        }
     });
 }
+
+setUserPicture();

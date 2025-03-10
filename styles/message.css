@@ -359,3 +359,24 @@ ul {
     margin-bottom: 2rem;
     box-shadow: none;
 }
+
+/*
+    User Cards
+    */
+#user-cards {
+    margin-left: -4%;
+    margin-top: -5%;
+}
+
+#user-cards * {
+    z-index: 1;
+    max-width: 88%;
+}
+.user-card {
+    background: #ccc; 
+    margin: 0 auto; 
+    padding: 20px; 
+    width: 500px; 
+    text-align: center; 
+    position: absolute;
+}
