@@ -26,6 +26,8 @@ a {
   position: absolute;
   width: 100%;
   top: 0;
+  border: 8px solid #212f45;
+  height: 6%;
 }
 
 footer {

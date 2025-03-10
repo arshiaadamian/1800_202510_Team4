@@ -1,8 +1,10 @@
-body{margin-top: 55px;
-    color: #bcd0f7;
-        background: #3e1f47;
-    }
-    .account-settings .user-profile {
+body {
+  margin-top: 10%;
+  color: #bcd0f7;
+  background: #3e1f47;
+}
+
+.account-settings .user-profile {
         margin: 0 0 1rem 0;
         padding-bottom: 1rem;
         text-align: center;
@@ -95,3 +97,6 @@ body{margin-top: 55px;
         color: white;
       }
 
+footer {
+  position: relative;
+}
