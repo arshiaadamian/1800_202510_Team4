@@ -13,7 +13,8 @@ function sendMessage(to_uid, message) {
                 sent_messages: firebase.firestore.FieldValue.arrayUnion(msg_uid)
             });
             toDocRef.update({
-                received_messages: firebase.firestore.FieldValue.arrayUnion(msg_uid)
+                received_messages: firebase.firestore.FieldValue.arrayUnion(msg_uid),
+                friends: firebase.firestore.FieldValue.arrayUnion(user.uid)
             });
             populateMessages(to_uid);
         });
@@ -142,12 +143,15 @@ searchTxt.addEventListener("change", (event) => {
 });
 
 const messageArea = document.getElementById("message-area");
-messageArea.addEventListener("change", (event) => {
-    let id = toID.id;
-    if (id) {
-        sendMessage(id, messageArea.value);
+messageArea.addEventListener("keypress", (event) => {
+    let key = event.code;
+    if (key === "Enter") {
+        let id = toID.id;
+        if (id) {
+            sendMessage(id, messageArea.value);
+        }
+        messageArea.value = "";
     }
-    messageArea.value = "";
 });
 
 populateFriends();
