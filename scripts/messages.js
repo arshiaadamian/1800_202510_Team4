@@ -17,8 +17,10 @@ function sendMessage(to_uid, message) {
                 friends: firebase.firestore.FieldValue.arrayUnion(user.uid)
             });
             populateMessages(to_uid);
+            return msg_uid;
         });
     });
+    return "";
 }
 
 const searchButton = document.getElementById("searchButton");
@@ -35,16 +37,18 @@ function populateFriends() {
             friends = doc.data().friends;
             friends.forEach((friend) => {
                 db.collection("users").doc(friend).get().then((friendDoc) => {
-                    let friendData = friendDoc.data();
                     let newUser = userTemplate.content.cloneNode(true);
                     getUserPicture(friend).then((img) => {
-                        newUser.querySelector(".name").innerHTML = friendData.username;
+                        newUser.querySelector(".name").innerHTML = friendDoc.data().username;
                         newUser.querySelector(".name").id = friend;
                         newUser.querySelector(".pfp").src = img;
                         let curDate = new Date();
                         newUser.querySelector(".time").innerHTML = curDate.toLocaleString().split(",")[0];
                         newUser.querySelector(".person-click").addEventListener("click", () => populateMessages(friend));
                         usersLocation.insertBefore(newUser, usersLocation.firstChild);
+                        if (usersLocation.childElementCount == 1) {
+                            populateMessages(friend);
+                        }
                     });
                 });
             });
@@ -143,12 +147,13 @@ searchTxt.addEventListener("change", (event) => {
 });
 
 const messageArea = document.getElementById("message-area");
-messageArea.addEventListener("keypress", (event) => {
+messageArea.addEventListener("keypress", async (event) => {
     let key = event.code;
     if (key === "Enter") {
+        event.preventDefault();
         let id = toID.id;
         if (id) {
-            sendMessage(id, messageArea.value);
+            msg_id = sendMessage(id, messageArea.value);
         }
         messageArea.value = "";
     }
