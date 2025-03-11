@@ -55,8 +55,9 @@ const messagesDiv = document.getElementById("messages");
 const messageLeftTemplate = document.getElementById("chat-message-left-template");
 const messageRightTemplate = document.getElementById("chat-message-right-template");
 const toUsername = document.getElementById("to-username");
+const toID = document.querySelector(".send-id");
 async function populateMessages(otherUserID) {
-    
+    toID.id = otherUserID;
     messagesDiv.innerHTML = "";
     auth.onAuthStateChanged(async (thisUser) => {
         let messages = [];
@@ -140,5 +141,13 @@ searchTxt.addEventListener("change", (event) => {
 
 });
 
+const messageArea = document.getElementById("message-area");
+messageArea.addEventListener("change", (event) => {
+    let id = toID.id;
+    if (id) {
+        sendMessage(id, messageArea.value);
+    }
+    messageArea.value = "";
+});
+
 populateFriends();
-console.log("Messges loaded");
