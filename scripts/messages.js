@@ -79,7 +79,7 @@ async function populateMessages(otherUserID) {
 
         let otherDoc = await db.collection("users").doc(otherUserID).get();
         let thisDoc = await db.collection("users").doc(thisUser.uid).get();
-        toUsername.innerHTML = otherDoc.username;
+        toUsername.innerHTML = otherDoc.data().username;
 
         let thisImg = await getUserPicture(thisUser.uid);
         let otherImg = await getUserPicture(otherUserID);
@@ -141,3 +141,4 @@ searchTxt.addEventListener("change", (event) => {
 });
 
 populateFriends();
+console.log("Messges loaded");
