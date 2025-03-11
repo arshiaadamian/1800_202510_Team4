@@ -3,7 +3,7 @@
 }
 
 #c1, #c2, #c3 {
-    border: 20px solid #1B3A4B;
+    border: 5px solid #1B3A4B;
 }
 
 .card-title {
@@ -12,6 +12,9 @@
 
 #title {
     margin: 10%;
-    line-height: 70px;
+
 }
+
+
+
 

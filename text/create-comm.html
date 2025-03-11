@@ -75,9 +75,6 @@
           </ul>
         </div>
       </div>
-      <div>
-        <img class="nav_gif" src="/images/nav.gif" alt="walking gif">
-      </div>
     </div>
   </nav>
 
@@ -93,13 +90,15 @@
           <div class="form-group">
             <label for="formGroupExampleInput">Server Name</label>
             <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Server Name...">
+            <label for="formGroupExampleInput">Details</label>
+            <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Server Description...">
           </div>
           <div class="form-group" id="server_logo">
             <label for="exampleFormControlFile1"><p class="p_server"></br>Upload Logo</br> Here</p></label>
             <input type="file" class="form-control-file" id="exampleFormControlFile1">
           </div>
           <div id="button" class="col-auto my-1">
-            <button type="submit" class="btn text-white">Submit</button>
+            <button type="submit" class="btn text-white" onclick="populateCommunityInfo()">Submit</button>
           </div>
         </form>
 
@@ -140,6 +139,7 @@
     <script src="/scripts/firebaseAPI_config.js"></script>
     <script src="/scripts/main.js"></script>
     <script src="/scripts/add.js"></script>
+    <script src="/scrips/create-comm.js"></script>
   
   
     

@@ -382,7 +382,7 @@ ul {
 }
 
 footer {
-    position: relative;
+    position: fixed;
 }
 
 body {

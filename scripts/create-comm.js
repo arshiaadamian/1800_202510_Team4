@@ -1,59 +1,42 @@
-function writeCommunity() {
-    var communityRef = db.collection("community");
-    communityRef.add({
-        code: "I1",
-        name: "Insanity in a Game", 
-        location: "North America",
-		details: "A community to play valorant with people! You can play any game just join!",
-        members: 823,
-        last_updated: firebase.firestore.FieldValue.serverTimestamp() 
-    });
-    communityRef.add({
-        code: "I2",
-        name: "Marvel Rivalers", 
-        location: "North America",
-		details: "A community to find players and teams for Marvel Rivals.",
-        members: 273,
-        last_updated: firebase.firestore.FieldValue.serverTimestamp() 
-    });
-    communityRef.add({
-        code: "I3",
-        name: "Role-Playing Community", 
-        location: "North America",
-		details: "A community to role-play with others! All role-playing based games included.",
-        members: 543,
-        last_updated: firebase.firestore.FieldValue.serverTimestamp() 
-    });
-}
+var currentUser;
 
-function displayCardsDynamically(collection) {
-    let figureTemplate = document.getElementById("communityTemplate"); // Retrieve the HTML element with the ID "hikeCardTemplate" and store it in the cardTemplate variable. 
+var currentUser;               //points to the document of the user who is logged in
+function populateCommunityInfo() {
+            firebase.auth().onAuthStateChanged(user => {
+                // Check if user is signed in:
+                if (user) {
 
-    db.collection(collection).get()   //the collection called "hikes"
-        .then(allCommunity=> {
-            //var i = 1;  //Optional: if you want to have a unique ID for each hike
-            allCommunity.forEach(doc => { //iterate thru each doc
-                var title = doc.data().name;       // get value of the "name" key
-				var commCode = doc.data().code;    //get unique ID to each hike to be used for fetching right image
-                var members = doc.data().members; //gets the length field
-                let newfigure = figureTemplate.content.cloneNode(true); // Clone the HTML template to create a new card (newcard) that will be filled with Firestore data.
+                    //go to the correct user document by referencing to the user uid
+                    currentUser = db.collection("Community").collection("owned_userid").doc(user.uid)
+                    //get the document for current user.
+                    currentUser.add()
+                        .then(userDoc => {
+                            //get the data fields of the user
+                            let communityName = userDoc.data().name;
+                            let communityDetails = userDoc.data().details;
+                            let communityLogo = userDoc.data().code;
+                            let communityUser = user.uid;
 
-                //update title and text and image
-                newfigure.querySelector('.figure-title').innerHTML = title;
-                newfigure.querySelector('.figure-members').innerHTML = members +" Members.";
-                newfigure.querySelector('#figure-image').src = `/images/${commCode}.jpg`; //Example: NV01.jpg
+                            //if the data fields are not empty, then write them in to the form.
+                            if (communityName != null) {
+                                document.getElementById("nameInput").value = communityName;
+                            }
+                            if (communityDetails != null) {
+                                document.getElementById("detailInput").value = communityDetails;
+                            }
+                            if (communityLogo != null) {
+                                document.getElementById("logoInput").value = communityLogo;
+                            }
+                            if (communityUser != null) {
+                                document.getElementById("logoInput").value = communityUser;
+                            }
+                        })
+                } else {
+                    // No user is signed in.
+                    console.log ("No user is signed in");
+                }
+            });
+        }
 
-                //Optional: give unique ids to all elements for future use
-                // newcard.querySelector('.card-title').setAttribute("id", "ctitle" + i);
-                // newcard.querySelector('.card-text').setAttribute("id", "ctext" + i);
-                // newcard.querySelector('.card-image').setAttribute("id", "cimage" + i);
-
-                //attach to gallery, Example: "hikes-go-here"
-                document.getElementById(collection + "-go-here").appendChild(newfigure);
-
-                //i++;   //Optional: iterate variable to serve as unique ID
-            })
-        })
-}
-
-displayCardsDynamically("community");
+//call the function to run it 
+populateCommunityInfo();
