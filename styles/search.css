@@ -15,42 +15,31 @@
   align-items: center;
 }
 
-.btn-primary{
+.btn-primary {
   background-color: #3e1f47;
   border-color: #3e1f47;
   transition-duration: 0.4s;
   cursor: pointer;
 }
 
-.btn-primary:hover{
+.btn-primary:hover {
   background-color: lightblue;
-  color: #3e1f47; 
+  color: #3e1f47;
 }
 
-.card-img-top{
+.card-img-top {
   width: 90%;
   border-radius: 50%;
   border: #3e1f47 solid 2px;
-  
 }
 
-.btn-outline-success{
+.btn-outline-success {
   color: black;
   border-color: #3e1f47;
 }
-
 
 .custom-navbar {
   position: sticky;
   top: 0;
   z-index: 100;
 }
-
-footer{
-  position: sticky;
-  bottom: 0;
-  z-index: 100;
-}
-
-
-
