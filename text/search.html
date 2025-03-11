@@ -130,11 +130,13 @@
               type="search"
               placeholder="Enter a name here"
               aria-label="Search"
+              id="searchInput"
             />
             <button
               class="btn btn-outline-success"
               type="button"
-              onclick="window.location.href='search2.html'"
+              name="searchButton"
+              id="searchButton"
             >
               Search
             </button>
@@ -144,19 +146,20 @@
 
       <div class="suggestion-box">
         <div class="card">
-          <div class="card-body">People you might know.</div>
+          <div class="card-body" id="resultsBox">People who are your match.</div>
         </div>
       </div>
 
-      <div class="card" style="width: 14rem">
+      <div class="card card-display" style="width: 14rem">
         <img
           src="/images/Arshia.jpg"
           class="card-img-top"
           alt="Arshia Flexing"
+          id="firstImage"
         />
         <div class="card-body">
-          <h5 class="card-title">Arshia</h5>
-          <p class="card-text">
+          <h5 class="card-title" id="name1">Arshia</h5>
+          <p class="card-text" id="description1">
             I play Clash Royale. <br />If you want to play 2v2s with me add me
             up.
           </p>
@@ -225,5 +228,6 @@
     <script src="/scripts/firebaseAPI_config.js"></script>
     <script src="/scripts/functions.js"></script>
     <script src="/scripts/profile.js"></script>
+    <script src="/scripts/search.js"></script>
   </body>
 </html>
