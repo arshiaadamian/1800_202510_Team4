@@ -26,3 +26,5 @@ function setUserPicture() {
 }
 
 setUserPicture();
+
+const docExists = async (docName, docId) => (await db.collection(docName).doc(docId).get()).exists;

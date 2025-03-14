@@ -1,26 +1,29 @@
-function sendMessage(to_uid, message) {
-    auth.onAuthStateChanged((user) => {
-        let fromDocRef = db.collection("users").doc(user.uid);
-        let toDocRef = db.collection("users").doc(to_uid);
-        let msg_uid = user.uid + "-" + to_uid + "-" + new Date().toLocaleString();
-        db.collection("messages").doc(msg_uid).set({
-            content: message,
-            timestamp: firebase.firestore.FieldValue.serverTimestamp(),
-            from_uid: user.uid,
-            to_uid: to_uid
-        }).then(() => {
-            fromDocRef.update({
-                sent_messages: firebase.firestore.FieldValue.arrayUnion(msg_uid)
-            });
-            toDocRef.update({
-                received_messages: firebase.firestore.FieldValue.arrayUnion(msg_uid),
-                friends: firebase.firestore.FieldValue.arrayUnion(user.uid)
-            });
-            populateMessages(to_uid);
-            return msg_uid;
+async function sendMessage(to_uid, message) {
+    let user = auth.currentUser;
+    let userList = [to_uid, user.uid].sort();
+    let docID = userList[0] + userList[1];
+    let docRef = db.collection("messages").doc(docID);
+
+    if (!await docExists("messages", docID)) {
+        console.log("Creating messages document", userList[0], userList[1]);
+        await docRef.set({
+            users: userList,
+            messages: []
         });
+        db.collection("users").doc(user.uid).update({
+            messageRooms: firebase.firestore.FieldValue.arrayUnion(docID)
+        });
+        db.collection("users").doc(to_uid).update({
+            messageRooms: firebase.firestore.FieldValue.arrayUnion(docID)
+        });
+    }
+    docRef.update({
+        messages: firebase.firestore.FieldValue.arrayUnion({
+            from: user.uid,
+            content: message,
+            timestamp: new Date()
+        })
     });
-    return "";
 }
 
 const searchButton = document.getElementById("searchButton");
@@ -29,31 +32,38 @@ const cardTemplate = document.getElementById("user-card");
 const cardLocation = document.getElementById("user-cards");
 const usersLocation = document.querySelector(".users");
 const userTemplate = document.querySelector(".user-template");
-function populateFriends() {
-    auth.onAuthStateChanged((user) => {
-        console.log(user.uid);
+async function populateFriends() {
+    auth.onAuthStateChanged(async (user) => {
+        let userID = user.uid;
+        let userDoc = await db.collection("users").doc(userID).get();
+        let messageRooms = userDoc.data().messageRooms;
         usersLocation.innerHTML = "";
-        userDoc = db.collection("users").doc(user.uid).get().then((doc) => {
-            friends = doc.data().friends;
-            friends.forEach((friend) => {
-                db.collection("users").doc(friend).get().then((friendDoc) => {
-                    let newUser = userTemplate.content.cloneNode(true);
-                    getUserPicture(friend).then((img) => {
-                        newUser.querySelector(".name").innerHTML = friendDoc.data().username;
-                        newUser.querySelector(".name").id = friend;
-                        newUser.querySelector(".pfp").src = img;
-                        let curDate = new Date();
-                        newUser.querySelector(".time").innerHTML = curDate.toLocaleString().split(",")[0];
-                        newUser.querySelector(".person-click").addEventListener("click", () => populateMessages(friend));
-                        usersLocation.insertBefore(newUser, usersLocation.firstChild);
-                        if (usersLocation.childElementCount == 1) {
-                            populateMessages(friend);
-                        }
-                    });
-                });
+        messageRooms.forEach(async (roomID) => {
+            let roomDoc = await db.collection("messages").doc(roomID).get();
+            let roomUsers = roomDoc.data().users;
+            let friends = roomUsers.filter((user) => { return user != userID });
+            console.log(friends);
+            friends.forEach(async (friend) => {
+                let newUser = userTemplate.content.cloneNode(true);
+                let friendDoc = await db.collection("users").doc(friend).get();
+                let img = await getUserPicture(friend);
+                newUser.querySelector(".name").innerHTML = friendDoc.data().username;
+                newUser.querySelector(".name").id = friend;
+                newUser.querySelector(".pfp").src = img;
+                let curDate = new Date();
+                newUser.querySelector(".time").innerHTML = curDate.toLocaleString().split(",")[0];
+                newUser.querySelector(".person-click").addEventListener("click", () => populateMessages(friend));
+                usersLocation.insertBefore(newUser, usersLocation.firstChild);
+                console.log(friend);
+
+                if (usersLocation.childElementCount == friends.length) {
+                    populateMessages(friend);
+                }
+                console.log(roomID);
             });
         });
     });
+
 }
 
 const messagesDiv = document.getElementById("messages");
@@ -62,52 +72,54 @@ const messageRightTemplate = document.getElementById("chat-message-right-templat
 const toUsername = document.getElementById("to-username");
 const toID = document.querySelector(".send-id");
 async function populateMessages(otherUserID) {
+    console.log("other's id", otherUserID);
     toID.id = otherUserID;
-    messagesDiv.innerHTML = "";
+    
     auth.onAuthStateChanged(async (thisUser) => {
-        let messages = [];
-        let messagesDoc = db.collection("messages").orderBy("timestamp", "asc");
-        let sentQuery = messagesDoc.where("from_uid", "==", thisUser.uid).where("to_uid", "==", otherUserID);
-        let sentResult = await sentQuery.get();
-
-        sentResult.forEach((messageDoc) => {
-            messages.push(messageDoc.data());
-        });
-
-        let receivedQuery = messagesDoc.where("from_uid", "==", otherUserID).where("to_uid", "==", thisUser.uid);
-        let receivedResult = await receivedQuery.get();
-        receivedResult.forEach((message) => {
-            messages.push(message.data());
-        })
-        messages.sort((a, b) => {
-            return a.timestamp.toDate().valueOf() - b.timestamp.toDate().valueOf();
-        });
-
         let otherDoc = await db.collection("users").doc(otherUserID).get();
         let thisDoc = await db.collection("users").doc(thisUser.uid).get();
-        toUsername.innerHTML = otherDoc.data().username;
-
         let thisImg = await getUserPicture(thisUser.uid);
         let otherImg = await getUserPicture(otherUserID);
 
-        for (let messageData of messages) {
-            let message;
-            let img;
+        toUsername.innerHTML = otherDoc.data().username;
 
-            if (messageData.from_uid == otherUserID) {
-                message = messageLeftTemplate.content.cloneNode(true);
-                img = otherImg;
-                message.querySelector(".chat-name").innerHTML = otherDoc.data().username;
-            } else {
-                message = messageRightTemplate.content.cloneNode(true);
-                img = thisImg;
-                message.querySelector(".chat-name").innerHTML = thisDoc.data().username;
-            }
-            message.querySelector(".chat-picture").src = img;
-            message.querySelector(".chat-hour").innerHTML = messageData.timestamp.toDate().toLocaleTimeString();
-            message.querySelector(".chat-text").innerHTML = messageData.content;
-            messagesDiv.appendChild(message);
-        }
+        let users = [thisUser.uid, otherUserID].sort();
+        messageRooms = thisDoc.data().messageRooms;
+        console.log(messageRooms.length);
+        messageRooms.forEach(roomID => {
+            
+            db.collection("messages").doc(roomID).onSnapshot((roomDoc) => {
+                messagesDiv.innerHTML = "";
+                console.log("roomdata", roomDoc.data());
+                let messages = roomDoc.data().messages.sort((a, b) => {
+                    return a.timestamp.toDate().valueOf() - b.timestamp.toDate().valueOf();
+                });
+                if (!otherUserID in roomDoc.data()) {
+                    messages = [];
+                }
+                messages.forEach(message => {
+                    let newMessage;
+                    let img;
+                    console.log("message", message);
+
+                    if (message.from_uid == otherUserID) {
+                        newMessage = messageLeftTemplate.content.cloneNode(true);
+                        img = otherImg;
+                        newMessage.querySelector(".chat-name").innerHTML = otherDoc.data().username;
+                    } else {
+                        newMessage = messageRightTemplate.content.cloneNode(true);
+                        img = thisImg;
+                        newMessage.querySelector(".chat-name").innerHTML = thisDoc.data().username;
+                    }
+                    newMessage.querySelector(".chat-picture").src = img;
+                    newMessage.querySelector(".chat-hour").innerHTML = message.timestamp.toDate().toLocaleTimeString();
+                    newMessage.querySelector(".chat-text").innerHTML = message.content;
+                    messagesDiv.appendChild(newMessage);
+                });
+            });
+
+
+        });
     });
 }
 
@@ -130,7 +142,7 @@ searchTxt.addEventListener("change", (event) => {
                     card.addEventListener("click", (e) => {
                         auth.onAuthStateChanged((curUser) => {
                             db.collection("users").doc(curUser.uid).update({
-                                friends: firebase.firestore.FieldValue.arrayUnion(card.id)
+                                friends: firebase.firestore.FieldValue.arrayUnion({ id: card.id, lastMessage: firebase.firestore.FieldValue.serverTimestamp() }),
                             }).then(() => {
                                 cardLocation.innerHTML = "";
                                 populateFriends();
@@ -147,7 +159,7 @@ searchTxt.addEventListener("change", (event) => {
 });
 
 const messageArea = document.getElementById("message-area");
-messageArea.addEventListener("keypress", async (event) => {
+messageArea.addEventListener("keypress", (event) => {
     let key = event.code;
     if (key === "Enter") {
         event.preventDefault();
@@ -159,4 +171,4 @@ messageArea.addEventListener("keypress", async (event) => {
     }
 });
 
-populateFriends();
+window.onload = populateFriends();
