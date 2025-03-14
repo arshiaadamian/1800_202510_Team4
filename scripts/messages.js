@@ -4,19 +4,6 @@ async function sendMessage(to_uid, message) {
     let docID = userList[0] + userList[1];
     let docRef = db.collection("messages").doc(docID);
 
-    if (!await docExists("messages", docID)) {
-        console.log("Creating messages document", userList[0], userList[1]);
-        await docRef.set({
-            users: userList,
-            messages: []
-        });
-        db.collection("users").doc(user.uid).update({
-            messageRooms: firebase.firestore.FieldValue.arrayUnion(docID)
-        });
-        db.collection("users").doc(to_uid).update({
-            messageRooms: firebase.firestore.FieldValue.arrayUnion(docID)
-        });
-    }
     docRef.update({
         messages: firebase.firestore.FieldValue.arrayUnion({
             from: user.uid,
@@ -50,7 +37,15 @@ async function populateFriends() {
                     newUser.querySelector(".name").innerHTML = friendDoc.data().username;
                     newUser.querySelector(".name").id = friend;
                     newUser.querySelector(".pfp").src = img;
+                    let messages = roomDoc.data().messages.sort((a, b) => {
+                        return a.timestamp.toDate().valueOf() - b.timestamp.toDate().valueOf();
+                    });
+                    console.log(messages);
                     let curDate = new Date();
+                    if (messages.length > 0) {
+                        curDate = messages[0].timestamp.toDate();
+                    }
+                    // let curDate = new Date();
                     newUser.querySelector(".time").innerHTML = curDate.toLocaleString().split(",")[0];
                     newUser.querySelector(".person-click").addEventListener("click", () => populateMessages(friend));
                     usersLocation.insertBefore(newUser, usersLocation.firstChild);
@@ -84,8 +79,6 @@ async function populateMessages(otherUserID) {
         let otherImg = await getUserPicture(otherUserID);
 
         toUsername.innerHTML = otherDoc.data().username;
-
-        let users = [thisUser.uid, otherUserID].sort();
         messageRooms = thisDoc.data().messageRooms;
         console.log(messageRooms.length);
         messageRooms.forEach(roomID => {
