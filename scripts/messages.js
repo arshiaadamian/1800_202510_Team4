@@ -29,7 +29,6 @@ async function populateFriends() {
                 let roomDoc = await db.collection("messages").doc(roomID).get();
                 let roomUsers = roomDoc.data().users;
                 let friends = roomUsers.filter((user) => { return user != userID });
-                console.log(friends);
                 friends.forEach(async (friend) => {
                     let newUser = userTemplate.content.cloneNode(true);
                     let friendDoc = await db.collection("users").doc(friend).get();
@@ -40,7 +39,6 @@ async function populateFriends() {
                     let messages = roomDoc.data().messages.sort((a, b) => {
                         return a.timestamp.toDate().valueOf() - b.timestamp.toDate().valueOf();
                     });
-                    console.log(messages);
                     let curDate = new Date();
                     if (messages.length > 0) {
                         curDate = messages[0].timestamp.toDate();
@@ -49,13 +47,10 @@ async function populateFriends() {
                     newUser.querySelector(".time").innerHTML = curDate.toLocaleString().split(",")[0];
                     newUser.querySelector(".person-click").addEventListener("click", () => populateMessages(friend));
                     usersLocation.insertBefore(newUser, usersLocation.firstChild);
-                    console.log(friend);
-
-                    if (usersLocation.childElementCount == friends.length) {
-                        populateMessages(friend);
-                    }
-                    console.log(roomID);
+                    await populateMessages(friend);
+                    
                 });
+                
             });
         });
 
@@ -69,7 +64,6 @@ const messageRightTemplate = document.getElementById("chat-message-right-templat
 const toUsername = document.getElementById("to-username");
 const toID = document.querySelector(".send-id");
 async function populateMessages(otherUserID) {
-    console.log("other's id", otherUserID);
     toID.id = otherUserID;
 
     auth.onAuthStateChanged(async (thisUser) => {
@@ -80,41 +74,42 @@ async function populateMessages(otherUserID) {
 
         toUsername.innerHTML = otherDoc.data().username;
         messageRooms = thisDoc.data().messageRooms;
-        console.log(messageRooms.length);
         messageRooms.forEach(roomID => {
-
-            db.collection("messages").doc(roomID).onSnapshot((roomDoc) => {
-                messagesDiv.innerHTML = "";
-                console.log("roomdata", roomDoc.data());
-                let messages = roomDoc.data().messages.sort((a, b) => {
-                    return a.timestamp.toDate().valueOf() - b.timestamp.toDate().valueOf();
-                });
-                if (!otherUserID in roomDoc.data()) {
-                    messages = [];
+            let roomRef = db.collection("messages").doc(roomID);
+            roomRef.onSnapshot((roomDoc) => {
+                
+                if (roomDoc.id.includes(otherUserID)) {
+                    messagesDiv.innerHTML = "";
+                    let messages = roomDoc.data().messages.sort((a, b) => {
+                        return a.timestamp.toDate().valueOf() - b.timestamp.toDate().valueOf();
+                    });
+                    
+                    console.log(roomDoc.id, roomDoc.data(), messages.length);
+                    messages.forEach(message => {
+                        let newMessage;
+                        let img;
+    
+                        if (message.from_uid == otherUserID) {
+                            newMessage = messageLeftTemplate.content.cloneNode(true);
+                            img = otherImg;
+                            newMessage.querySelector(".chat-name").innerHTML = otherDoc.data().username;
+                        } else {
+                            newMessage = messageRightTemplate.content.cloneNode(true);
+                            img = thisImg;
+                            newMessage.querySelector(".chat-name").innerHTML = thisDoc.data().username;
+                        }
+                        newMessage.querySelector(".chat-picture").src = img;
+                        newMessage.querySelector(".chat-hour").innerHTML = message.timestamp.toDate().toLocaleTimeString();
+                        newMessage.querySelector(".chat-text").innerHTML = message.content;
+                        messagesDiv.appendChild(newMessage);
+                    });
                 }
-                messages.forEach(message => {
-                    let newMessage;
-                    let img;
-                    console.log("message", message);
-
-                    if (message.from_uid == otherUserID) {
-                        newMessage = messageLeftTemplate.content.cloneNode(true);
-                        img = otherImg;
-                        newMessage.querySelector(".chat-name").innerHTML = otherDoc.data().username;
-                    } else {
-                        newMessage = messageRightTemplate.content.cloneNode(true);
-                        img = thisImg;
-                        newMessage.querySelector(".chat-name").innerHTML = thisDoc.data().username;
-                    }
-                    newMessage.querySelector(".chat-picture").src = img;
-                    newMessage.querySelector(".chat-hour").innerHTML = message.timestamp.toDate().toLocaleTimeString();
-                    newMessage.querySelector(".chat-text").innerHTML = message.content;
-                    messagesDiv.appendChild(newMessage);
-                });
-            });
-
+                
+            })
+            db.collection("messages").doc(roomID).update({});
 
         });
+        
     });
 }
 
@@ -177,4 +172,4 @@ messageArea.addEventListener("keypress", (event) => {
     }
 });
 
-window.onload = populateFriends();
+populateFriends();
