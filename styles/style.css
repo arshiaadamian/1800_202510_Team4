@@ -4,9 +4,12 @@ body {
   background-color: #3e1f47;
 }
 
-
 .navbar {
   background-color: #212f45;
+}
+
+.nav-item {
+  padding-top: 10%;
 }
 
 a {

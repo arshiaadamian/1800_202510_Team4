@@ -382,9 +382,11 @@ ul {
 }
 
 footer {
-    position: fixed;
+    position: fixed;;
 }
 
 body {
     margin-top: 5%;
 }
+
+.container {}

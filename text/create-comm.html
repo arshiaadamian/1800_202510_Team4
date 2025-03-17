@@ -88,17 +88,17 @@
         </div>
         <form>
           <div class="form-group">
-            <label for="formGroupExampleInput">Server Name</label>
-            <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Server Name...">
+            <label>Server Name</label>
+            <input id="name" type="text" class="form-control" placeholder="Server Name...">
             <label for="formGroupExampleInput">Details</label>
-            <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Server Description...">
+            <input id="details" type="text" class="form-control" placeholder="Server Description...">
           </div>
           <div class="form-group" id="server_logo">
             <label for="exampleFormControlFile1"><p class="p_server"></br>Upload Logo</br> Here</p></label>
-            <input type="file" class="form-control-file" id="exampleFormControlFile1">
+            <input id="banners" type="file" class="form-control-file" id="exampleFormControlFile1">
           </div>
           <div id="button" class="col-auto my-1">
-            <button type="submit" class="btn text-white" onclick="populateCommunityInfo()">Submit</button>
+            <button type="submit" class="btn text-white" onclick="writeCommunityInfo()">Submit</button>
           </div>
         </form>
 
@@ -139,7 +139,7 @@
     <script src="/scripts/firebaseAPI_config.js"></script>
     <script src="/scripts/main.js"></script>
     <script src="/scripts/add.js"></script>
-    <script src="/scrips/create-comm.js"></script>
+    <script src="/scripts/create-comm.js"></script>
   
   
     

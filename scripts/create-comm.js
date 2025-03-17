@@ -1,42 +1,31 @@
-var currentUser;
+var currentUser
+function writeCommunityInfo() {
 
-var currentUser;               //points to the document of the user who is logged in
-function populateCommunityInfo() {
-            firebase.auth().onAuthStateChanged(user => {
-                // Check if user is signed in:
-                if (user) {
+    event.preventDefault(); // Prevent page refresh
+    var name = document.getElementById("name").value;
+    var detail = document.getElementById("details").value;
+    var communityRef = db.collection("community");
+    var user = firebase.auth().currentUser;
+    var currentUser = db.collection("users").doc(user.uid);
+    var userID = user.uid;
+    firebase.auth().onAuthStateChanged(user => {
 
-                    //go to the correct user document by referencing to the user uid
-                    currentUser = db.collection("Community").collection("owned_userid").doc(user.uid)
-                    //get the document for current user.
-                    currentUser.add()
-                        .then(userDoc => {
-                            //get the data fields of the user
-                            let communityName = userDoc.data().name;
-                            let communityDetails = userDoc.data().details;
-                            let communityLogo = userDoc.data().code;
-                            let communityUser = user.uid;
+    if (user) {
+        communityRef.add({
+            code: 'I2',
+            userID: userID,
+            name: name,
+            detail: detail,
+            location: "North America",
+            members: 1,
+            timestamp: firebase.firestore.FieldValue.serverTimestamp()
+        }).then(() => {
+            window.location.href = "community1.html"; // Redirect to the thanks page
+        });
+    } else {
+        console.log("user has not logged in.");
+    }
+    });
+}
 
-                            //if the data fields are not empty, then write them in to the form.
-                            if (communityName != null) {
-                                document.getElementById("nameInput").value = communityName;
-                            }
-                            if (communityDetails != null) {
-                                document.getElementById("detailInput").value = communityDetails;
-                            }
-                            if (communityLogo != null) {
-                                document.getElementById("logoInput").value = communityLogo;
-                            }
-                            if (communityUser != null) {
-                                document.getElementById("logoInput").value = communityUser;
-                            }
-                        })
-                } else {
-                    // No user is signed in.
-                    console.log ("No user is signed in");
-                }
-            });
-        }
-
-//call the function to run it 
-populateCommunityInfo();
+writeCommunityInfo();
