@@ -43,6 +43,7 @@
     <!-- Link to styles of your own -->
     <link rel="stylesheet" href="/styles/style.css" />
     <link rel="stylesheet" href="/styles/login.css"/>
+    <link rel="stylesheet" href="/styles/onboarding.css"/>
   </head>
 
   <body>
@@ -54,54 +55,34 @@
       src="/images/jacLogo.png"
       id="avatar"
       class="float-start img-fluid"
-      alt="JAC Logo"
-/>
-    <div class="mb-3">
-      <header class="header">
-        <h1 class="header__title">WELCOME TO JAC! </h1>
-        <h2 class="header__subtitle" id="login-message">Welcome Back! </br> We're very excited to see you!</h2>
-      </header>
-    </div>
+      alt="JAC Logo"/>
+      
+      <h1 class="d-flex jusitfy-content-center">
+        What Gamer Are You?
+      </h1>
+        <div class="btn-group-vertical gap-5 pt-2" role="group" aria-label="Basic checkbox toggle button group">
+          <input type="checkbox" class="btn-check" id="btncheck1" autocomplete="off">
+          <label class="btn btn-outline-secondary" for="btncheck1">Casual</label>
+        
+          <input type="checkbox" class="btn-check" id="btncheck2" autocomplete="off">
+          <label class="btn btn-outline-secondary" for="btncheck2">First Person Shooter</label>
+        
+          <input type="checkbox" class="btn-check" id="btncheck3" autocomplete="off">
+          <label class="btn btn-outline-secondary" for="btncheck3">Horror</label>
 
-    <div class="mb-3">
-      <h2 class="text-danger"><span id="warning-message"></span></h2>
-    </div>
-    <div id="login-placeholder">
-      <form id="log-in-ui" action="/text/onboarding.html">
-        <div class="mb-3">
-          <input
-            id="emailInput"
-            type="email"
-            class="form-control"
-            placeholder="Email..."
-            required
-          />
-        </div>
-        <div class="mb-3" id="username-placeholder"></div>
-        <div class="mb-3">
-          <input
-            id="passwordInput"
-            type="password"
-            class="form-control"
-            placeholder="Password..."
-            required
-          />
-        </div>
-        <div class="mb-3" id="confirm-password-placeholder"></div>
-        <div class="mb-3 text-center">
-          <input
-            id="loginButton"
-            type="submit"
-            class="btn btn-light"
-            value="Login"
-          />
-        </div>
-      </form>
-    </div>
-    <div id="firebaseui-auth-container"></div>
-    
-  </div>
+          <input type="checkbox" class="btn-check" id="btncheck4" autocomplete="off">
+          <label class="btn btn-outline-secondary" for="btncheck4">Mass Multiplayer</label>
+          
+          <input type="checkbox" class="btn-check" id="btncheck5" autocomplete="off">
+          <label class="btn btn-outline-secondary" for="btncheck5">Role-Playing</label>
 
+        </div>
+
+
+        <a href="/text/main.html"><button type="button" class="btn1 btn-outline-secondary text-dark btn-lg">Submit!</button>
+        </a>
+
+      
   <div class="pacman"></div>
 	<div class="dots">
 		<div class="dot"></div>
