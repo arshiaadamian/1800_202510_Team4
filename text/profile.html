@@ -44,7 +44,6 @@
     />
 
     <!-- Link to styles of your own -->
-    <link rel="stylesheet" href="/styles/style.css" />
     <link rel="stylesheet" href="/styles/profile.css" />
   </head>
 
@@ -53,7 +52,7 @@
     <!-- Your HTML Layout goes here -->
     <!--============================-->
 
-    <nav class="navbar navbar-expand-lg navbar-light bg-light custom-navbar">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <div class="container">
         <a data-bs-toggle="offcanvas" href="#sidebar"
           ><span class="material-icons">menu</span></a
@@ -71,8 +70,7 @@
         class="offcanvas offcanvas-start"
         tabindex="-1"
         id="sidebar"
-        aria-labelledby="sidebarLabel"
-      >
+        aria-labelledby="sidebarLabel">
         <div class="offcanvas-header">
           <h5 class="offcanvas-title" id="sidebarLabel">Menu</h5>
           <button
@@ -86,44 +84,33 @@
           <div>
             <ul class="navbar-nav">
               <li class="nav-item">
-                <a class="nav-link" href="/text/profile.html"
-                  ><img class="pfp" src="" id="pfp" alt="Profile Picture" />Your
-                  Profile</a
-                >
+                <a class="nav-link" href="/text/profile.html">
+                  <img class="pfp" src="" id="pfp" alt="Profile Picture" />Profile</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="/text/messages.html"
-                  ><span class="material-icons" id="nav2">chat </span
-                  >Messages</a
-                >
+                <a class="nav-link" href="/text/messages.html">
+                  <span class="material-icons" id="nav2">chat </span>Messages</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#"
-                  ><span class="material-icons" id="nav3">groups </span
-                  >Communities</a
-                >
+                <a class="nav-link" href="#">
+                  <span class="material-icons" id="nav3">groups </span>Communities</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="events.html"
-                  ><span class="material-icons" id="nav4">event </span>Events</a
-                >
+                <a class="nav-link" href="events.html">
+                  <span class="material-icons" id="nav4">event </span>Events</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="#"
                   ><span class="material-icons" id="nav5">settings </span
-                  >Settings</a
-                >
+                  >Settings</a>
               </li>
             </ul>
           </div>
         </div>
-        <div>
-          <img class="nav_gif" src="/images/nav.gif" alt="walking gif" />
-        </div>
       </div>
     </nav>
 
-    <div class="container">
+    <div class="profile">
       <div class="row gutters">
         <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12">
           <div class="card h-100">
@@ -299,7 +286,7 @@
 
     <footer>
       <nav class="navbar" style="background-color: white">
-        <div class="container">
+        <div class="container1">
           <a href="/text/main.html"><span class="material-icons">home</span></a>
           <div class="dropdown">
             <button id="myBtn" class="dropbtn material-icons">add</button>
