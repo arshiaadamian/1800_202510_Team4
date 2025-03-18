@@ -1,5 +1,13 @@
-var currentUser
-function writeCommunityInfo() {
+var currentUser;
+var communityImg;
+const submitForm = document.getElementById("submitter");
+const fileUpload = document.getElementById("banners");
+
+fileUpload.addEventListener("change", (event) => {
+    communityImg = event.target.files[0];
+});
+
+submitForm.addEventListener("click", event => {
 
     event.preventDefault(); // Prevent page refresh
     var name = document.getElementById("name").value;
@@ -19,13 +27,24 @@ function writeCommunityInfo() {
             location: "North America",
             members: 1,
             timestamp: firebase.firestore.FieldValue.serverTimestamp()
-        }).then(() => {
-            window.location.href = "community1.html"; // Redirect to the thanks page
+        }).then((doc) => {
+            let storageRef = storage.ref("community_pics/" + doc.id);
+            if (!communityImg) {
+                fetch("./images/default.png").then(((img) => {
+                    storageRef.put(img).then(() => {
+                        window.location.href = "community1.html";
+                    });
+                    
+                }));
+            } else {
+                storageRef.put(communityImg).then(() => {
+                    window.location.href = "community1.html";
+                });
+                
+            }
         });
     } else {
         console.log("user has not logged in.");
     }
     });
-}
-
-writeCommunityInfo();
+})
