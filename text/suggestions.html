@@ -49,9 +49,9 @@
   </head>
 
   <body>
-    <!------------------------------>
-    <!-- Your HTML Layout go here -->
-    <!------------------------------>
+    <!--============================-->
+    <!-- Your HTML Layout goes here -->
+    <!--============================-->
 
     <nav class="navbar navbar-expand-lg navbar-light bg-light custom-navbar">
       <div class="container">
@@ -59,7 +59,12 @@
           ><span class="material-icons">menu</span></a
         >
         <a href="#"
-          ><img class="logo" src="./images/jacLogo.png" height="35" />
+          ><img
+            class="logo"
+            src="/images/jacLogo.png"
+            height="35"
+            alt="Jac Logo"
+          />
         </a>
       </div>
       <div
@@ -82,13 +87,14 @@
             <ul class="navbar-nav">
               <li class="nav-item">
                 <a class="nav-link" href="#"
-                  ><img class="pfp" src="" id="pfp" alt="Profile Picture">Your Profile</a
+                  ><img class="pfp" src="" id="pfp" alt="Profile Picture" />Your
+                  Profile</a
                 >
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="#"
-                  ><span class="material-icons" id="nav2">chat </span
-                  >Messages</a
+                  ><span class="material-icons" id="nav2">chat </span>
+                  Messages</a
                 >
               </li>
               <li class="nav-item">
@@ -116,55 +122,36 @@
 
     <!-- search bar -->
     <div class="search">
-      <nav class="navbar bg-body-tertiary" id="search-bar">
-        <div class="container-fluid">
-          <form class="d-flex" role="search">
-            <input
-              class="form-control me-2"
-              type="search"
-              placeholder="Search"
-              aria-label="Search"
-            />
-            <button class="btn btn-outline-success" type="submit">
-              <a href="/text/search.html">Search</a>
-            </button>
-          </form>
-        </div>
-      </nav>
-
       <div class="suggestion-box">
         <div class="card">
-          <div class="card-body">Searches for Arshia</div>
+          <div class="card-body" id="resultsBox">
+            People who are your match.
+          </div>
         </div>
       </div>
 
-      <div class="card">
-        <a class="nav-link" href="#"
-          ><span class="material-icons" id="nav2"
-            ><span class="material-symbols-outlined">
-              account_circle
-            </span></span
-          ></a
-        >
-        <div class="card-body"><a href="#">Arshia </a></div>
-      </div>
-
-      <div class="card">
-        <a class="nav-link" href="#"
-          ><span class="material-icons" id="nav2"
-            ><span class="material-symbols-outlined">
-              account_circle
-            </span></span
-          ></a
-        >
-        <div class="card-body"><a href="#">Arshia Adamian</a></div>
+      <div class="card card-display" style="width: 14rem">
+        <img
+          src="/images/Arshia.jpg"
+          class="card-img-top"
+          alt="Arshia Flexing"
+          id="firstImage"
+        />
+        <div class="card-body">
+          <h5 class="card-title" id="name1">Arshia</h5>
+          <p class="card-text" id="description1">
+            I play Clash Royale. <br />If you want to play 2v2s with me add me
+            up.
+          </p>
+          <a href="#" class="btn btn-primary">Add</a>
+        </div>
       </div>
     </div>
 
     <footer>
-      <nav class="navbar" style="background-color: #e3f2fd">
+      <nav class="navbar" style="background-color: white">
         <div class="container">
-          <a href="/text/index.html"><span class="material-icons">home</span></a>
+          <a href="main.html"><span class="material-icons">home</span></a>
           <div class="dropdown">
             <button id="myBtn" class="dropbtn material-icons">add</button>
             <div id="myDropdown" class="dropdown-content">
@@ -172,7 +159,7 @@
               <a href="/text/search-community.html">Create Community</a>
             </div>
           </div>
-          <a href="/text/search.html"
+          <a href="search.html"
             ><span class="material-icons"
               ><span class="material-symbols-outlined">
                 person_search
@@ -183,12 +170,14 @@
       </nav>
     </footer>
 
-    <!---------------------------------------------->
+    <!--==========================================-->
     <!-- Your own JavaScript functions go here    -->
-    <!---------------------------------------------->
+    <!--==========================================-->
     <!-- Link to scripts of your own -->
     <!-- <script src="./scripts/script.js"></script> -->
     <script src="/scripts/firebaseAPI_config.js"></script>
     <script src="/scripts/functions.js"></script>
+    <script src="/scripts/profile.js"></script>
+    <script src="/scripts/suggestions.js"></script>
   </body>
 </html>
