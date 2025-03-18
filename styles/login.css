@@ -1,9 +1,11 @@
 * {
     font-family: 'Press Start 2P', cursive;
 }
+
 body {
     background-color: #006466;
 }
+
 :root {
     --background: #000;
     --text: #fff;

@@ -1,9 +1,11 @@
-
-
 #c1 {
     border: 20px solid #1B3A4B;
     margin-top: 10%;
-    padding: 5%;
+    padding:10%;
+}
+
+#title {
+    margin-top: 19%;
 }
 
 .card-header {
