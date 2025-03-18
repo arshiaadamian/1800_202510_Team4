@@ -43,66 +43,67 @@
       rel="stylesheet"
     />
 
+  <!-- Other libraries go here -->
+  <!-- Google Icons (Material Design)-->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet" />
+=======
     <!-- Link to styles of your own -->
     <link rel="stylesheet" href="/styles/style.css" />
-    <link rel="stylesheet" href="/styles/search.css" />
   </head>
 
   <body>
-    <!------------------------------>
-    <!-- Your HTML Layout go here -->
-    <!------------------------------>
+    <!--============================-->
+    <!-- Your HTML Layout goes here -->
+    <!--============================-->
 
     <nav class="navbar navbar-expand-lg navbar-light bg-light custom-navbar">
       <div class="container">
         <a data-bs-toggle="offcanvas" href="#sidebar"
           ><span class="material-icons">menu</span></a
         >
-        <a href="#"
-          ><img class="logo" src="./images/jacLogo.png" height="35" />
+        <a href="#"><img class="logo" src="/images/jacLogo.png"
+            height="35"
+            alt="JAC Logo"/>
         </a>
       </div>
-      <div
-        class="offcanvas offcanvas-start"
-        tabindex="-1"
+      <div class="nav_items row">
+      <div class="offcanvas offcanvas-start" tabindex="-1"
         id="sidebar"
-        aria-labelledby="sidebarLabel"
-      >
+        aria-labelledby="sidebarLabel">
         <div class="offcanvas-header">
           <h5 class="offcanvas-title" id="sidebarLabel">Menu</h5>
+          <div id="pacman"></div>
           <button
             type="button"
             class="btn-close"
             data-bs-dismiss="offcanvas"
-            aria-label="Close"
-          ></button>
+            aria-label="Close"></button>
         </div>
-        <div class="offcanvas-body">
+        <div class="offcanvas-body col">
           <div>
             <ul class="navbar-nav">
+              <div class="pfp1">
               <li class="nav-item">
-                <a class="nav-link" href="profile.html"
-                  ><img class="pfp" src="" id="pfp" alt="Profile Picture">Your Profile</a
-                >
+                <a class="nav-link" href="profile.html">
+                </a><img class="pfp" src="" id="pfp" alt="Profile Picture"/>Profile</a>
               </li>
-              <li class="nav-item">
+            </div>
+              <li class="nav-item col">
                 <a class="nav-link" href="messages.html"
-                  ><span class="material-icons" id="nav2">chat </span
-                  >Messages</a
-                >
+                  ><span class="material-icons" id="nav2">chat </span>Messages</a>
               </li>
-              <li class="nav-item">
+              <li class="nav-item col">
                 <a class="nav-link" href="your_comm.html"
-                  ><span class="material-icons" id="nav3">groups </span
-                  >Communities</a
+                  ><span class="material-icons" id="nav3">groups </span>Communities</a
                 >
               </li>
-              <li class="nav-item">
+              <li class="nav-item col">
                 <a class="nav-link" href="events.html"
                   ><span class="material-icons" id="nav4">event </span>Events</a
                 >
               </li>
-              <li class="nav-item">
+              <li class="nav-item col">
                 <a class="nav-link" href="#"
                   ><span class="material-icons" id="nav5">settings </span
                   >Settings</a
@@ -112,64 +113,36 @@
           </div>
         </div>
       </div>
+      </div>
     </nav>
 
-    <!-- search bar -->
-    <div class="search">
-      <nav class="navbar bg-body-tertiary" id="search-bar">
-        <div class="container-fluid">
-          <form class="d-flex" role="search">
-            <input
-              class="form-control me-2"
-              type="search"
-              placeholder="Search"
-              aria-label="Search"
-            />
-            <button class="btn btn-outline-success" type="submit">
-              <a href="/text/search.html">Search</a>
-            </button>
-          </form>
-        </div>
-      </nav>
-
-      <div class="suggestion-box">
-        <div class="card">
-          <div class="card-body">Searches for Arshia</div>
-        </div>
+<template id="communityCardTemplate">
+  <div class="card py-2 mx-2" style="width: 18rem">
+      <img class="card-image card-img-top" src=" ..." alt="..." />
+      <div class="card-body">
+          <h5 class="card-title">Card title</h5>
+          <p class="card-length">placeholder</p>
+          <br/>
+          <p class="card-text">
+              Some quick example text to build on the card title and make up the
+              bulk of the card's content.
+          </p>
+          <a class="btn btn-primary card-href">Read more ...</a>
       </div>
-
-      <div class="card">
-        <a class="nav-link" href="#"
-          ><span class="material-icons" id="nav2"
-            ><span class="material-symbols-outlined">
-              account_circle
-            </span></span
-          ></a
-        >
-        <div class="card-body"><a href="#">Arshia </a></div>
-      </div>
-
-      <div class="card">
-        <a class="nav-link" href="#"
-          ><span class="material-icons" id="nav2"
-            ><span class="material-symbols-outlined">
-              account_circle
-            </span></span
-          ></a
-        >
-        <div class="card-body"><a href="#">Arshia Adamian</a></div>
-      </div>
-    </div>
+  </div>
+</template>
 
     <footer>
-      <nav class="navbar" style="background-color: #e3f2fd">
+      <nav class="navbar" style="background-color: white">
         <div class="container">
-          <a href="/text/index.html"><span class="material-icons">home</span></a>
+          <a data-bs-toggle="offcanvas" href="#"
+            ><span class="material-icons">home</span></a
+          >
           <div class="dropdown">
             <button id="myBtn" class="dropbtn material-icons">add</button>
             <div id="myDropdown" class="dropdown-content">
               <a href="/text/search-community.html">Join Community</a>
-              <a href="/text/search-community.html">Create Community</a>
+              <a href="/text/create-comm.html">Create Community</a>
             </div>
           </div>
           <a href="/text/search.html"
@@ -183,12 +156,15 @@
       </nav>
     </footer>
 
-    <!---------------------------------------------->
+    <!--==========================================-->
     <!-- Your own JavaScript functions go here    -->
-    <!---------------------------------------------->
+    <!--==========================================-->
     <!-- Link to scripts of your own -->
     <!-- <script src="./scripts/script.js"></script> -->
     <script src="/scripts/firebaseAPI_config.js"></script>
+    <script src="/scripts/main.js"></script>
+    <script src="/scripts/add.js"></script>
     <script src="/scripts/functions.js"></script>
+    <script src="/scripts/profile.js"></script>
   </body>
 </html>
