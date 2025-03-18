@@ -3,6 +3,16 @@ async function getUserPicture(user_uid) {
     let url = await storageRef.child(`pfps/${user_uid}.png`).getDownloadURL();
     return url;
 }
+function loadNavbar() {
+    fetch("/text/navbar.html").then(navbar => {
+        navbar.text().then(navHtml => {
+            document.querySelector(".custom-navbar").innerHTML = navHtml;
+            setUserPicture();
+        });
+
+    });
+}
+loadNavbar();
 
 function setUserPicture() {
     auth.onAuthStateChanged(user => {
@@ -25,6 +35,5 @@ function setUserPicture() {
     });
 }
 
-setUserPicture();
-
 const docExists = async (docName, docId) => (await db.collection(docName).doc(docId).get()).exists;
+
