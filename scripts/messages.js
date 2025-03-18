@@ -88,8 +88,8 @@ async function populateMessages(otherUserID) {
                     messages.forEach(message => {
                         let newMessage;
                         let img;
-    
-                        if (message.from_uid == otherUserID) {
+                        console.log(message.from, otherUserID);
+                        if (message.from == otherUserID) {
                             newMessage = messageLeftTemplate.content.cloneNode(true);
                             img = otherImg;
                             newMessage.querySelector(".chat-name").innerHTML = otherDoc.data().username;
