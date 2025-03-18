@@ -23,32 +23,33 @@ async function populateFriends() {
     auth.onAuthStateChanged(async (user) => {
         let userID = user.uid;
         db.collection("users").doc(userID).onSnapshot(async (userDoc) => {
+            
             let messageRooms = userDoc.data().messageRooms;
-            usersLocation.innerHTML = "";
             messageRooms.forEach(async (roomID) => {
+                
                 let roomDoc = await db.collection("messages").doc(roomID).get();
                 let roomUsers = roomDoc.data().users;
                 let friends = roomUsers.filter((user) => { return user != userID });
                 friends.forEach(async (friend) => {
+                    usersLocation.innerHTML = "";
                     let newUser = userTemplate.content.cloneNode(true);
                     let friendDoc = await db.collection("users").doc(friend).get();
                     let img = await getUserPicture(friend);
                     newUser.querySelector(".name").innerHTML = friendDoc.data().username;
-                    newUser.querySelector(".name").id = friend;
+                    newUser.querySelector(".name").id = "user-" + friend;
                     newUser.querySelector(".pfp").src = img;
-                    let messages = roomDoc.data().messages.sort((a, b) => {
-                        return a.timestamp.toDate().valueOf() - b.timestamp.toDate().valueOf();
-                    });
+                    
                     let curDate = new Date();
                     if (messages.length > 0) {
+                        let messages = roomDoc.data().messages.sort((a, b) => {
+                            return a.timestamp.toDate().valueOf() - b.timestamp.toDate().valueOf();
+                        });
                         curDate = messages[0].timestamp.toDate();
                     }
                     // let curDate = new Date();
                     newUser.querySelector(".time").innerHTML = curDate.toLocaleString().split(",")[0];
                     newUser.querySelector(".person-click").addEventListener("click", () => populateMessages(friend));
-                    usersLocation.insertBefore(newUser, usersLocation.firstChild);
-                    await populateMessages(friend);
-                    
+                    usersLocation.insertBefore(newUser, usersLocation.firstChild);                    
                 });
                 
             });
@@ -88,8 +89,8 @@ async function populateMessages(otherUserID) {
                     messages.forEach(message => {
                         let newMessage;
                         let img;
-    
-                        if (message.from_uid == otherUserID) {
+                        console.log(message.from, otherUserID);
+                        if (message.from == otherUserID) {
                             newMessage = messageLeftTemplate.content.cloneNode(true);
                             img = otherImg;
                             newMessage.querySelector(".chat-name").innerHTML = otherDoc.data().username;
@@ -113,7 +114,7 @@ async function populateMessages(otherUserID) {
     });
 }
 
-searchTxt.addEventListener("change", (event) => {
+function createUserCards() {
     let userCard = cardTemplate.content.cloneNode(true);
     let users = db.collection("users");
     let query = users.where("username", "==", searchTxt.value);
@@ -130,11 +131,13 @@ searchTxt.addEventListener("change", (event) => {
             }).then(() => {
                 document.querySelectorAll(".search-card").forEach((card) => {
                     card.addEventListener("click", (e) => {
+                        
                         auth.onAuthStateChanged((curUser) => {
                             db.collection("users").doc(curUser.uid).update({
                                 friends: firebase.firestore.FieldValue.arrayUnion({ id: card.id, lastMessage: new Date() }),
                             }).then(() => {
                                 cardLocation.innerHTML = "";
+                                usersLocation.innerHTML = "";
                                 let users = [auth.currentUser.uid, card.id].sort();
                                 let docID = users[0] + users[1];
                                 db.collection("messages").doc(docID).set({
@@ -147,6 +150,8 @@ searchTxt.addEventListener("change", (event) => {
                                 db.collection("users").doc(card.id).update({
                                     messageRooms: firebase.firestore.FieldValue.arrayUnion(docID)
                                 });
+                                usersLocation.innerHTML = "";
+                                populateMessages(card.id);
                             });
                         });
                     });
@@ -156,8 +161,20 @@ searchTxt.addEventListener("change", (event) => {
         });
         searchTxt.value = "";
     });
+}
 
+searchTxt.addEventListener("change", (event) => {
+    createUserCards();
 });
+
+searchTxt.addEventListener("keypress", (event) => {
+    let key = event.code;
+    if (key === "Enter") {
+        event.preventDefault();
+        createUserCards();
+    }
+});
+
 
 const messageArea = document.getElementById("message-area");
 messageArea.addEventListener("keypress", (event) => {

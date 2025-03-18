@@ -43,6 +43,7 @@ loginForm.addEventListener('submit', (e) => {
         friends: [],
         communities: [],
         owned_communities: [],
+        messageRooms: [],
         description: "",
         name: "",
         email: email,
