@@ -1,0 +1,41 @@
+h1 {
+    color: #4D194D;
+    text-shadow: 2px 2px 4px black;
+    text-align: center;
+    line-height: 60px;
+}
+
+.btn {
+    color: #4D194D;
+    align-self: center;
+}
+
+.btn:hover {
+    background-color: aliceblue;
+}
+
+.ghost--blue {
+    background-color: #FF0000;
+    color: #FF0000;
+    top: 30%;
+    right: 20%;
+}
+
+.ghost--pink {
+    background-color: #FFB8FF;
+    color: #FFB8FF;
+    top: 25%;
+    right: 15%;
+}
+
+.ghost--orange {
+    background-color: #FFB852;
+    color: #FFB852;
+    top: 30%;
+    right: 10%;
+}
+
+.btn1 {
+    margin-top: 30%;
+    margin-bottom: 10%;
+}
