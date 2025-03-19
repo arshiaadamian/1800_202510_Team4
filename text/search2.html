@@ -43,41 +43,24 @@
       rel="stylesheet"
     />
 
-    <!-- Other libraries go here -->
-    <!-- Google Icons (Material Design)-->
-    <link
-      href="https://fonts.googleapis.com/icon?family=Material+Icons"
-      rel="stylesheet"
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap"
-      rel="stylesheet"
-    />
-
     <!-- Link to styles of your own -->
     <link rel="stylesheet" href="/styles/style.css" />
+    <link rel="stylesheet" href="/styles/search.css" />
   </head>
 
   <body>
-    <!--============================-->
-    <!-- Your HTML Layout goes here -->
-    <!--============================-->
+    <!------------------------------>
+    <!-- Your HTML Layout go here -->
+    <!------------------------------>
 
-    <nav class="navbar navbar-expand-lg navbar-light bg-light custom-navbar">
       <div class="container">
         <a data-bs-toggle="offcanvas" href="#sidebar"
           ><span class="material-icons">menu</span></a
         >
         <a href="#"
-          ><img
-            class="logo"
-            src="/images/jacLogo.png"
-            height="35"
-            alt="JAC Logo"
-          />
+          ><img class="logo" src="./images/jacLogo.png" height="35" />
         </a>
       </div>
-      <div class="nav_items row">
       <div
         class="offcanvas offcanvas-start"
         tabindex="-1"
@@ -86,7 +69,6 @@
       >
         <div class="offcanvas-header">
           <h5 class="offcanvas-title" id="sidebarLabel">Menu</h5>
-          <div id="pacman"></div>
           <button
             type="button"
             class="btn-close"
@@ -94,33 +76,32 @@
             aria-label="Close"
           ></button>
         </div>
-        <div class="offcanvas-body col">
+        <div class="offcanvas-body">
           <div>
             <ul class="navbar-nav">
-              <div class="pfp1">
               <li class="nav-item">
                 <a class="nav-link" href="profile.html"
-                  ><img class="pfp" src="" id="pfp" alt="Profile Picture"/>Profile</a>
+                  ><img class="pfp" src="" id="pfp" alt="Profile Picture">Your Profile</a
+                >
               </li>
-            </div>
-              <li class="nav-item col">
+              <li class="nav-item">
                 <a class="nav-link" href="messages.html"
                   ><span class="material-icons" id="nav2">chat </span
                   >Messages</a
                 >
               </li>
-              <li class="nav-item col">
-                <a class="nav-link" href="your-community.html"
+              <li class="nav-item">
+                <a class="nav-link" href="your_comm.html"
                   ><span class="material-icons" id="nav3">groups </span
                   >Communities</a
                 >
               </li>
-              <li class="nav-item col">
+              <li class="nav-item">
                 <a class="nav-link" href="events.html"
                   ><span class="material-icons" id="nav4">event </span>Events</a
                 >
               </li>
-              <li class="nav-item col">
+              <li class="nav-item">
                 <a class="nav-link" href="#"
                   ><span class="material-icons" id="nav5">settings </span
                   >Settings</a
@@ -130,77 +111,64 @@
           </div>
         </div>
       </div>
-      </div>
     </nav>
 
-    <div class="hero">
-      <div class="text-secondary px-4 py-5 text-center">
-        <div class="py-5">
-          <h1 class="display-5 fw-bold" id="jynx">J A C</h1>
-          <div id="carousel" class="carousel slide" data-bs-ride="carousel">
-            <div class="carousel-inner">
-              <div class="carousel-item active">
-                <img
-                  class="d-block w-100"
-                  src="/images/slide1.gif"
-                  alt="First slide"
-                />
-              </div>
-              <div class="carousel-item">
-                <img
-                  class="d-block w-100"
-                  src="/images/slide2.gif"
-                  alt="Second slide"
-                />
-              </div>
-              <div class="carousel-item">
-                <img
-                  class="d-block w-100"
-                  src="/images/slide3.gif"
-                  alt="Third slide"
-                />
-              </div>
-            </div>
-          </div>
-          <h2 class="display-5 fw-bold fs-2 text-white">
-            Welcome <span id="name-goes-here"></span>
-          </h2>
-          <div class="col-lg-6 mx-auto">
-            <p class="fs-5 mb-4">Meet the Gamers.</p>
-            <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
-              <button
-                type="button"
-                class="btn btn-outline-info btn-lg px-4 me-sm-3 fw-bold"
-                onclick="location.href='profile.html'"
-              >
-                Customize Profile
-              </button>
-              <a href="suggestions.html"
-                ><button
-                  type="button"
-                  class="btn btn-outline-light btn-lg px-4"
-                >
-                  Match with Friends Now!
-                </button></a
-              >
-            </div>
-          </div>
+    <!-- search bar -->
+    <div class="search">
+      <nav class="navbar bg-body-tertiary" id="search-bar">
+        <div class="container-fluid">
+          <form class="d-flex" role="search">
+            <input
+              class="form-control me-2"
+              type="search"
+              placeholder="Search"
+              aria-label="Search"
+            />
+            <button class="btn btn-outline-success" type="submit">
+              <a href="/text/search.html">Search</a>
+            </button>
+          </form>
+        </div>
+      </nav>
+
+      <div class="suggestion-box">
+        <div class="card">
+          <div class="card-body">Searches for Arshia</div>
         </div>
       </div>
+
+      <div class="card">
+        <a class="nav-link" href="#"
+          ><span class="material-icons" id="nav2"
+            ><span class="material-symbols-outlined">
+              account_circle
+            </span></span
+          ></a
+        >
+        <div class="card-body"><a href="#">Arshia </a></div>
+      </div>
+
+      <div class="card">
+        <a class="nav-link" href="#"
+          ><span class="material-icons" id="nav2"
+            ><span class="material-symbols-outlined">
+              account_circle
+            </span></span
+          ></a
+        >
+        <div class="card-body"><a href="#">Arshia Adamian</a></div>
+      </div>
     </div>
-    <div class="b-example-divider mb-0"></div>
 
     <footer>
-      <nav class="navbar" style="background-color: white">
+      <nav class="navbar" style="background-color: #e3f2fd">
         <div class="container">
-          <a data-bs-toggle="offcanvas" href="#"
-            ><span class="material-icons">home</span></a
-          >
+          <a href="/text/index.html"><span class="material-icons">home</span></a>
           <div class="dropdown">
             <button id="myBtn" class="dropbtn material-icons">add</button>
             <div id="myDropdown" class="dropdown-content">
               <a href="/text/search-community.html">Join Community</a>
-              <a href="/text/create-comm.html">Create Community</a>
+              <a href="/text/search-community.html">Create Community</a>
             </div>
           </div>
           <a href="/text/search.html"
@@ -214,15 +182,12 @@
       </nav>
     </footer>
 
-    <!--==========================================-->
+    <!---------------------------------------------->
     <!-- Your own JavaScript functions go here    -->
-    <!--==========================================-->
+    <!---------------------------------------------->
     <!-- Link to scripts of your own -->
     <!-- <script src="./scripts/script.js"></script> -->
     <script src="/scripts/firebaseAPI_config.js"></script>
-    <script src="/scripts/main.js"></script>
-    <script src="/scripts/add.js"></script>
     <script src="/scripts/functions.js"></script>
-    <script src="/scripts/profile.js"></script>
   </body>
 </html>
