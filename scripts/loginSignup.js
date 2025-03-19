@@ -54,7 +54,7 @@ loginForm.addEventListener('submit', (e) => {
         let pfpRef = storage.ref().child(`/pfps/${uid}.png`);
         createImage('/images/default.png', `${uid}.png`).then((img) => {
           pfpRef.put(img).then((img) => {
-            loginForm.submit();
+            window.location.href =  "/text/onboarding.html";
           });
         });
       })

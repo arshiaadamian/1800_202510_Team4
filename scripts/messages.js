@@ -3,14 +3,16 @@ async function sendMessage(to_uid, message) {
     let userList = [to_uid, user.uid].sort();
     let docID = userList[0] + userList[1];
     let docRef = db.collection("messages").doc(docID);
-
+    let curDate = new Date();
     docRef.update({
         messages: firebase.firestore.FieldValue.arrayUnion({
             from: user.uid,
             content: message,
-            timestamp: new Date()
+            timestamp: curDate
         })
     });
+    let userCard = document.getElementById("user-" + to_uid);
+    userCard.parentNode.querySelector(".time").innerHTML = curDate.toLocaleTimeString().split(",")[0];
 }
 
 const searchButton = document.getElementById("searchButton");
@@ -22,8 +24,8 @@ const userTemplate = document.querySelector(".user-template");
 async function populateFriends() {
     auth.onAuthStateChanged(async (user) => {
         let userID = user.uid;
+        let users = [];
         db.collection("users").doc(userID).onSnapshot(async (userDoc) => {
-            
             let messageRooms = userDoc.data().messageRooms;
             messageRooms.forEach(async (roomID) => {
                 
@@ -39,17 +41,30 @@ async function populateFriends() {
                     newUser.querySelector(".name").id = "user-" + friend;
                     newUser.querySelector(".pfp").src = img;
                     
-                    let curDate = new Date();
+                    let curDate = "No sent messages";
+                    let messages = roomDoc.data().messages;
+                    let messageMillis = 0;
                     if (messages.length > 0) {
                         let messages = roomDoc.data().messages.sort((a, b) => {
-                            return a.timestamp.toDate().valueOf() - b.timestamp.toDate().valueOf();
+                            return -a.timestamp._compareTo(b.timestamp);
                         });
-                        curDate = messages[0].timestamp.toDate();
+                        let messageDate = messages[0].timestamp.toDate();
+                        messageMillis = messageDate.valueOf();
+                        let dateSplit = messageDate.toLocaleString().split(",");
+                        curDate = new Date().toLocaleDateString() == messageDate.toLocaleDateString() ? dateSplit[1] : dateSplit[0];
                     }
-                    // let curDate = new Date();
-                    newUser.querySelector(".time").innerHTML = curDate.toLocaleString().split(",")[0];
+                    newUser.querySelector(".time").innerHTML = curDate;
+                    newUser.querySelector(".time").name = messageMillis;
                     newUser.querySelector(".person-click").addEventListener("click", () => populateMessages(friend));
-                    usersLocation.insertBefore(newUser, usersLocation.firstChild);                    
+                    users.push(newUser.firstElementChild);
+                    
+                     users.sort((a, b) => {
+                        console.log(b);
+                        return b.querySelector(".time").name - a.querySelector(".time").name;
+                    });
+                    users.forEach((card) => {
+                        usersLocation.appendChild(card);
+                    });
                 });
                 
             });
@@ -100,7 +115,9 @@ async function populateMessages(otherUserID) {
                             newMessage.querySelector(".chat-name").innerHTML = thisDoc.data().username;
                         }
                         newMessage.querySelector(".chat-picture").src = img;
-                        newMessage.querySelector(".chat-hour").innerHTML = message.timestamp.toDate().toLocaleTimeString();
+                        let messageDate = message.timestamp.toDate();
+                        let dateSplit = messageDate.toLocaleString().split(",");
+                        newMessage.querySelector(".chat-hour").innerHTML = new Date().toLocaleDateString() == messageDate.toLocaleDateString() ? dateSplit[1] : dateSplit[0];
                         newMessage.querySelector(".chat-text").innerHTML = message.content;
                         messagesDiv.appendChild(newMessage);
                     });
