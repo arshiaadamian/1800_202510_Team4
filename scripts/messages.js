@@ -1,3 +1,10 @@
+const searchButton = document.getElementById("searchButton");
+const searchTxt = document.getElementById("searchTxt");
+const cardTemplate = document.getElementById("user-card");
+const cardLocation = document.getElementById("user-cards");
+const usersLocation = document.querySelector(".users");
+const userTemplate = document.querySelector(".user-template");
+
 async function sendMessage(to_uid, message) {
     let user = auth.currentUser;
     let userList = [to_uid, user.uid].sort();
@@ -13,14 +20,10 @@ async function sendMessage(to_uid, message) {
     });
     let userCard = document.getElementById("user-" + to_uid);
     userCard.parentNode.querySelector(".time").innerHTML = curDate.toLocaleTimeString().split(",")[0];
+    userCard.parentNode.querySelector(".time").name = curDate.valueOf();
+    usersLocation.insertBefore(userCard.parentNode.parentNode.parentNode, usersLocation.firstChild);
 }
 
-const searchButton = document.getElementById("searchButton");
-const searchTxt = document.getElementById("searchTxt");
-const cardTemplate = document.getElementById("user-card");
-const cardLocation = document.getElementById("user-cards");
-const usersLocation = document.querySelector(".users");
-const userTemplate = document.querySelector(".user-template");
 async function populateFriends() {
     auth.onAuthStateChanged(async (user) => {
         let userID = user.uid;
