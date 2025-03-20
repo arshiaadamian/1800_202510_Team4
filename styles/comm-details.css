@@ -3,8 +3,8 @@
   }
 
   h1 {
-    margin-top: 20%;
-    font-size: 50px;
+    margin-top: 10%;;
+    font-size: 8vw;
     text-transform: uppercase;
     text-align: center;
     line-height: 1;
@@ -37,3 +37,4 @@
     color: black;
     border: black 2px solid;
   }
+

@@ -14,7 +14,7 @@ submitForm.addEventListener("click", event => {
     var detail = document.getElementById("details").value;
     var communityRef = db.collection("community");
     var user = firebase.auth().currentUser;
-    var currentUser = db.collection("users").doc(user.uid);
+    var userDoc = db.collection("users").doc(user.uid);
     var userID = user.uid;
     firebase.auth().onAuthStateChanged(user => {
 
@@ -25,20 +25,27 @@ submitForm.addEventListener("click", event => {
             name: name,
             detail: detail,
             location: "North America",
-            members: 1,
-            timestamp: firebase.firestore.FieldValue.serverTimestamp()
+            members: [userID],
+            timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+            messages: []
         }).then((doc) => {
             let storageRef = storage.ref("community_pics/" + doc.id);
             if (!communityImg) {
                 fetch("./images/default.png").then(((img) => {
                     storageRef.put(img).then(() => {
-                        window.location.href = "community1.html";
+                        userDoc.update({
+                            communities: firebase.firestore.FieldValue.arrayUnion(doc.id)
+                        });
+                        window.location.href = `community.html?communityID=${doc.id}`;
                     });
                     
                 }));
             } else {
                 storageRef.put(communityImg).then(() => {
-                    window.location.href = "community1.html";
+                    userDoc.update({
+                            communities: firebase.firestore.FieldValue.arrayUnion(doc.id)
+                        });
+                        window.location.href = `community.html?communityID=${doc.id}`;
                 });
                 
             }
