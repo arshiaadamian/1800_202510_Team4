@@ -31,7 +31,7 @@ async function populateFriends() {
         db.collection("users").doc(userID).onSnapshot(async (userDoc) => {
             let messageRooms = userDoc.data().messageRooms;
             messageRooms.forEach(async (roomID) => {
-                
+
                 let roomDoc = await db.collection("messages").doc(roomID).get();
                 let roomUsers = roomDoc.data().users;
                 let friends = roomUsers.filter((user) => { return user != userID });
@@ -43,7 +43,7 @@ async function populateFriends() {
                     newUser.querySelector(".name").innerHTML = friendDoc.data().username;
                     newUser.querySelector(".name").id = "user-" + friend;
                     newUser.querySelector(".pfp").src = img;
-                    
+
                     let curDate = "No sent messages";
                     let messages = roomDoc.data().messages;
                     let messageMillis = 0;
@@ -60,8 +60,8 @@ async function populateFriends() {
                     newUser.querySelector(".time").name = messageMillis;
                     newUser.querySelector(".person-click").addEventListener("click", () => populateMessages(friend));
                     users.push(newUser.firstElementChild);
-                    
-                     users.sort((a, b) => {
+
+                    users.sort((a, b) => {
                         console.log(b);
                         return b.querySelector(".time").name - a.querySelector(".time").name;
                     });
@@ -69,7 +69,7 @@ async function populateFriends() {
                         usersLocation.appendChild(card);
                     });
                 });
-                
+
             });
         });
 
@@ -96,13 +96,12 @@ async function populateMessages(otherUserID) {
         messageRooms.forEach(roomID => {
             let roomRef = db.collection("messages").doc(roomID);
             roomRef.onSnapshot((roomDoc) => {
-                
                 if (roomDoc.id.includes(otherUserID)) {
                     messagesDiv.innerHTML = "";
                     let messages = roomDoc.data().messages.sort((a, b) => {
                         return a.timestamp.toDate().valueOf() - b.timestamp.toDate().valueOf();
                     });
-                    
+
                     console.log(roomDoc.id, roomDoc.data(), messages.length);
                     messages.forEach(message => {
                         let newMessage;
@@ -125,12 +124,10 @@ async function populateMessages(otherUserID) {
                         messagesDiv.appendChild(newMessage);
                     });
                 }
-                
             })
             db.collection("messages").doc(roomID).update({});
 
         });
-        
     });
 }
 
@@ -151,7 +148,6 @@ function createUserCards() {
             }).then(() => {
                 document.querySelectorAll(".search-card").forEach((card) => {
                     card.addEventListener("click", (e) => {
-                        
                         auth.onAuthStateChanged((curUser) => {
                             db.collection("users").doc(curUser.uid).update({
                                 friends: firebase.firestore.FieldValue.arrayUnion({ id: card.id, lastMessage: new Date() }),

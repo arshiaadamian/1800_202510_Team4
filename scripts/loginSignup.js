@@ -72,7 +72,7 @@ loginForm.addEventListener('submit', (e) => {
       }
       return Promise.reject(err);
     }).then(() => {
-      loginForm.submit();
+      window.location.href = "main.html";
     });
   }
 });
