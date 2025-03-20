@@ -1,5 +1,7 @@
-* {
+h2, h1 {
   font-family: 'Press Start 2P', cursive;
+  margin-top: 10%;
+
 }
 
 body {
@@ -11,6 +13,7 @@ body {
 }
 
 .nav-item {
+  font-family: 'Press Start 2P', cursive;
   position: inline;
   padding-top: 5%;
 }
@@ -97,13 +100,10 @@ footer {
     0px 12.954545454545455px 0px hsla(231, 73%, 7%, 1),
     0px 13.636363636363637px 0px hsla(234, 73%, 6%, 1),
     0px 14.318181818181818px 0px hsla(236, 73%, 5%, 1),
+    0px 14.318181818181818px 0px hsla(236, 0%, 5%, 1),
     0px 15px 0px hsla(238, 73%, 4%, 1);
 }
 
-
-h2 {
-  margin-top: 10%;
-}
 
 .nav_gif {
   position: absolute;
