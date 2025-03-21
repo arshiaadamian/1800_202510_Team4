@@ -4,6 +4,7 @@ const messageTemplate = document.getElementById("message-template");
 const meesagesDiv = document.querySelector("#message-div");
 
 function populateCommunity() {
+    if (!communityID) { return; }
     let communityDocRef = db.collection("community").doc(communityID);
     const storageRef = storage
         .ref()
@@ -39,3 +40,26 @@ function populateCommunityMessages() {
     });
 }
 populateCommunity();
+
+function sendCommunityMessage(content) {
+    if (!communityID) { return; }
+    let communityDocRef = db.collection("community").doc(communityID);
+    communityDocRef.update({
+        messages: firebase.firestore.FieldValue.arrayUnion({
+            from: auth.currentUser.uid,
+            content: content,
+            timestamp: new Date(),
+            replies: []
+        })
+    });
+}
+
+const messageArea = document.querySelector(".form-control");
+messageArea.addEventListener("keypress", event => {
+    let key = event.code;
+    if (key === "Enter") {
+        event.preventDefault();
+        sendCommunityMessage(messageArea.value);
+        messageArea.value = "";
+    }
+});

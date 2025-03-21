@@ -335,4 +335,6 @@ footer {
   display: flex;
   align-self: center;
   justify-self: center;
+  margin: auto;
+  max-width: 90%;
 }
