@@ -10,6 +10,12 @@ fileUpload.addEventListener("change", (event) => {
 submitForm.addEventListener("click", event => {
 
     event.preventDefault(); // Prevent page refresh
+    document.querySelectorAll("input").forEach(input => {
+        input.disabled = true;
+    });
+    document.querySelectorAll("button").forEach(button => {
+        button.disabled = true;
+    });
     var name = document.getElementById("name").value;
     var detail = document.getElementById("details").value;
     var communityRef = db.collection("community");
@@ -38,7 +44,7 @@ submitForm.addEventListener("click", event => {
                             userDoc.update({
                                 communities: firebase.firestore.FieldValue.arrayUnion(doc.id)
                             });
-                            //window.location.href = `community.html?communityID=${doc.id}`;
+                            window.location.href = `community.html?communityID=${doc.id}`;
                         });
                     });
                     
@@ -50,7 +56,7 @@ submitForm.addEventListener("click", event => {
                             communities: firebase.firestore.FieldValue.arrayUnion(doc.id)
                         });
                         console.log(communityImg);
-                        //window.location.href = `community.html?communityID=${doc.id}`;
+                        window.location.href = `community.html?communityID=${doc.id}`;
                 });
                 
             }
