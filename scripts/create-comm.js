@@ -31,13 +31,17 @@ submitForm.addEventListener("click", event => {
         }).then((doc) => {
             let storageRef = storage.ref("community_pics/" + doc.id);
             if (!communityImg) {
-                fetch("./images/default.png").then(((img) => {
-                    storageRef.put(img).then(() => {
-                        userDoc.update({
-                            communities: firebase.firestore.FieldValue.arrayUnion(doc.id)
+                fetch("/images/default.png").then(((requestFile) => {
+                    requestFile.blob().then(img => {
+                        console.log(img)
+                        storageRef.put(img).then(() => {
+                            userDoc.update({
+                                communities: firebase.firestore.FieldValue.arrayUnion(doc.id)
+                            });
+                            //window.location.href = `community.html?communityID=${doc.id}`;
                         });
-                        window.location.href = `community.html?communityID=${doc.id}`;
                     });
+                    
                     
                 }));
             } else {
@@ -45,7 +49,8 @@ submitForm.addEventListener("click", event => {
                     userDoc.update({
                             communities: firebase.firestore.FieldValue.arrayUnion(doc.id)
                         });
-                        window.location.href = `community.html?communityID=${doc.id}`;
+                        console.log(communityImg);
+                        //window.location.href = `community.html?communityID=${doc.id}`;
                 });
                 
             }

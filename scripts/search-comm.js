@@ -1,29 +1,33 @@
-
+const maxDisplayedComms = 6;
 
 function displayCardsDynamically(collection) {
-    let figureTemplate = document.getElementById("communityTemplate"); 
+    let figureTemplate = document.getElementById("communityTemplate");
 
-    db.collection(collection).get()   
-        .then(allCommunity=> {
-
+    db.collection(collection).get()
+        .then(allCommunity => {
+            displayedComms = 0;
             allCommunity.forEach(doc => { //iterate thru each doc
-                var title = doc.data().name;       // get value of the "name" key
-				var commCode = doc.data().code;    
-                var members = doc.data().members; 
+                displayedComms++;
+                if (displayedComms > maxDisplayedComms) { return; }
+                var title = doc.data().name;       // get value of the "name" key 
+                var members = doc.data().members;
                 var detail = doc.data().detail;
-                let newfigure = figureTemplate.content.cloneNode(true); 
+                let newFigure = figureTemplate.content.cloneNode(true);
 
                 //update title and text and image
-                newfigure.querySelector('.figure-title').innerHTML = title;
-                newfigure.querySelector('.figure-members').innerHTML = members +" Member Joined.";
-                newfigure.querySelector('.figure-details').innerHTML = "Description: " + detail;
-                newfigure.querySelector('#figure-image').src = `/images/${commCode}.jpg`; 
+                newFigure.querySelector('.figure-title').innerHTML = title;
+                newFigure.querySelector('.figure-members').innerHTML = members.length + " Members Joined.";
+                if (!detail) { detail = "No description provided"; }
+                newFigure.querySelector('.figure-details').innerHTML = "Description: " + detail;
+                let storageRef = storage.ref('community_pics/' + doc.id);
+                storageRef.getDownloadURL().then(img => {
+                    newFigure.querySelector('.com-img').src = img;
+                    document.getElementById(collection + "-go-here").appendChild(newFigure);
 
+                });
 
-                document.getElementById(collection + "-go-here").appendChild(newfigure);
-
-            })
-        })
+            });
+        });
 }
 
 displayCardsDynamically("community");
