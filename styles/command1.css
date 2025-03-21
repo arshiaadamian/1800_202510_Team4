@@ -31,6 +31,10 @@
   display: block;
 }
 
+h1 {
+  padding-bottom: 10%;
+}
+
 .dropdown-content {
   bottom: 60px;
 }
@@ -316,4 +320,18 @@ footer {
 
 .dropdown-content {
   bottom: 60px;
+}
+
+.pfp {
+  width: 30px;
+  height: 30px;
+  -webkit-border-radius: 100px;
+  -moz-border-radius: 100px;
+  border-radius: 100px;
+}
+
+.community-picture {
+  display: flex;
+  align-self: center;
+  justify-self: center;
 }
