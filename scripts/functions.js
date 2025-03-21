@@ -35,6 +35,33 @@ function setUserPicture() {
     });
 }
 
+const minuteMillis = 60_000;
+const hourMillis = minuteMillis * 60;
+const dayMillis = hourMillis * 24;
+const weekMillis = dayMillis * 7;
+const monthMillis =  weekMillis * 4.345;
+const yearMillis = monthMillis * 12;
+function getTimeAgo(millisecondsAgo) {
+    if (millisecondsAgo / yearMillis >= 1) {
+        return Math.floor(millisecondsAgo / yearMillis) + " years";
+    }
+    else if (millisecondsAgo / monthMillis >= 1) {
+        return Math.floor(millisecondsAgo / monthMillis) + " months";
+    }
+    else if (millisecondsAgo / weekMillis >= 1) {
+        return Math.floor(millisecondsAgo / weekMillis) + " weeks";
+    }
+    else if (millisecondsAgo / dayMillis >= 1) {
+        return Math.floor(millisecondsAgo / dayMillis) + " days";
+    }
+    else if (millisecondsAgo / hourMillis >= 1) {
+        return Math.floor(millisecondsAgo / hourMillis) + " hours";
+    }
+    else {
+        return Math.floor(millisecondsAgo / minuteMillis) + " minutes";
+    }
+}
+
 const docExists = async (docName, docId) => (await db.collection(docName).doc(docId).get()).exists;
 
 document.title = "JAC";

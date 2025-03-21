@@ -30,6 +30,7 @@ function populateCommunityMessages() {
             getUserPicture(message.from).then(img => {
                 newMessage.querySelector(".user-picture").src = img;
                 newMessage.querySelector(".message-content").innerHTML = message.content;
+                newMessage.querySelector(".time-ago").innerHTML = getTimeAgo(Date.now() - message.timestamp.toDate().valueOf());
                 db.collection("users").doc(message.from).get().then(userDoc => {
                     newMessage.querySelector(".user-name").innerHTML = userDoc.data().username;
                     meesagesDiv.appendChild(newMessage);
