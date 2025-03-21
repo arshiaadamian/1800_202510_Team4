@@ -178,12 +178,13 @@ a {
 }
 
 h1 {
-  margin-top: 10%;;
-  font-size: 8vw;
+  margin-top: 5%;
+  font-size: 30px;
   text-transform: uppercase;
   text-align: center;
-  line-height: 1;
+  line-height: 60px;
   color: white;
+  font-family: 'Press Start 2P', cursive;
 }
 
 .fancy {
