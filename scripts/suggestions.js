@@ -32,11 +32,25 @@ async function findMatches(user) {
       const otherUser = doc.data();
       otherUser.uid = doc.id;  // Add the user ID for profile image
       
-      // Count matching genres
-      const matchCount = Object.entries(currentUserGenres)
-        .filter(([genre, isSelected]) => 
-          isSelected && otherUser.genres[genre]
-        ).length;
+      // Count how many genres match between users
+      let matchCount = 0;
+      
+      // Check each genre
+      if (currentUserGenres.firstPersonShooter && otherUser.genres.firstPersonShooter) {
+        matchCount++;
+      }
+      if (currentUserGenres.rolePlaying && otherUser.genres.rolePlaying) {
+        matchCount++;
+      }
+      if (currentUserGenres.massMultiplayer && otherUser.genres.massMultiplayer) {
+        matchCount++;
+      }
+      if (currentUserGenres.casual && otherUser.genres.casual) {
+        matchCount++;
+      }
+      if (currentUserGenres.horror && otherUser.genres.horror) {
+        matchCount++;
+      }
 
       // If 2 or more matches, create a card
       if (matchCount >= 2) {
