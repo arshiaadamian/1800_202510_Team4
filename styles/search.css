@@ -2,17 +2,29 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding-bottom: 80px; /* Add space for footer */
+  min-height: 100vh; /* Full viewport height */
 }
 
 #search-bar {
   width: 100%;
+  margin-bottom: 20px;
+}
+
+.suggestion-box {
+  width: 60%;
+  margin-bottom: 20px;
 }
 
 .card {
-  margin-top: 10%;
+  margin: 20px 0; /* Add vertical spacing between cards */
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.card-display {
+  margin: 20px auto; /* Center cards horizontally */
 }
 
 .btn-primary {
@@ -31,6 +43,7 @@
   width: 90%;
   border-radius: 50%;
   border: #3e1f47 solid 2px;
+  margin-top: 10px; /* Add space at the top of images */
 }
 
 .btn-outline-success {
@@ -41,5 +54,13 @@
 .custom-navbar {
   position: sticky;
   top: 0;
+  z-index: 100;
+}
+
+footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background: white;
   z-index: 100;
 }
