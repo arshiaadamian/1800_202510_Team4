@@ -23,15 +23,25 @@ search.addEventListener("click", async function () {
   if (!foundUser) {
     alert("no user found");
   } else {
-    document.getElementById("resultsBox").innerHTML = "Search results";
-    document.getElementById("firstImage").src = foundUser.img;
-    document.getElementById("name1").innerHTML = foundUser.name;
-    document.getElementById("description1").innerHTML =
-      "I am " + foundUser.age + " years old.";
-    const allCards = document.querySelectorAll(".card");
-    allCards.forEach(function (card) {
-      card.style.display = "none";
-    });
-    document.querySelector(".card-display").style.display = "block";
+    const container = document.getElementById("suggestions");
+    const card = createUserCard(foundUser);
+    container.appendChild(card);
   }
 });
+
+function createUserCard(user) {
+  const card = document.createElement('div');
+  card.className = 'card card-display';
+  card.style.width = '14rem';
+  
+  card.innerHTML = `
+    <img src="${user.img || '/images/default.png'}" class="card-img-top" alt="Profile Picture" />
+    <div class="card-body">
+      <h5 class="card-title">${user.username}</h5>
+      <p class="card-text">${user.description}</p>
+      <a href="#" class="btn btn-primary">Add Friend</a>
+    </div>
+  `;
+
+  return card;
+}
