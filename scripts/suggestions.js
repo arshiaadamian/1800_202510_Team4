@@ -25,7 +25,7 @@ async function findMatches(user) {
 
     // Clear previous suggestions
     const container = document.getElementById("suggestions");
-    container.innerHTML = "";
+    
 
     // Check each user for matches
     for (const doc of allUsers.docs) {
@@ -40,7 +40,7 @@ async function findMatches(user) {
 
       // If 2 or more matches, create a card
       if (matchCount >= 2) {
-        const card = await createUserCard(otherUser);
+        const card = createUserCard(otherUser);
         container.appendChild(card);
       }
     }
@@ -51,22 +51,13 @@ async function findMatches(user) {
 }
 
 // Create a card for a matched user
-async function createUserCard(user) {
+function createUserCard(user) {
   const card = document.createElement('div');
   card.className = 'card card-display';
   card.style.width = '14rem';
   
-  // Get user's profile image
-  let imageUrl = '/images/default.png';
-  try {
-    const pfpRef = storage.ref().child(`/pfps/${user.uid}.png`);
-    imageUrl = await pfpRef.getDownloadURL();
-  } catch (error) {
-    console.log("Using default image");
-  }
-  
   card.innerHTML = `
-    <img src="${imageUrl}" class="card-img-top" alt="Profile Picture" />
+    <img src="${user.img || '/images/default.png'}" class="card-img-top" alt="Profile Picture" />
     <div class="card-body">
       <h5 class="card-title">${user.username}</h5>
       <p class="card-text">${user.description}</p>
