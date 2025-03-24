@@ -20,7 +20,7 @@
 
 #side1 {
     padding-left: 2px;
-    padding-top: 30%;
+    padding-top: 100%;
 }
 
 #side2 {
@@ -38,15 +38,6 @@
     border: 8px solid #212f45;
     height: 10%;
   }
-
-h1 {
-    font-family: 'Press Start 2P', cursive;
-    text-align: center;
-    color: #272640;
-    display: flex;
-    justify-self: center;
-}
-  
   
   #nav1,
   #nav2,
@@ -83,18 +74,20 @@ h1 {
   
   .custom-navbar {
     position: absolute;
+    z-index: 1;
     width: 100%;
     top: 0;
     border: 8px solid #212f45;
   }
 
   h1 {
-    font-size: 30px;
+    font-size: 40px;
     text-transform: uppercase;
     text-align: center;
     line-height: 60px;
     color: white;
     font-family: 'Press Start 2P', cursive;
+    padding-bottom: 5%;
 
   }
   
@@ -148,7 +141,6 @@ h1 {
     position: relative;
     bottom: 0;
     background-color: #212f45;
-    padding: 7px;
     text-align: center;
   }
   

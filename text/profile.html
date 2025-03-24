@@ -42,6 +42,8 @@
       href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet"
     />
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet"/>
+
 
     <!-- Link to styles of your own -->
     <link rel="stylesheet" href="/styles/style.css" />
@@ -55,6 +57,7 @@
     <!--============================-->
 
     <nav class="navbar navbar-expand-lg navbar-light bg-light custom-navbar" style="z-index:3">
+      
       <div class="container">
         <a data-bs-toggle="offcanvas" href="#sidebar"
           ><span class="material-icons">menu</span></a
@@ -288,8 +291,10 @@
 
     <footer>
       <nav class="navbar" style="background-color: white">
-        <div class="container1">
-          <a href="/text/main.html"><span class="material-icons">home</span></a>
+        <div class="container">
+          <a data-bs-toggle="offcanvas" href="#"
+            ><span class="material-icons">home</span></a
+          >
           <div class="dropdown">
             <button id="myBtn" class="dropbtn material-icons">add</button>
             <div id="myDropdown" class="dropdown-content">
@@ -297,13 +302,8 @@
               <a href="/text/create-comm.html">Create Community</a>
             </div>
           </div>
-          <a href="/text/search.html"
-            ><span class="material-icons"
-              ><span class="material-symbols-outlined">
-                person_search
-              </span></span
-            ></a
-          >
+          <a href="/text/search.html">
+            <span class="material-icons" id="nav4">person_search </span></a>
         </div>
       </nav>
     </footer>
