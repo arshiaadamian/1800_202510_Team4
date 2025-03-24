@@ -52,3 +52,8 @@ h1 {
     bottom: 0px;
     left: 2%;
 }
+
+#error-message {
+    font-size: 30px;
+    text-align: center;
+}
