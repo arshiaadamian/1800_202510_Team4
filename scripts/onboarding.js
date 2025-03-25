@@ -71,19 +71,19 @@ populateGamerInfo();
 
 function saveGamerInfo() {
 
-    const casual = document.getElementById("btncheck1").checked;
-    const firstPersonShooter = document.getElementById("btncheck2").checked;
-    const horror = document.getElementById("btncheck3").checked;
-    const massMultiplayer = document.getElementById("btncheck4").checked;
-    const rolePlaying = document.getElementById("btncheck5").checked;
+    const casual1 = document.getElementById("btncheck1").checked;
+    const firstPersonShooter1 = document.getElementById("btncheck2").checked;
+    const horror1 = document.getElementById("btncheck3").checked;
+    const massMultiplayer1 = document.getElementById("btncheck4").checked;
+    const rolePlaying1 = document.getElementById("btncheck5").checked;
 
 currentUserRef.update({
     genres: {
-        casual: casual,
-        firstPersonShooter: firstPersonShooter,
-        horror: horror,
-        massMultiplayer: massMultiplayer,
-        rolePlaying: rolePlaying
+        casual: casual1,
+        firstPersonShooter: firstPersonShooter1,
+        horror: horror1,
+        massMultiplayer: massMultiplayer1,
+        rolePlaying: rolePlaying1
     }
 })
 .then(() => {

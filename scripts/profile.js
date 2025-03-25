@@ -72,19 +72,9 @@ if(updateButton){
     const emailField = document.getElementById("email");
     const newEmail = emailField.value;
 
-    //update country
-    const CountryField = document.getElementById("Country");
-    const newCountry = CountryField.value;
+    alert("Updated!");
 
-    //update language
-    const langField = document.getElementById("lang");
-    const newLang = langField.value;
-
-    //update age
-    const ageField = document.getElementById("age");
-    const newAge = ageField.value;
-
-    if(!fullName || !newEmail || !newCountry || !newLang || !newAge){
+    if(!fullName || !newEmail){
       alert("Please fill in the required boxes.")
       return;
     }
@@ -101,6 +91,7 @@ if(updateButton){
 const updateButton2 = document.getElementById("submit2");
 if(updateButton2){
   updateButton2.addEventListener("click", async function(){
+
     // checking the boolean values of checkboxes.
     const firstPersonShooter = document.getElementById("pref1");
     const firstPersonShooterValue = firstPersonShooter.checked;
@@ -118,6 +109,8 @@ if(updateButton2){
     const horrorValue = horror.checked;
 
     const user = auth.currentUser;
+    alert("Updated!")
+
 
     await db.collection("users").doc(user.uid).update({genres: {
       casual: casualValue,
@@ -125,6 +118,59 @@ if(updateButton2){
       horror: horrorValue,
       massMultiplayer: massValue,
       rolePlaying: rolePlayValue
-  }})
-  })
+    }
+  });
+  });
 }
+
+
+function editUserInfo() {
+  document.getElementById('profileInfo').disabled = false;
+}
+
+function editUserInfo2() {
+  document.getElementById('profileInfo2').disabled = false;
+}
+
+var currentUser;               //points to the document of the user who is logged in
+function populateUserInfo() {
+            firebase.auth().onAuthStateChanged(user => {
+                // Check if user is signed in:
+                if (user) {
+
+                    //go to the correct user document by referencing to the user uid
+                    currentUser = db.collection("users").doc(user.uid)
+                    //get the document for current user.
+                    currentUser.get()
+                        .then(userDoc => {
+                            let userName = userDoc.data().username;
+                            let userEmail = userDoc.data().email;
+                            let userData = userDoc.data();
+
+                            if (userName != null) {
+                                document.getElementById("fullName").value = userName;
+                            }
+                            if (userEmail != null) {
+                                document.getElementById("email").value = userEmail;
+                            }
+                            if (userData.genres) {
+                              document.getElementById("pref1").checked 
+                              = userData.genres.firstPersonShooter;
+                              document.getElementById("pref2").checked 
+                              = userData.genres.rolePlaying;
+                              document.getElementById("pref3").checked
+                               = userData.genres.massMultiplayer;
+                              document.getElementById("pref4").checked 
+                              = userData.genres.casual;
+                              document.getElementById("pref5").checked 
+                              = userData.genres.horror;
+                            }
+                          })} else {
+                    // No user is signed in.
+                    console.log ("No user is signed in");
+                }
+            });
+        }
+
+//call the function to run it 
+populateUserInfo();
