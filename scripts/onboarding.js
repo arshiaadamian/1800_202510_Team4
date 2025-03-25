@@ -76,7 +76,6 @@ function saveGamerInfo() {
     const horror1 = document.getElementById("btncheck3").checked;
     const massMultiplayer1 = document.getElementById("btncheck4").checked;
     const rolePlaying1 = document.getElementById("btncheck5").checked;
-
 currentUserRef.update({
     genres: {
         casual: casual1,

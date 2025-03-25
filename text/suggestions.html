@@ -42,11 +42,10 @@
       href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet"
     />
-    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet"/>
-
 
     <!-- Link to styles of your own -->
-    <link rel="stylesheet" href="/styles/search.css"/>
+    <link rel="stylesheet" href="/styles/style.css" />
+    <link rel="stylesheet" href="/styles/search.css" />
   </head>
 
   <body>
@@ -55,11 +54,12 @@
     <!--============================-->
 
     <nav class="navbar navbar-expand-lg navbar-light bg-light custom-navbar"></nav>
-      <h1 id="title">Your Suggested <span class="fancy text-secondary">Friends</span></h1>
 
-    </header>
+    <!-- search bar -->
     <div class="search" id="suggestions">
+      
     </div>
+
     <footer>
       <nav class="navbar" style="background-color: white">
         <div class="container">
@@ -68,7 +68,7 @@
             <button id="myBtn" class="dropbtn material-icons">add</button>
             <div id="myDropdown" class="dropdown-content">
               <a href="/text/search-community.html">Join Community</a>
-              <a href="/text/create-comm.html">Create Community</a>
+              <a href="/text/search-community.html">Create Community</a>
             </div>
           </div>
           <a href="search.html"
@@ -78,7 +78,7 @@
               </span></span
             ></a
           >
-        </div>    
+        </div>
       </nav>
     </footer>
 
@@ -89,7 +89,7 @@
     <!-- <script src="./scripts/script.js"></script> -->
     <script src="/scripts/firebaseAPI_config.js"></script>
     <script src="/scripts/functions.js"></script>
+    <script src="/scripts/profile.js"></script>
     <script src="/scripts/suggestions.js"></script>
-    <script src="/scripts/card.js"></script>
   </body>
 </html>
