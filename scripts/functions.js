@@ -13,6 +13,15 @@ function loadNavbar() {
 }
 loadNavbar();
 
+function loadFooter() {
+    fetch("/text/footer.html").then(footer => {
+        footer.text().then(footerHtml => {
+            document.querySelector("footer").innerHTML = footerHtml;
+        });
+    });
+}
+loadFooter();
+
 function setUserPicture() {
     auth.onAuthStateChanged(user => {
         // Checks if a user is signed in
