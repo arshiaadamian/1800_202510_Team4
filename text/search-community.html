@@ -90,30 +90,13 @@
     <div class="container">
       <h1>Top Suggested <span class="fancy text-secondary">Communities</span></h1>
     <div id="community-go-here" class="flex-container">
-      <template id="communityTemplate">
-      <div class="flex-item">
-            <figure class="figure">
-              <a href="/text/community1.html"><img src="/images/slide1.gif"
-                  class="img-fluid rounded com-img"
-                  alt="A generic square placeholder image with rounded corners in a figure."/></a>
-              <figcaption class="figure-caption text-white">
-                <h4 class="figure-title"><b></b></h4>
-                <p class="figure-members text-secondary"></p>
-                <p class="figure-details"></p>
-                <button id="community" onclick="joinCommunity()" type="button" class="btn" 
-                >Join!
-              </button>
-
-              </figcaption>
-            </figure>
-      </div>
-    </template>
+      
   </div>
 </div>
 
     <ul class="pagination justify-content-center">
       <li class="page-item">
-        <a class="page-link text-secondary" href="#">Previous</a>
+        <a class="page-link text-secondary" href="#" id="prevBtn">Previous</a>
       </li>
       <li class="page-item">
         <a class="page-link text-secondary" href="#">1</a>
@@ -125,7 +108,7 @@
         <a class="page-link text-secondary" href="#">3</a>
       </li>
       <li class="page-item">
-        <a class="page-link text-secondary" href="#">Next</a>
+        <a class="page-link text-secondary" href="#" id="nextBtn">Next</a>
       </li>
     </ul>
 
@@ -144,6 +127,31 @@
       </nav>
     </footer>
 
+    <template id="communityTemplate">
+      <div class="flex-item">
+            <figure class="figure">
+              <a href="/text/community1.html"><img src="/images/slide1.gif"
+                  class="img-fluid rounded com-img"
+                  alt="A generic square placeholder image with rounded corners in a figure."/></a>
+              <figcaption class="figure-caption text-white">
+                <h4 class="figure-title"><b></b></h4>
+                <p class="figure-members text-secondary"></p>
+                <p class="figure-details"></p>
+                <button id="community" onclick="joinCommunity()" type="button" class="btn" 
+                >Join!
+              </button>
+
+              </figcaption>
+            </figure>
+      </div>
+    </template>
+
+    <template id="numTemplate">
+      <li class="page-item">
+        <a class="page-link text-secondary" href="#">1</a>
+      </li>
+    </template>
+
     <!--==========================================-->
     <!-- Your own JavaScript functions go here    -->
     <!--==========================================-->
@@ -152,7 +160,6 @@
     <script src="/scripts/firebaseAPI_config.js"></script>
     <script src="/scripts/functions.js"></script>
     <script src="/scripts/add.js"></script>
-    <script src="/scripts/profile.js"></script>
     <script src="/scripts/search-comm.js"></script>
 
   </body>
