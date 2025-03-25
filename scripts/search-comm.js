@@ -32,6 +32,7 @@ function displayCardsDynamically(collection) {
 
 displayCardsDynamically("community");
 
+<<<<<<< HEAD
 var currentUser;
 var currentCommunity;
 function updateCommunity() {
@@ -52,3 +53,5 @@ function updateCommunity() {
             }
         });
     }
+=======
+>>>>>>> 5f985ef76ad5da7e02c4755467464f9b16df8202

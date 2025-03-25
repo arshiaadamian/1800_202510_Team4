@@ -87,25 +87,27 @@
       </div>
     </div>
 
-    <div class="content">
-      <h1>Top Suggested <span class="fancy text-secondary">Communities</span></h1>
     <div class="container">
-      <div id="community-go-here" class="row row-cols-auto">
-        <template id="communityTemplate">
-          <div class="fig1">
+      <h1>Top Suggested <span class="fancy text-secondary">Communities</span></h1>
+    <div id="community-go-here" class="flex-container">
+      <template id="communityTemplate">
+      <div class="flex-item">
             <figure class="figure">
-              <a href="/text/community1_detail.html"><img src="/images/command1.png"
-                  id="figure-image" class="figure-img img-fluid rounded"
+              <a href="/text/community1.html"><img src="/images/slide1.gif"
+                  class="img-fluid rounded com-img"
                   alt="A generic square placeholder image with rounded corners in a figure."/></a>
               <figcaption class="figure-caption text-white">
-                <h4 class="figure-title"><b>Insanity in a Game</b></h4>
-                <p class="figure-members text-secondary">8,993 Members</p>
+                <h4 class="figure-title"><b></b></h4>
+                <p class="figure-members text-secondary"></p>
                 <p class="figure-details"></p>
+                <button id="community" onclick="joinCommunity()" type="button" class="btn" 
+                >Join!
+              </button>
+
               </figcaption>
             </figure>
-          </div>
-        </template>
       </div>
+    </template>
   </div>
 </div>
 

@@ -42,9 +42,10 @@
       href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet"
     />
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet"/>
+
 
     <!-- Link to styles of your own -->
-    <link rel="stylesheet" href="/styles/style.css" />
     <link rel="stylesheet" href="/styles/search.css" />
   </head>
 
@@ -54,35 +55,11 @@
     <!--============================-->
 
     <nav class="navbar navbar-expand-lg navbar-light bg-light custom-navbar"></nav>
+      <h1 id="title">Your Suggested <span class="fancy text-secondary">Friends</span></h1>
 
-    <!-- search bar -->
-    <div class="search">
-      <div class="suggestion-box">
-        <div class="card">
-          <div class="card-body" id="resultsBox">
-            People who are your match.
-          </div>
-        </div>
-      </div>
-
-      <div class="card card-display" style="width: 14rem">
-        <img
-          src="/images/Arshia.jpg"
-          class="card-img-top"
-          alt="Arshia Flexing"
-          id="firstImage"
-        />
-        <div class="card-body">
-          <h5 class="card-title" id="name1">Arshia</h5>
-          <p class="card-text" id="description1">
-            I play Clash Royale. <br />If you want to play 2v2s with me add me
-            up.
-          </p>
-          <a href="#" class="btn btn-primary">Add</a>
-        </div>
-      </div>
+    </header>
+    <div class="search" id="suggestions">
     </div>
-
     <footer>
       <nav class="navbar" style="background-color: white">
         <div class="container">
@@ -91,7 +68,7 @@
             <button id="myBtn" class="dropbtn material-icons">add</button>
             <div id="myDropdown" class="dropdown-content">
               <a href="/text/search-community.html">Join Community</a>
-              <a href="/text/search-community.html">Create Community</a>
+              <a href="/text/create-comm.html">Create Community</a>
             </div>
           </div>
           <a href="search.html"
@@ -101,7 +78,7 @@
               </span></span
             ></a
           >
-        </div>
+        </div>    
       </nav>
     </footer>
 
@@ -114,5 +91,6 @@
     <script src="/scripts/functions.js"></script>
     <script src="/scripts/profile.js"></script>
     <script src="/scripts/suggestions.js"></script>
+    <script src="/scripts/card.js"></script>
   </body>
 </html>

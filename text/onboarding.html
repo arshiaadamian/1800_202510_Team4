@@ -57,30 +57,28 @@
       class="float-start img-fluid"
       alt="JAC Logo"/>
       
-      <h1 class="d-flex jusitfy-content-center">
-        What Gamer Are You?
-      </h1>
-        <div class="btn-group-vertical gap-5 pt-2" role="group" aria-label="Basic checkbox toggle button group">
-          <input type="checkbox" class="btn-check" id="btncheck1" autocomplete="off">
-          <label class="btn btn-outline-secondary" for="btncheck1">Casual</label>
-        
-          <input type="checkbox" class="btn-check" id="btncheck2" autocomplete="off">
-          <label class="btn btn-outline-secondary" for="btncheck2">First Person Shooter</label>
-        
-          <input type="checkbox" class="btn-check" id="btncheck3" autocomplete="off">
-          <label class="btn btn-outline-secondary" for="btncheck3">Horror</label>
+      <h1 class="d-flex jusitfy-content-center">What Gamer Are You?</h1>
+      <div class="btn-group-vertical gap-5 pt-2" role="group" aria-label="Basic checkbox toggle button group">
+        <input type="checkbox" class="btn-check" id="btncheck1" autocomplete="off">
+        <label class="btn btn-outline-secondary" for="btncheck1">Casual</label>
 
-          <input type="checkbox" class="btn-check" id="btncheck4" autocomplete="off">
-          <label class="btn btn-outline-secondary" for="btncheck4">Mass Multiplayer</label>
-          
-          <input type="checkbox" class="btn-check" id="btncheck5" autocomplete="off">
-          <label class="btn btn-outline-secondary" for="btncheck5">Role-Playing</label>
+        <input type="checkbox" class="btn-check" id="btncheck2" autocomplete="off">
+        <label class="btn btn-outline-secondary" for="btncheck2">First Person Shooter</label>
 
-        </div>
+        <input type="checkbox" class="btn-check" id="btncheck3" autocomplete="off">
+        <label class="btn btn-outline-secondary" for="btncheck3">Horror</label>
 
+        <input type="checkbox" class="btn-check" id="btncheck4" autocomplete="off">
+        <label class="btn btn-outline-secondary" for="btncheck4">Mass Multiplayer</label>
 
-        <a href="/text/main.html"><button type="button" class="btn1 btn-outline-secondary text-dark btn-lg">Submit!</button>
-        </a>
+        <input type="checkbox" class="btn-check" id="btncheck5" autocomplete="off">
+        <label class="btn btn-outline-secondary" for="btncheck5">Role-Playing</label>
+      </div>
+
+      <p id="error-message" class="text-danger mt-3" style="display: none;">Please choose a maximum of two checkboxes.</p>
+
+      <button type="button" onclick="saveGamerInfo()" class="btn1 btn-outline-secondary text-dark btn-lg mt-3">Submit!</button>
+
 
       
   <div class="pacman"></div>
@@ -99,5 +97,6 @@
     <!-- Link to scripts of your own -->
     <!-- <script src="./scripts/script.js"></script> -->
     <script src="/scripts/firebaseAPI_config.js"></script>
+    <script src="/scripts/onboarding.js"></script>
   </body>
 </html>
