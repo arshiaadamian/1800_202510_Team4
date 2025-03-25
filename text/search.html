@@ -42,6 +42,8 @@
       href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet"
     />
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet"/>
+
 
     <!-- Link to styles of your own -->
     <link rel="stylesheet" href="/styles/style.css" />
@@ -53,43 +55,10 @@
     <!-- Your HTML Layout goes here -->
     <!--============================-->
 
-    <nav class="navbar navbar-expand-lg navbar-light bg-light custom-navbar">
-      <div class="container">
-        <a data-bs-toggle="offcanvas" href="#sidebar"><span class="material-icons">menu</span></a>
-        <a href="#"><img class="logo" src="/images/jacLogo.png" height="35" alt="JAC Logo" />
-        </a>
-      </div>
-      <div class="offcanvas offcanvas-start" tabindex="-1" id="sidebar" aria-labelledby="sidebarLabel">
-        <div class="offcanvas-header">
-          <h5 class="offcanvas-title" id="sidebarLabel">Menu</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-        </div>
-        <div class="offcanvas-body">
-          <div>
-            <ul class="navbar-nav">
-              <li class="nav-item">
-                <a class="nav-link" href="profile.html"><span class="material-icons" id="nav1">account_circle </span>Profile</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="messages.html"><span class="material-icons" id="nav2">chat </span>Messages</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="your_comm.html"><span class="material-icons" id="nav3">groups </span>Communities</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="events.html"><span class="material-icons" id="nav4">event </span>Events</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#"><span class="material-icons" id="nav5">settings </span>Settings</a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </nav>
-
+    <nav class="navbar navbar-expand-lg navbar-light bg-light custom-navbar"></nav>
 
     <div class="search">
+      <!-- Your existing search bar -->
       <nav class="navbar bg-body-tertiary" id="search-bar">
         <div class="container-fluid">
           <form class="d-flex" role="search">
@@ -111,11 +80,13 @@
           </form>
         </div>
       </nav>
+      <div class="cards-container" id="suggestions">
+      </div>
+    </div>
 
 
         <div class="card" id="suggestions">
         </div>
-
 
       <!-- <div class="card card-display" style="width: 14rem">
         <img
@@ -193,8 +164,8 @@
     <!-- Link to scripts of your own -->
     <!-- <script src="./scripts/script.js"></script> -->
     <script src="/scripts/firebaseAPI_config.js"></script>
+    <script src="/scripts/main.js"></script>
+    <script src="/scripts/add.js"></script>
     <script src="/scripts/functions.js"></script>
-    <script src="/scripts/profile.js"></script>
-    <script src="/scripts/search.js"></script>
   </body>
 </html>

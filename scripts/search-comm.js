@@ -32,23 +32,3 @@ function displayCardsDynamically(collection) {
 
 displayCardsDynamically("community");
 
-var currentUser;
-var currentCommunity;
-function updateCommunity() {
-    firebase.auth().onAuthStateChanged(user => {
-        // Check if user is signed in:
-        if (user) {
-
-            currentUser = db.collection("users").doc(user.uid)
-            currentCommunity = db.collection("community").doc(user.uid);
-            currentUser.get()
-                .then(userDoc => {
-                    let community = userDoc.data().communities;
-            currentCommunity.get();
-                });
-            } else {
-                // No user is signed in.
-                console.log ("No user is signed in");
-            }
-        });
-    }
