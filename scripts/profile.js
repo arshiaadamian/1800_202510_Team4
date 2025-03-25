@@ -84,7 +84,7 @@ if(updateButton){
       alert("You need to be logged in to change your profile picture.");
       return;
     }
-    await db.collection("users").doc(user.uid).update({name: fullName, email: newEmail, country: newCountry, language: newLang, age: newAge});
+    await db.collection("users").doc(user.uid).update({name: fullName, email: newEmail});
   });
 }
 
