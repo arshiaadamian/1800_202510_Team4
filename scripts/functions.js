@@ -17,6 +17,7 @@ function loadFooter() {
     fetch("/text/footer.html").then(footer => {
         footer.text().then(footerHtml => {
             document.querySelector("footer").innerHTML = footerHtml;
+            document.getElementById("myBtn").onclick = function() {document.getElementById("myDropdown").classList.toggle("show");};
         });
     });
 }
