@@ -9,7 +9,6 @@ function loadNavbar() {
             document.querySelector(".custom-navbar").innerHTML = navHtml;
             setUserPicture();
         });
-
     });
 }
 loadNavbar();
