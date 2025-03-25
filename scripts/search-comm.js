@@ -20,6 +20,13 @@ function displayCardsDynamically(collection) {
                     newFigure.querySelector('.figure-members').innerHTML = members.length + " Members Joined.";
                     if (!detail) { detail = "No description provided"; }
                     newFigure.querySelector('.figure-details').innerHTML = "Description: " + detail;
+                    newFigure.querySelector(".community-join").addEventListener("click", event => {
+                        db.collection("users").doc(auth.currentUser.uid).update({
+                            communities: firebase.firestore.FieldValue.arrayUnion(doc.id)
+                        }).then(() => {
+                            window.location.href = `community.html?communityID=${doc.id}`;
+                        });
+                    });
                     let storageRef = storage.ref('community_pics/' + doc.id);
                     storageRef.getDownloadURL().then(img => {
                         newFigure.querySelector('.com-img').src = img;
