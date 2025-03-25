@@ -1,137 +1,136 @@
 .search-container {
-    margin-top: 10%;;
-    background-color: white;
-    border-radius: 50px;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-    padding: 10px;
-    max-width: 500px;
-    width: 100%;
-    transition: all 0.3s ease;
+  margin-top: 10%;;
+  background-color: white;
+  border-radius: 50px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  padding: 10px;
+  max-width: 500px;
+  width: 100%;
+  transition: all 0.3s ease;
 }
 .fancy {
-  font-size: 50px;
-  text-align: center;
+font-size: 50px;
+text-align: center;
 }
 
 .flex-container {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px; 
-  padding: 20px;
-  justify-content: center; 
+display: flex;
+flex-wrap: wrap;
+gap: 20px; 
+padding: 20px;
+justify-content: center; 
 }
 
 .flex-item {
-  flex: 1 1 250px; 
-  max-width: 300px; 
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
+flex: 1 1 250px; 
+max-width: 300px; 
+display: flex;
+flex-direction: column;
+align-items: center;
+text-align: center;
 }
 
 .flex-item img {
-  width: 100%;
-  height: auto;
-  border-radius: 10px;
+width: 100%;
+height: auto;
+border-radius: 10px;
 }
 
 .figure-caption {
-  margin-top: 10px;
+margin-top: 10px;
 }
 
 .search-container:hover {
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
 }
 
 .form-control.search-input {
-    border: none;
-    background: transparent;
-    padding-left: 20px;
-    font-size: 1rem;
-    height: 50px;
+  border: none;
+  background: transparent;
+  padding-left: 20px;
+  font-size: 1rem;
+  height: 50px;
 }
 
 .form-control.search-input:focus {
-    box-shadow: none;
-    outline: none;
+  box-shadow: none;
+  outline: none;
 }
 
 .btn-search {
-    background-color: #6c757d;
-    color: white;
-    border-radius: 50px;
-    padding: 10px 20px;
-    border: none;
-    transition: all 0.3s ease;
+  background-color: #6c757d;
+  color: white;
+  border-radius: 50px;
+  padding: 10px 20px;
+  border: none;
+  transition: all 0.3s ease;
 }
 
 .btn-search:hover {
-    background-color: #0056b3;
-    transform: scale(1.05);
+  background-color: #0056b3;
+  transform: scale(1.05);
 }
 
 .search-icon {
-    color: #6c757d;
-    position: absolute;
-    left: 15px;
-    top: 50%;
-    transform: translateY(-50%);
+  color: #6c757d;
+  position: absolute;
+  left: 15px;
+  top: 50%;
+  transform: translateY(-50%);
 }
-  
-  .overlay {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background-color: #008CBA;
-    overflow: hidden;
-    width: 100%;
-    height: 0;
-    transition: .5s ease;
-  }
-  
-  .fig3:hover .overlay {
-    height: 100%;
-  }
-  
-  .text {
-    color: white;
-    font-size: 20px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    -webkit-transform: translate(-50%, -50%);
-    -ms-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);
-    text-align: center;
-  }
-  
-  h1 {
-    margin-top: 10%;;
-    font-size: 60px;
-    text-transform: uppercase;
-    text-align: center;
-    line-height: 1;
-    color: #006466;
-    margin-bottom: 10%;
-  }
 
-  #com1p {
-    float: right;
-    background-color: #006466;
-    color: black;
-    border: black 2px solid;
-  }
+.overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: #008CBA;
+  overflow: hidden;
+  width: 100%;
+  height: 0;
+  transition: .5s ease;
+}
 
-  .container1 {
-    margin-top: 10%;
-    margin-left: 13%;
-  }
+.fig3:hover .overlay {
+  height: 100%;
+}
 
-  footer {
-    position: relative;
-    bottom: 0;
-  }
+.text {
+  color: white;
+  font-size: 20px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
 
-  
+h1 {
+  margin-top: 10%;;
+  font-size: 60px;
+  text-transform: uppercase;
+  text-align: center;
+  line-height: 1;
+  color: #006466;
+  margin-bottom: 10%;
+}
+
+#com1p {
+  float: right;
+  background-color: #006466;
+  color: black;
+  border: black 2px solid;
+}
+
+.container1 {
+  margin-top: 10%;
+  margin-left: 13%;
+}
+
+footer {
+  position: relative;
+  bottom: 0;
+}
+
