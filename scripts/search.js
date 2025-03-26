@@ -2,29 +2,21 @@ const search = document.getElementById("searchButton");
 search.addEventListener("click", async function () {
   const searchInputValue = document
     .getElementById("searchInput")
-    .value.toLowerCase();
+    .value;
   const user = auth.currentUser;
   if (!user) {
     console.log("user does not exist");
     return;
   }
-
-  const allUsersSnapShot = await db.collection("users").get();
-  let foundUser = null;
-  allUsersSnapShot.forEach(function (doc) {
-    const userData = doc.data();
-    //console.log(userData);
-    const currentUserName = userData.username.toLowerCase();
-    if (currentUserName === searchInputValue) {
-      foundUser = userData;
-    }
-  });
-
-  if (!foundUser) {
-    alert("no user found");
-  } else {
-    const container = document.getElementById("suggestions");
-    const card = createUserCard(foundUser);
+  const container = document.getElementById("suggestions");
+  container.innerHTML = "";
+  let userQuery = db.collection("users").where("username", "==", searchInputValue);
+  let foundUsers = await userQuery.get();
+  foundUsers.forEach(async foundUser => {
+    
+    let userData = foundUser.data();
+    userData.img = await getUserPicture(foundUser.id);
+    let card = createUserCard(userData);
     container.appendChild(card);
 
     const addFriend = document.querySelector(".addFriend");
@@ -33,16 +25,22 @@ search.addEventListener("click", async function () {
         .collection("users")
         .doc(user.uid)
         .update({
-          friends: firebase.firestore.FieldValue.arrayUnion(foundUser.uid),
+          friends: firebase.firestore.FieldValue.arrayUnion(foundUser.id),
         });
 
       await db
         .collection("users")
-        .doc(foundUser.uid)
+        .doc(foundUser.id)
         .update({
           friends: firebase.firestore.FieldValue.arrayUnion(user.uid),
         });
     });
+  });
+
+  if (!foundUsers) {
+    alert("no user found");
+  } else {
+    
   }
 });
 
@@ -52,8 +50,7 @@ function createUserCard(user) {
   card.style.width = "14rem";
 
   card.innerHTML = `
-    <img src="${
-      user.img || "/images/default.png"
+    <img src="${user.img || "/images/default.png"
     }" class="card-img-top" alt="Profile Picture" />
     <div class="card-body">
       <h5 class="card-title">${user.username}</h5>
