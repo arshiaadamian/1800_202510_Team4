@@ -205,7 +205,7 @@ function editUserInfo() {
  
                             //if the data fields are not empty, then write them in to the form.
                             if (userInfo != null) {
-                                document.getElementById("aboutYou").value = userInfo;
+                                document.getElementById("description").value = userInfo;
                             }
                         })
                 } else {

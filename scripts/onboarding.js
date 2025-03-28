@@ -22,7 +22,7 @@ checkboxes.forEach(checkbox => {
 });
 
 // Function to populate checkbox selections based on user preferences
-let currentUserRef; 
+let currentUserRef;
 function populateGamerInfo() {
     firebase.auth().onAuthStateChanged(user => {
         if (user) {
@@ -30,37 +30,10 @@ function populateGamerInfo() {
 
             currentUserRef.get()
                 .then(userDoc => {
-                    const genres = userDoc.data().genres;
-
+                    let genres = userDoc.data().genres;
                     // Pre-check checkboxes based on the genres object
-                    if (genres.casual === true) {
-                        document.getElementById("btncheck1").checked = true;
-                    } else {
-                        document.getElementById("btncheck1").checked = false;
-                    }
-
-                    if (genres.firstPersonShooter === true) {
-                        document.getElementById("btncheck2").checked = true;
-                    } else {
-                        document.getElementById("btncheck2").checked = false;
-                    }
-
-                    if (genres.horror === true) {
-                        document.getElementById("btncheck3").checked = true;
-                    } else {
-                        document.getElementById("btncheck3").checked = false;
-                    }
-
-                    if (genres.massMultiplayer === true) {
-                        document.getElementById("btncheck4").checked = true;
-                    } else {
-                        document.getElementById("btncheck4").checked = false;
-                    }
-
-                    if (genres.rolePlaying === true) {
-                        document.getElementById("btncheck5").checked = true;
-                    } else {
-                        document.getElementById("btncheck5").checked = false;
+                    for (let genre in genres) {
+                        document.getElementById(`${genre}-check`).checked = genres[genre];
                     }
                 });
         }
@@ -70,23 +43,24 @@ function populateGamerInfo() {
 populateGamerInfo();
 
 function saveGamerInfo() {
-
-    const casual1 = document.getElementById("btncheck1").checked;
-    const firstPersonShooter1 = document.getElementById("btncheck2").checked;
-    const horror1 = document.getElementById("btncheck3").checked;
-    const massMultiplayer1 = document.getElementById("btncheck4").checked;
-    const rolePlaying1 = document.getElementById("btncheck5").checked;
-currentUserRef.update({
-    genres: {
-        casual: casual1,
-        firstPersonShooter: firstPersonShooter1,
-        horror: horror1,
-        massMultiplayer: massMultiplayer1,
-        rolePlaying: rolePlaying1
-    }
-})
-.then(() => {
-    console.log("Genres updated successfully!");
-    window.location.href = "/text/main.html"; // Redirect after saving
-})
+    const casual = document.getElementById("casual-check").checked;
+    const firstPersonShooter = document.getElementById("firstPersonShooter-check").checked;
+    const horror = document.getElementById("horror-check").checked;
+    const massMultiplayer = document.getElementById("massMultiplayer-check").checked;
+    const rolePlaying = document.getElementById("rolePlaying-check").checked;
+    currentUserRef.update({
+        genres: {
+            casual: casual,
+            firstPersonShooter: firstPersonShooter,
+            horror: horror,
+            massMultiplayer: massMultiplayer,
+            rolePlaying: rolePlaying
+        }
+    }).then(() => {
+        console.log("Genres updated successfully!");
+        window.location.href = "/text/main.html"; // Redirect after saving
+    });
 }
+
+const submitButton = document.querySelector("button");
+submitButton.addEventListener("click", saveGamerInfo());
