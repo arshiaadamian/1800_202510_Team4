@@ -75,9 +75,37 @@ function createUserCard(user) {
     <div class="card-body">
       <h5 class="card-title">${user.username}</h5>
       <p class="card-text">${user.description}</p>
-      <a href="#" class="btn btn-primary">Add Friend</a>
+      <a href="#" class="btn btn-primary contact">contact</a>
     </div>
   `;
 
+  const button = card.querySelector('.contact');
+  button.addEventListener('click', (e) => {
+    e.preventDefault();
+    applyNow(user.uid);
+  });
   return card;
+
+}
+
+
+function applyNow(owner) {
+  firebase.auth().onAuthStateChanged(user => {
+      if (owner != user.uid) {
+          db.collection("users").doc(owner).get()
+          .then(doc => {
+              ownername = doc.data().name;
+              owneremail = doc.data().email;
+
+              // window.open('mailto:test@example.com?subject=subject&body=body');
+
+              window.open('mailto:'+
+              owneremail
+              +'?subject=Applying for your job&body=' +
+              "Dear " + ownername +
+              " ... " +
+              "Sincerely, " + user.displayName);
+          })             
+      }
+  })
 }
