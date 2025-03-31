@@ -53,9 +53,11 @@ function createUserCard(user) {
 }
 
 function CreateUserNotFoundCard() {
-  const card = document.createElement("didv");
+  const card = document.createElement("div");
   card.className = "card card-display";
   card.style.width = "14rem";
+  card.style.width = "100%";
+  card.style.height = "100%";
 
   card.innerHTML = `<div class="alert alert-danger" role="alert">
   User not found!
