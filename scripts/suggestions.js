@@ -1,7 +1,7 @@
 // Wait for Firebase to initialize and DOM to load
 document.addEventListener("DOMContentLoaded", () => {
   // Check if user is logged in
-  auth.onAuthStateChanged(user => {
+  auth.onAuthStateChanged((user) => {
     if (user) {
       console.log("User logged in");
       findMatches(user);
@@ -19,30 +19,36 @@ async function findMatches(user) {
     const currentUserGenres = currentUser.data().genres;
 
     // Get all other users
-    const allUsers = await db.collection("users")
+    const allUsers = await db
+      .collection("users")
       .where(firebase.firestore.FieldPath.documentId(), "!=", user.uid)
       .get();
 
     // Clear previous suggestions
     const container = document.getElementById("suggestions");
-    
 
     // Check each user for matches
     for (const doc of allUsers.docs) {
       const otherUser = doc.data();
-      otherUser.uid = doc.id;  // Add the user ID for profile image
-      
+      otherUser.uid = doc.id; // Add the user ID for profile image
+
       // Count how many genres match between users
       let matchCount = 0;
-      
+
       // Check each genre
-      if (currentUserGenres.firstPersonShooter && otherUser.genres.firstPersonShooter) {
+      if (
+        currentUserGenres.firstPersonShooter &&
+        otherUser.genres.firstPersonShooter
+      ) {
         matchCount++;
       }
       if (currentUserGenres.rolePlaying && otherUser.genres.rolePlaying) {
         matchCount++;
       }
-      if (currentUserGenres.massMultiplayer && otherUser.genres.massMultiplayer) {
+      if (
+        currentUserGenres.massMultiplayer &&
+        otherUser.genres.massMultiplayer
+      ) {
         matchCount++;
       }
       if (currentUserGenres.casual && otherUser.genres.casual) {
@@ -58,7 +64,6 @@ async function findMatches(user) {
         container.appendChild(card);
       }
     }
-
   } catch (error) {
     console.error("Error:", error);
   }
@@ -66,12 +71,14 @@ async function findMatches(user) {
 
 // Create a card for a matched user
 function createUserCard(user) {
-  const card = document.createElement('div');
-  card.className = 'card card-display';
-  card.style.width = '14rem';
-  
+  const card = document.createElement("div");
+  card.className = "card card-display";
+  card.style.width = "14rem";
+
   card.innerHTML = `
-    <img src="${user.img || '/images/default.png'}" class="card-img-top" alt="Profile Picture" />
+    <img src="${
+      user.img || "/images/default.png"
+    }" class="card-img-top" alt="Profile Picture" />
     <div class="card-body">
       <h5 class="card-title">${user.username}</h5>
       <p class="card-text">${user.description}</p>
@@ -79,33 +86,36 @@ function createUserCard(user) {
     </div>
   `;
 
-  const button = card.querySelector('.contact');
-  button.addEventListener('click', (e) => {
+  const button = card.querySelector(".contact");
+  button.addEventListener("click", (e) => {
     e.preventDefault();
     applyNow(user.uid);
   });
   return card;
-
 }
 
-
 function applyNow(owner) {
-  firebase.auth().onAuthStateChanged(user => {
-      if (owner != user.uid) {
-          db.collection("users").doc(owner).get()
-          .then(doc => {
-              ownername = doc.data().name;
-              owneremail = doc.data().email;
+  firebase.auth().onAuthStateChanged((user) => {
+    if (owner != user.uid) {
+      db.collection("users")
+        .doc(owner)
+        .get()
+        .then((doc) => {
+          ownername = doc.data().name;
+          owneremail = doc.data().email;
 
-              // window.open('mailto:test@example.com?subject=subject&body=body');
+          // window.open('mailto:test@example.com?subject=subject&body=body');
 
-              window.open('mailto:'+
-              owneremail
-              +'?subject=Applying for your job&body=' +
-              "Dear " + ownername +
-              " ... " +
-              "Sincerely, " + user.displayName);
-          })             
-      }
-  })
+          window.open(
+            "mailto:" +
+              owneremail +
+              "?subject=Friend Request&body=" +
+              "Dear " +
+              ownername +
+              " Would you like to play video games together? " +
+              "Sincerely "
+          );
+        });
+    }
+  });
 }
