@@ -48,19 +48,22 @@ function saveGamerInfo() {
     const horror = document.getElementById("horror-check").checked;
     const massMultiplayer = document.getElementById("massMultiplayer-check").checked;
     const rolePlaying = document.getElementById("rolePlaying-check").checked;
-    currentUserRef.update({
-        genres: {
-            casual: casual,
-            firstPersonShooter: firstPersonShooter,
-            horror: horror,
-            massMultiplayer: massMultiplayer,
-            rolePlaying: rolePlaying
-        }
-    }).then(() => {
-        console.log("Genres updated successfully!");
-        window.location.href = "/text/main.html"; // Redirect after saving
-    });
+    auth.onAuthStateChanged(user => {
+        db.collection("users").doc(user.uid).update({
+            genres: {
+                casual: casual,
+                firstPersonShooter: firstPersonShooter,
+                horror: horror,
+                massMultiplayer: massMultiplayer,
+                rolePlaying: rolePlaying
+            }
+        }).then(() => {
+            console.log("Genres updated successfully!");
+            window.location.href = "/text/main.html"; // Redirect after saving
+        });
+    })
+    
 }
 
-const submitButton = document.querySelector("button");
-submitButton.addEventListener("click", saveGamerInfo());
+const submitButton = document.querySelector("#submitBtn");
+submitButton.addEventListener("click", () => saveGamerInfo());
