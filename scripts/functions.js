@@ -28,12 +28,9 @@ function setUserPicture() {
         // Checks if a user is signed in
         if (user) {
             // Display the user's name
-            console.log(user.uid);
-            console.log(user.displayname);
             let imgs = document.querySelectorAll("#pfp");
             getUserPicture(user.uid).then((url) => {
                 imgs.forEach(img => {
-                    console.log(url);
                     img.setAttribute("src", url);
                 });
             });

@@ -144,7 +144,7 @@ function editUserInfo() {
   document.getElementById('profileInfo').disabled = !document.getElementById('profileInfo').disabled;
   updateButton.innerHTML = "Save";
   updateButton.style = "";
-  updateButton.disabled = document.getElementById('profileInfo2').disabled;
+  updateButton.disabled = document.getElementById('profileInfo').disabled;
 }
 
 function editUserInfo2() {
@@ -232,3 +232,6 @@ function populateUserAbout() {
 
 //call the function to run it
 populateUserAbout();
+editUserInfo();
+editUserInfo2();
+
