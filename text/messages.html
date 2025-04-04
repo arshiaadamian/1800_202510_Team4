@@ -45,7 +45,7 @@
   <!--============================-->
   <nav class="navbar navbar-expand-lg navbar-light bg-light custom-navbar"></nav>
 
-    <h1 id="title">Your <span class="fancy text-secondary">Messages</span></h1>
+    <h1 id="title">Your <span class="fancy text-secondary" id="h12">Messages</span></h1>
       <div class="container">
 
     <div class="page-title">
@@ -89,8 +89,8 @@
                 <div class="chat-container">
                   <ul class="chat-box chatContainerScroll" id="messages">
                   </ul>
-                  <div class="form-group mt-3 mb-0">
-                    <textarea id="message-area" class="form-control" rows="3" placeholder="Type your message here..."></textarea>
+                  <div class="form-group">
+                    <textarea id="message-area" class="form-control" r placeholder="Type your message here..."></textarea>
                   </div>
                 </div>
               </div>
@@ -147,42 +147,16 @@
     </li>
   </template>
 
-  <template id="chat-message-left-template">
-    <li class="chat-left">
-        <div class="chat-avatar">
-            <img class="chat-picture" src="https://www.bootdey.com/img/Content/avatar/avatar3.png" alt="Retail Admin" />
-            <div class="chat-name">Russell</div>
-        </div>
-        <div class="chat-text">
-            Hello, I'm Russell. <br />How can I help you today?
-        </div>
-        <div class="chat-hour">
-            08:55 <span class="fa fa-check-circle"></span>
-        </div>
-    </li>
-</template>
+
  
 
 <template id="chat-message-right-template">
     <li class="chat-right">
         <div class="chat-hour">
-            08:56 <span class="fa fa-check-circle"></span>
         </div>
         <div class="chat-text">
- 
-
-            Hi, Russell <br />
- 
-
-            I need more information about Developer Plan.
- 
-
         </div>
- 
-
         <div class="chat-avatar">
- 
-
             <img class="chat-picture" src="https://www.bootdey.com/img/Content/avatar/avatar3.png" alt="Retail Admin" />
             <div class="chat-name">Sam</div>
         </div>

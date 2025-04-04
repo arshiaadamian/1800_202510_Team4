@@ -356,3 +356,12 @@ body {
   h1 {
     font-size: 40px;
   }
+
+  #h12 {
+    font-size: 40px;
+  }
+
+* {
+    font-size: 10px;
+    text-align: right;
+  }
