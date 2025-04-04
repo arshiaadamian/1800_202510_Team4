@@ -124,7 +124,7 @@ if(updateButton2){
       firstPersonShooter: firstPersonShooterValue,
       horror: horrorValue,
       massMultiplayer: massValue,
-      rolePlaying: rolePlayValue
+      rolePlaying: rolePlayValue,
   }})
   })
 }
@@ -133,89 +133,59 @@ function editUserInfo() {
   document.getElementById('profileInfo').disabled = false;
  }
  
- 
- function editUserInfo2() {
-  document.getElementById('profileInfo2').disabled = false;
+
+ function editUserInfo1() {
+  document.getElementById('profileInfo1').disabled = false;
  }
  
- 
  var currentUser;               //points to the document of the user who is logged in
- function populateUserInfo() {
-            firebase.auth().onAuthStateChanged(user => {
-                // Check if user is signed in:
-                if (user) {
- 
- 
-                    //go to the correct user document by referencing to the user uid
-                    currentUser = db.collection("users").doc(user.uid)
-                    //get the document for current user.
-                    currentUser.get()
-                        .then(userDoc => {
-                            let userName = userDoc.data().username;
-                            let userEmail = userDoc.data().email;
-                            let userAge = userDoc.data().age;
-                            let userData = userDoc.data();
- 
- 
-                            if (userName != null) {
-                                document.getElementById("fullName").value = userName;
-                            }
-                            if (userEmail != null) {
-                                document.getElementById("email").value = userEmail;
-                            }
-                            if (userData.genres) {
-                              document.getElementById("pref1").checked
-                              = userData.genres.firstPersonShooter;
-                              document.getElementById("pref2").checked
-                              = userData.genres.rolePlaying;
-                              document.getElementById("pref3").checked
-                               = userData.genres.massMultiplayer;
-                              document.getElementById("pref4").checked
-                              = userData.genres.casual;
-                              document.getElementById("pref5").checked
-                              = userData.genres.horror;
-                            }
-                          })} else {
-                    // No user is signed in.
-                    console.log ("No user is signed in");
-                }
-            });
-        }
- 
- 
- //call the function to run it
- populateUserInfo();
- 
- 
- var currentUser;               //points to the document of the user who is logged in
- function populateUserAbout() {
-            firebase.auth().onAuthStateChanged(user => {
-                // Check if user is signed in:
-                if (user) {
- 
- 
-                    //go to the correct user document by referencing to the user uid
-                    currentUser = db.collection("users").doc(user.uid)
-                    //get the document for current user.
-                    currentUser.get()
-                        .then(userDoc => {
-                            //get the data fields of the user
-                            let userInfo = userDoc.data().description;
- 
- 
-                            //if the data fields are not empty, then write them in to the form.
-                            if (userInfo != null) {
-                                document.getElementById("aboutYou").value = userInfo;
-                            }
-                        })
-                } else {
-                    // No user is signed in.
-                    console.log ("No user is signed in");
-                }
-            });
-        }
- 
- 
- //call the function to run it
- populateUserAbout();
- 
+function populateUserInfo() {
+           firebase.auth().onAuthStateChanged(user => {
+               // Check if user is signed in:
+               if (user) {
+                   //go to the correct user document by referencing to the user uid
+                   currentUser = db.collection("users").doc(user.uid)
+                   //get the document for current user.
+                   currentUser.get()
+                       .then(userDoc => {
+                           let userName = userDoc.data().username;
+                           let userEmail = userDoc.data().email;
+                           let userAge = userDoc.data().age;
+                           let userLang = userDoc.data().language;
+                           let userCountry = userDoc.data().country;
+                           if (userName != null) {
+                               document.getElementById("fullName").value = userName;
+                           }
+                           if (userEmail != null) {
+                               document.getElementById("email").value = userEmail;
+                           }
+                           if (userAge != null) {
+                             document.getElementById("age").value = userAge;
+                           }
+                           if (userLang != null) {
+                             document.getElementById("lang").value = userLang;
+                           }
+                           if (userCountry != null) {
+                             document.getElementById("country").value = userCountry;
+                           }
+
+                           if (userData.genres) {
+                             document.getElementById("pref1").checked
+                             = userData.genres.firstPersonShooter;
+                             document.getElementById("pref2").checked
+                             = userData.genres.rolePlaying;
+                             document.getElementById("pref3").checked
+                              = userData.genres.massMultiplayer;
+                             document.getElementById("pref4").checked
+                             = userData.genres.casual;
+                             document.getElementById("pref5").checked
+                             = userData.genres.horror;
+                           }
+                         })} else {
+                   // No user is signed in.
+                   console.log ("No user is signed in");
+               }
+           });
+       }
+
+populateUserInfo();

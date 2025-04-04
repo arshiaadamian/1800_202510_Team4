@@ -99,7 +99,7 @@
 }
 
 .card {
-  background: #212F45;
+  background: #3E1F47;
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   border-radius: 5px;
@@ -112,10 +112,12 @@
   -webkit-border-radius: 2px;
   -moz-border-radius: 2px;
   border-radius: 2px;
-  font-size: .825rem;
+  font-size: 20px;
   background: #272640;
   color: #000000;
+  margin-bottom: 10%;
 }
+
 
 
 #filter {
