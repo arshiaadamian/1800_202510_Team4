@@ -17,7 +17,7 @@ function loadFooter() {
     fetch("/text/footer.html").then(footer => {
         footer.text().then(footerHtml => {
             document.querySelector("footer").innerHTML = footerHtml;
-            document.getElementById("myBtn").onclick = function() {document.getElementById("myDropdown").classList.toggle("show");};
+            document.getElementById("add").addEventListener("click", () => {document.getElementById("dropdown").classList.toggle("show");})
         });
     });
 }
@@ -28,12 +28,9 @@ function setUserPicture() {
         // Checks if a user is signed in
         if (user) {
             // Display the user's name
-            console.log(user.uid);
-            console.log(user.displayname);
             let imgs = document.querySelectorAll("#pfp");
             getUserPicture(user.uid).then((url) => {
                 imgs.forEach(img => {
-                    console.log(url);
                     img.setAttribute("src", url);
                 });
             });

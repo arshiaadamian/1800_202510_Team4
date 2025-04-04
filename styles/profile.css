@@ -148,3 +148,16 @@ footer {
   background-color: #212f45;
   text-align: center;
 }
+
+input[type="text"] {
+  background-color: #ffffff;
+}
+
+input[type="text"]:disabled {
+  background-color: #3e1f47;
+  color: #ffffff;
+}
+
+button {
+  color: #ffffff !important;
+}

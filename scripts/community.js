@@ -4,7 +4,10 @@ const messageTemplate = document.getElementById("message-template");
 const meesagesDiv = document.querySelector("#message-div");
 
 function populateCommunity() {
-    if (!communityID) { return; }
+    if (!communityID) {
+        window.location.href = "/text/your-communities.html";
+        return;
+    }
     let communityDocRef = db.collection("community").doc(communityID);
     const storageRef = storage
         .ref()
@@ -63,4 +66,11 @@ messageArea.addEventListener("keypress", event => {
         sendCommunityMessage(messageArea.value);
         messageArea.value = "";
     }
+});
+
+const shareBtn = document.getElementById("side2");
+shareBtn.addEventListener("click", event => {
+    event.preventDefault();
+    sendCommunityMessage(messageArea.value);
+    messageArea.value = "";
 });

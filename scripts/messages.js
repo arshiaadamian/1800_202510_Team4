@@ -38,31 +38,34 @@ async function populateFriends() {
                 friends.forEach(async (friend) => {
                     usersLocation.innerHTML = "";
                     let newUser = userTemplate.content.cloneNode(true);
-                    let friendDoc = await db.collection("users").doc(friend).get();
-                    let img = await getUserPicture(friend);
-                    newUser.querySelector(".name").innerHTML = friendDoc.data().username;
-                    newUser.querySelector(".name").id = "user-" + friend;
-                    newUser.querySelector(".pfp").src = img;
+                    let friendDoc = await db.collection("users").doc(friend).get().catch(err => { });
+                    if (friendDoc.data()) {
+                        let img = await getUserPicture(friend);
+                        newUser.querySelector(".name").innerHTML = friendDoc.data().username;
 
-                    let curDate = "No sent messages";
-                    let messages = roomDoc.data().messages;
-                    let messageMillis = 0;
-                    if (messages.length > 0) {
-                        let messages = roomDoc.data().messages.sort((a, b) => {
-                            return -a.timestamp._compareTo(b.timestamp);
-                        });
-                        let messageDate = messages[0].timestamp.toDate();
-                        messageMillis = messageDate.valueOf();
-                        let dateSplit = messageDate.toLocaleString().split(",");
-                        curDate = new Date().toLocaleDateString() == messageDate.toLocaleDateString() ? dateSplit[1] : dateSplit[0];
+                        newUser.querySelector(".name").id = "user-" + friend;
+                        newUser.querySelector(".pfp").src = img;
+
+                        let curDate = "No sent messages";
+                        let messages = roomDoc.data().messages;
+                        let messageMillis = 0;
+                        if (messages.length > 0) {
+                            let messages = roomDoc.data().messages.sort((a, b) => {
+                                return -a.timestamp._compareTo(b.timestamp);
+                            });
+                            let messageDate = messages[0].timestamp.toDate();
+                            messageMillis = messageDate.valueOf();
+                            let dateSplit = messageDate.toLocaleString().split(",");
+                            curDate = new Date().toLocaleDateString() == messageDate.toLocaleDateString() ? dateSplit[1] : dateSplit[0];
+                        }
+                        newUser.querySelector(".time").innerHTML = curDate;
+                        newUser.querySelector(".time").name = messageMillis;
+                        newUser.querySelector(".person-click").addEventListener("click", () => populateMessages(friend));
+
+                        users.push(newUser.firstElementChild);
                     }
-                    newUser.querySelector(".time").innerHTML = curDate;
-                    newUser.querySelector(".time").name = messageMillis;
-                    newUser.querySelector(".person-click").addEventListener("click", () => populateMessages(friend));
-                    users.push(newUser.firstElementChild);
-
+                    
                     users.sort((a, b) => {
-                        console.log(b);
                         return b.querySelector(".time").name - a.querySelector(".time").name;
                     });
                     users.forEach((card) => {
@@ -101,12 +104,9 @@ async function populateMessages(otherUserID) {
                     let messages = roomDoc.data().messages.sort((a, b) => {
                         return a.timestamp.toDate().valueOf() - b.timestamp.toDate().valueOf();
                     });
-
-                    console.log(roomDoc.id, roomDoc.data(), messages.length);
                     messages.forEach(message => {
                         let newMessage;
                         let img;
-                        console.log(message.from, otherUserID);
                         if (message.from == otherUserID) {
                             newMessage = messageLeftTemplate.content.cloneNode(true);
                             img = otherImg;
