@@ -2,11 +2,6 @@ h1, h2 {
   font-family: 'Press Start 2P', cursive;
 }
 
-h1 {
-  font-size: 10px;
-  padding-top: 10%;
-}
-
 body {
   background-color: #3e1f47;
 }
@@ -55,8 +50,7 @@ footer {
 }
 
 .hero {
-    margin-top: 0; /* Remove negative margin */
-    padding-top: 10%;
+    margin-top: 0; 
     text-align: center;
 }
 
@@ -96,7 +90,8 @@ footer {
     0px 14.318181818181818px 0px hsla(236, 0%, 5%, 1),
     0px 15px 0px hsla(238, 73%, 4%, 1);
     text-shadow: white 1px;
-    padding-bottom: 10%;
+    padding-bottom: 5%;
+    margin-top: 5%;
 }
 
 .carousel {
