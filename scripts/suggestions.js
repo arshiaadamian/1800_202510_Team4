@@ -107,13 +107,16 @@ function applyNow(owner) {
           // window.open('mailto:test@example.com?subject=subject&body=body');
 
           window.open(
-            "mailto:" +
-              owneremail +
-              "?subject=Friend Request&body=" +
-              "Dear " +
-              ownername +
-              " Would you like to play video games together? " +
-              "Sincerely "
+            "mailto:" + owneremail + 
+            "?subject=Friend Request" + 
+            "&body=" + encodeURIComponent(
+              "Dear " + ownername + ",\r\n\r\n" +  // Double \r\n for paragraph spacing
+              "Would you like to play video games together?\r\n\r\n" +
+              "Sincerely,\r\n" +
+              "[Your Name]\r\n" +
+              "Sponsored by JAC." + "\r\n\r\n" +
+              "Match. Chat. Game. Repeat."
+            )
           );
         });
     }

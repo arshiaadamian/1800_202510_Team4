@@ -45,11 +45,13 @@ a {
 
 .navbar {
   background-color: #212f45;
+  font-family: 'Press Start 2P', cursive;
+
 }
 
 .nav-item {
   position: inline;
-  padding-top: 5%;
+  padding-top: 15%;
 }
 
 #title {
@@ -175,7 +177,7 @@ h1 {
   color: white;
   font-family: 'Press Start 2P', cursive;
   padding-bottom: 5%;
-
+  padding-top: 10%;
 }
 
 .fancy {
@@ -205,6 +207,7 @@ h1 {
   font-size: 13px;
   display: flex;
   color:#065A60;
+  margin-top: 40%;
 }
 
 footer {
@@ -346,6 +349,7 @@ footer {
   flex-grow: 1;
   overflow-y:scroll; 
   padding-left: 5%;
+  padding-top: 15%;
 }
 
 #side1 {

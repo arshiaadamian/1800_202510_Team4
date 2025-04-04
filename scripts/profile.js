@@ -28,12 +28,23 @@ if (fileInput) {
         img.src = downloadURL + "?t=" + new Date().getTime(); // Force refresh
       });
 
+      // Show success message
+      const messageDiv = document.getElementById("upload-message");
+      if (messageDiv) {
+        messageDiv.style.display = "block";
+        messageDiv.textContent = "Profile uploaded!";
+        setTimeout(() => {
+          messageDiv.style.display = "none";
+        }, 3000);
+      }
+
       console.log("Profile picture updated successfully.");
     } catch (error) {
       console.error("Error updating profile picture:", error);
     }
   });
 }
+
 
 // Load the profile picture on all pages with a sidebar
 auth.onAuthStateChanged(async (user) => {
@@ -140,60 +151,51 @@ updateButton2.addEventListener("click", async () => {
 });
 
 
-function editUserInfo() {
-  document.getElementById('profileInfo').disabled = !document.getElementById('profileInfo').disabled;
-  updateButton.innerHTML = "Save";
-  updateButton.style = "";
-  updateButton.disabled = document.getElementById('profileInfo').disabled;
-}
 
-function editUserInfo2() {
-  document.getElementById('profileInfo1').disabled = !document.getElementById('profileInfo1').disabled;
-  updateButton2.innerHTML = "Save";
-  updateButton2.style = "";
-  updateButton2.disabled = document.getElementById('profileInfo1').disabled;
-}
+  window.onload = function() {
+    document.getElementById('profileInfo').disabled = true;
+    document.getElementById('profileInfo1').disabled = true;
+    document.getElementById('submit1').disabled = true;
+    document.getElementById('submit2').disabled = true;
+  };
+
+  function editUserInfo() {
+    var form = document.getElementById('profileInfo');
+    form.disabled = !form.disabled;
+    document.getElementById('submit1').disabled = !form.disabled;
+  }
+
+  function editUserInfo2() {
+    var form = document.getElementById('profileInfo1');
+    form.disabled = !form.disabled;
+    document.getElementById('submit2').disabled = !form.disabled;
+  }
 
 
-var currentUser;               //points to the document of the user who is logged in
+var currentUser;              
 function populateUserInfo() {
   firebase.auth().onAuthStateChanged(user => {
-    // Check if user is signed in:
     if (user) {
-      //go to the correct user document by referencing to the user uid
       currentUser = db.collection("users").doc(user.uid);
-      //get the document for current user.
       currentUser.get()
         .then(userDoc => {
           let userData = userDoc.data();
-          let userName = userData.username;
-          let userEmail = userData.email;
-          let userAge = userData.age;
-
-          if (userName) {
-            document.getElementById("fullName").value = userName;
-          }
-          if (userEmail) {
-            document.getElementById("email").value = userEmail;
-          }
-          if (userAge) {
-            document.getElementById("age").value = userAge;
-          }
+          // Populate all fields
+          if (userData.username) document.getElementById("fullName").value = userData.username;
+          if (userData.email) document.getElementById("email").value = userData.email;
+          if (userData.age) document.getElementById("age").value = userData.age;
+          if (userData.country) document.getElementById("Country").value = userData.country;
+          if (userData.language) document.getElementById("lang").value = userData.language;
+          
           if (userData.genres) {
-            firstPersonShooter.checked
-              = userData.genres.firstPersonShooter;
-            rolePlay.checked
-              = userData.genres.rolePlaying;
-            mass.checked
-              = userData.genres.massMultiplayer;
-            casual.checked
-              = userData.genres.casual;
-            horror.checked
-              = userData.genres.horror;
+            firstPersonShooter.checked = userData.genres.firstPersonShooter;
+            rolePlay.checked = userData.genres.rolePlaying;
+            mass.checked = userData.genres.massMultiplayer;
+            casual.checked = userData.genres.casual;
+            horror.checked = userData.genres.horror;
           }
         })
     } else {
-      // No user is signed in.
       console.log("No user is signed in");
     }
   });
@@ -227,6 +229,76 @@ function populateUserAbout() {
       console.log("No user is signed in");
     }
   });
+}
+
+// Function to limit the number of checkbox selections
+function limitSelections(checkboxGroup, maxSelections) {
+  let selectedCount = 0;
+  const errorMessage = document.getElementById("error-message");
+  
+  for (let i = 0; i < checkboxGroup.length; i++) {
+      if (checkboxGroup[i].checked) {
+          selectedCount++;
+          if (selectedCount > maxSelections) {
+              checkboxGroup[i].checked = false;
+              errorMessage.style.display = "block";
+              break;
+          } else {
+              errorMessage.style.display = "none";
+          }
+      }
+  }
+}
+
+const checkboxes = document.querySelectorAll('#profileInfo1 .form-check-input');
+checkboxes.forEach(checkbox => {
+  checkbox.addEventListener('change', function() {
+      limitSelections(checkboxes, 2);
+  });
+});
+
+const submitButton = document.getElementById("submit2");
+submitButton.addEventListener("click", async () => {
+  const errorMessage = document.getElementById("error-message");
+  const checkedCount = Array.from(checkboxes).filter(cb => cb.checked).length;
+  
+  if (checkedCount > 2) {
+      errorMessage.style.display = "block";
+      return;
+  }
+
+  const user = auth.currentUser;
+  if (!user) return;
+
+  try {
+      await db.collection("users").doc(user.uid).update({
+          genres: {
+              firstPersonShooter: document.getElementById("pref1").checked,
+              rolePlaying: document.getElementById("pref2").checked,
+              massMultiplayer: document.getElementById("pref3").checked,
+              casual: document.getElementById("pref4").checked,
+              horror: document.getElementById("pref5").checked
+          }
+      });
+      
+      submitButton.innerHTML = "Submitted!";
+      submitButton.style.backgroundColor = "green";
+      submitButton.disabled = true;
+      document.getElementById('profileInfo1').disabled = true;
+  } catch (error) {
+      console.error("Error updating preferences:", error);
+  }
+});
+
+
+function editUserInfo2() {
+  const profileInfo = document.getElementById('profileInfo1');
+  profileInfo.disabled = !profileInfo.disabled;
+  
+  const submitBtn = document.getElementById("submit2");
+  submitBtn.innerHTML = "Save";
+  submitBtn.style.backgroundColor = "";
+  submitBtn.disabled = profileInfo.disabled;
 }
 
 
