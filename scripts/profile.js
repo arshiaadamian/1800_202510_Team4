@@ -148,10 +148,10 @@ function editUserInfo() {
 }
 
 function editUserInfo2() {
-  document.getElementById('profileInfo2').disabled = !document.getElementById('profileInfo2').disabled;
+  document.getElementById('profileInfo1').disabled = !document.getElementById('profileInfo1').disabled;
   updateButton2.innerHTML = "Save";
   updateButton2.style = "";
-  updateButton2.disabled = document.getElementById('profileInfo2').disabled;
+  updateButton2.disabled = document.getElementById('profileInfo1').disabled;
 }
 
 

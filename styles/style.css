@@ -1,10 +1,14 @@
-h2, h1 {
+h1, h2 {
   font-family: 'Press Start 2P', cursive;
-  margin-top: 10%;
 }
 
 body {
   background-color: #3e1f47;
+}
+
+a {
+  text-decoration: none;
+  color: black;
 }
 
 .navbar {
@@ -18,56 +22,36 @@ body {
   font-size: 10px;
 }
 
-a {
-  text-decoration: none;
-  color: black;
+.nav-link {
+  margin: 5%;
+}
+
+#nav1, #nav2, #nav3, #nav4, #nav5 {
+  padding-right: 10%;
+  display: flex;
+  align-self: center;
 }
 
 .btn-close {
   height: 150%;
 }
 
-.nav-link {
-  margin: 5%;
-}
-
-.custom-navbar {
-  position: absolute;
-  width: 100%;
-  top: 0;
-  border: 8px solid #212f45;
-  height: 8%;
-  font-family: 'Press Start 2P', cursive;
-}
-
+/* Footer Styles */
 footer {
   position: fixed;
   bottom: 0;
+  width: 100%;
   background-color: #212f45;
   padding: 10px;
   text-align: center;
 }
 
-#nav1,
-#nav2,
-#nav3,
-#nav4,
-#nav5 {
-  padding-right: 10%;
-  display: flex;
-  align-self: center;
-}
-
-
-footer {
-  margin-top: auto;
-  width: 100%;
-}
-
 .hero {
-  margin-top: 25%;
-  width: 100%;
+    margin-top: 0; /* Remove negative margin */
+    padding-top: 30%;
+    text-align: center;
 }
+
 
 #jynx {
   font-family: 'Press Start 2P', cursive;
@@ -78,7 +62,8 @@ footer {
   text-shadow: 5pt 5pt black;
   font-size: 121px;
   color: hsla(138, 0%, 0%, 1);
-  text-shadow: 0px 0px 0px hsla(188, 68%, 31%, 1),
+  text-shadow: 
+    0px 0px 0px hsla(188, 68%, 31%, 1),
     0px 0.6818181818181819px 0px hsla(190, 68%, 30%, 1),
     0px 1.3636363636363638px 0px hsla(192, 69%, 29%, 1),
     0px 2.0454545454545454px 0px hsla(195, 69%, 28%, 1),
@@ -104,12 +89,6 @@ footer {
     0px 15px 0px hsla(238, 73%, 4%, 1);
 }
 
-
-.nav_gif {
-  position: absolute;
-  width: 50%;
-}
-
 .carousel {
   border-bottom: 20px solid hsla(234, 88%, 17%, 1);
   border-top: 20px solid hsla(234, 88%, 17%, 1);
@@ -126,8 +105,7 @@ footer {
   cursor: pointer;
 }
 
-.dropbtn:hover,
-.dropbtn:focus {
+.dropbtn:hover, .dropbtn:focus {
   background-color: #272640;
   color: white;
 }
@@ -144,6 +122,7 @@ footer {
   min-width: 160px;
   overflow: auto;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  bottom: 60px;
 }
 
 .dropdown-content a {
@@ -161,20 +140,25 @@ footer {
   display: block;
 }
 
-.dropdown-content {
-  bottom: 60px;
-}
-
 .pfp {
   width: 30px;
   height: 30px;
+  border-radius: 100px;
   -webkit-border-radius: 100px;
   -moz-border-radius: 100px;
-  border-radius: 100px;
 }
 
-@media (width > 1200px) {
+.nav_gif {
+  position: absolute;
+  width: 50%;
+}
+
+@media (min-width: 1200px) {
   .carousel {
     max-width: 30%;
-  } 
+  }
+}
+
+.custom-navbar {
+  margin-top: -1%;
 }

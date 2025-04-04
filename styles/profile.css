@@ -161,3 +161,16 @@ input[type="text"]:disabled {
 button {
   color: #ffffff !important;
 }
+
+footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: #212f45;
+  padding: 10px;
+  text-align: center;
+}
+
+h1 {
+  padding-top: 20%;
+}
