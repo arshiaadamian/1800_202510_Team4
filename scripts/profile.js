@@ -147,7 +147,7 @@ updateButton2.addEventListener("click", async () => {
   updateButton2.innerHTML = "Submitted!";
   updateButton2.style = "background-color: green;";
   updateButton2.disabled = true;
-  document.getElementById('profileInfo2').disabled = true;
+  // document.getElementById('profileInfo2').disabled = true;
 });
 
 
@@ -221,7 +221,7 @@ function populateUserAbout() {
 
           //if the data fields are not empty, then write them in to the form.
           if (userInfo != null) {
-            document.getElementById("description").value = userInfo;
+            // document.getElementById("description").value = userInfo;
           }
         })
     } else {
@@ -253,7 +253,7 @@ function limitSelections(checkboxGroup, maxSelections) {
 const checkboxes = document.querySelectorAll('#profileInfo1 .form-check-input');
 checkboxes.forEach(checkbox => {
   checkbox.addEventListener('change', function() {
-      limitSelections(checkboxes, 2);
+      limitSelections(checkboxes, 5);
   });
 });
 
@@ -262,7 +262,7 @@ submitButton.addEventListener("click", async () => {
   const errorMessage = document.getElementById("error-message");
   const checkedCount = Array.from(checkboxes).filter(cb => cb.checked).length;
   
-  if (checkedCount > 2) {
+  if (checkedCount > 5) {
       errorMessage.style.display = "block";
       return;
   }

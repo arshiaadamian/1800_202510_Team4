@@ -17,7 +17,7 @@ function loadFooter() {
     fetch("/text/footer.html").then(footer => {
         footer.text().then(footerHtml => {
             document.querySelector("footer").innerHTML = footerHtml;
-            document.getElementById("add").addEventListener("click", () => {document.getElementById("dropdown").classList.toggle("show");})
+            // document.getElementById("add").addEventListener("click", () => {document.getElementById("dropdown").classList.toggle("show");})
         });
     });
 }
