@@ -1,35 +1,33 @@
 # Project Name
 
+JAC Web Application
+
 ## Overview
 
-Summarize your project's purpose, problem solved, key features, user benefits, development context, and main technologies used.
+This client-side JavaScript web application provides like-minded gamers a way to connect with each other through our matching algorithm. It filters gamers based on their gaming preferences and populates a suggested friends page with gamers just like them. They can also share interests within user created communities and message one and another through our real-time messaging system. 
 
-Example:
-
-This client-side JavaScript web application provides real-time weather updates for cities worldwide. It simplifies accessing weather information through an intuitive mobile-first interface, allowing users to input a city name and receive data on temperature, humidity, and conditions.
-
-Developed for the [Course Name] course, applying User-Centred Design practices, agile project management processes, integrating a weather API, and Firebase backend services.
+Developed for the [COMP 1800] course, applying User-Centred Design practices, agile methodology processes, and Firebase backend services.
 
 ---
 
 ## Features
 
-Example:
+- Customize and update profile (including picture)
+- Match with gamers who have the same gaming preferences as you
+- Displays user created communities that are joinable 
+- Create your own communities with a customizable picture banner 
+- Search for users 
+- Each user can be contacted through e-mail 
+- A messsaging system that allows users to message each other real-time 
 
-- Real-time weather updates for any city.
-- Responsive design for desktop and mobile.
-- Displays temperature, humidity, and weather conditions.
 
 ---
 
 ## Technologies Used
 
-Example:
-
 - **Frontend**: HTML, CSS, JavaScript
 - **Backend**: Firebase for hosting
 - **Database**: Firestore
-- **API**: OpenWeatherMap API
 
 ---
 
@@ -37,26 +35,55 @@ Example:
 
 Example:
 
-1. Open your browser and visit `http://localhost:3000`.
-2. Enter the name of the city in the search bar and press enter.
-3. View the weather information displayed on the screen.
+1. Open your browser and visit `https://jac-app-2c28c.web.app`
+2. Register
+3. Customize and update your profile information 
+4. Start exploring the navigation bar! Start making friends!
 
 ---
 
 ## Project Structure
 
-Example:
-
-```
-project-name/
-├── src/
-│   ├── index.html
-│   ├── style.css
-│   ├── app.js
-│   └── components/
-├── package.json
-├── README.md
-└── .gitignore
+1800_202510_TEAM4/
+├── .firebase/
+├── images/
+│   ├── default.png
+│   ├── jacLogo.png
+│   ├── slide1.gif
+│   ├── slide2.gif
+│   └── slide3.gif
+│ 
+├── scripts/
+│   ├── add.js
+│   ├── community.js
+│   ├── create-comm.js
+│   ├── functions.js
+│   ├── loginSignup.js 
+│   └── the rest of the js files... 
+│ 
+├── styles/
+│   ├── comm1_events.css
+│   ├── community1.css
+│   ├── create-comm.css
+│   ├── events.css
+│   ├── join_com.css 
+│   └── the rest of the css files... 
+│ 
+├── text/
+│   ├── community.html
+│   ├── community1_events.html
+│   ├── create-comm.html
+│   ├── events.html
+│   ├── footer.html 
+│   └── the rest of the html files... 
+│
+├── .firebaserc
+├── .gitignore
+├── 404.html
+├── favicon.ico
+├── firebase.json
+├── firestor.indexes.json
+└── the rest of the firestore files...
 ```
 
 ---
@@ -71,11 +98,13 @@ project-name/
 
 ## Acknowledgments
 
-Example:
-
-- Weather data sourced from [OpenWeatherMap](https://openweathermap.org/).
-- Code snippets for \_\_\_ algoirthm were adapted from resources such as [Stack Overflow](https://stackoverflow.com/) and [MDN Web Docs](https://developer.mozilla.org/).
-- Icons sourced from [FontAwesome](https://fontawesome.com/) and images from [Unsplash](https://unsplash.com/).
+- Code snippets for \_\_\_ algoirthm were adapted from resources such as [Stack Overflow](https://stackoverflow.com/) and [W3Schools](https://w3schools.com/) and [BootStrap](https://getbootstrap.com/docs/)
+- Profile coding snippets from [BootDey](https://www.bootdey.com/snippets/view/account-setting-or-edit-profile)
+- Messaging coding snippets from [BootDey](https://www.bootdey.com/snippets/view/bs4-simple-chat-app)
+- Font sourced from [Google Fonts](https://fonts.googleapis.com) and image carousal from [Behance](https://www.behance.net/)
+- Pacman sourced from [CodePen](https://codepen.io/mickaellherminez/pen/xbxxqdJ)
+- Floating animation sourced from [CodePen](https://codepen.io/MarioDesigns/pen/woJgeo)
+- Colour palette sourced from [Coolors](https://coolors.co/palette/006466-065a60-0b525b-144552-1b3a4b-212f45-272640-312244-3e1f47-4d194d)
 
 ---
 
@@ -83,24 +112,23 @@ Example:
 
 ### Limitations
 
-Example:
-
-- Currently, the app only supports city-based weather searches.
-- Limited to basic weather parameters like temperature, humidity, and conditions.
-- The user interface can be further enhanced for accessibility.
+- Currently, the app only supports email contacting as well as through the messaging system in the web application. 
+- Limited to basic sharing in communities (just words). Cannot upload pictures, reply to a post, or use emojis. No thumbs up or down.
+- The Events page is limited to just the front-end, does not have a functionality. 
+- UI can be enhanced. 
+- User needs to input profile updates otherwise the email will not have a messaging template. 
+- Currently filters friends through five different gaming preferences. 
 
 ### Future Work
 
-Example:
 
-- Add support for location-based weather detection using GPS.
-- Implement additional weather parameters like wind speed and UV index.
-- Create a dark mode for better usability in low-light conditions.
-- Integrate user accounts for saving favorite locations.
+- Add more choices to filter the gamers. Instead of only 5 choices, perhaps 5 choices of 3 different categories. 
+- Implement additional events functionality that can bookmark and save events to users own Events page. 
+- Create a settings page where users can change their background colour. 
+- Integrate user accounts to display more information, (age, country, description about themselves).
 
 ---
 
 ## License
 
-Example:
-This project is licensed under the MIT License. See the LICENSE file for details.
+This project is licensed under BCIT, JAC Co. 

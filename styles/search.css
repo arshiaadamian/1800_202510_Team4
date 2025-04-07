@@ -29,14 +29,14 @@ body {
 }
 
 .card {
-  margin: 20px 0; /* Add vertical spacing between cards */
+  margin: 20px 0; 
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
 .card-display {
-  margin: 20px auto; /* Center cards horizontally */
+  margin: 20px auto; 
 }
 
 .btn-primary {
@@ -55,7 +55,7 @@ body {
   width: 90%;
   border-radius: 50%;
   border: #3e1f47 solid 2px;
-  margin-top: 10px; /* Add space at the top of images */
+  margin-top: 10px; 
 }
 
 .btn-outline-success {
