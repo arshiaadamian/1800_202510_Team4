@@ -34,10 +34,45 @@ function populateCommunityMessages() {
                 newMessage.querySelector(".user-picture").src = img;
                 newMessage.querySelector(".message-content").innerHTML = message.content;
                 newMessage.querySelector(".time-ago").innerHTML = getTimeAgo(Date.now() - message.timestamp.toDate().valueOf());
+
                 db.collection("users").doc(message.from).get().then(userDoc => {
                     newMessage.querySelector(".user-name").innerHTML = userDoc.data().username;
+                    newMessage.querySelector(".user-name").addEventListener("click", event => {
+                        event.preventDefault();
+                        if (message.from == auth.currentUser.uid) { return; }
+
+                        let newClick = document.querySelector(".click-user");
+                        newClick.querySelector(".username").innerHTML = userDoc.data().username;
+                        newClick.querySelector(".user-img").src = img;
+                        newClick.querySelector(".messageInput").addEventListener("keypress", (keyEvent) => {
+                            let key = keyEvent.code;
+                            if (key === "Enter") {
+                                keyEvent.preventDefault();
+                                let id = message.from;
+                                if (id) {
+                                    console.log(id);
+                                    msg_id = sendMessage(id, messageArea.value);
+                                    newClick.querySelector(".messageInput").value = "";
+                                    newClick.style.display = "none";
+                                }
+                            }
+                        });
+                        newClick.querySelector(".sendMessage").addEventListener("click", (clickEvent) => {
+                            clickEvent.preventDefault();
+                            let id = message.from;
+                            if (id) {
+                                msg_id = sendMessage(id, messageArea.value);
+                                newClick.querySelector(".messageInput").value = "";
+                                newClick.style.display = "none";
+                            }
+                        });
+                        newClick.style.display = "";
+                        let xPos = (event.clientX - newClick.offsetLeft - newClick.offsetWidth / 2);
+                        let yPos = (event.clientY - newClick.offsetTop - newClick.offsetHeight / 2);
+                        newClick.style.transform = `translate(${xPos}px, ${yPos}px)`;
+                    });
                     meesagesDiv.appendChild(newMessage);
-                })
+                });
             });
 
         });
@@ -68,8 +103,9 @@ messageArea.addEventListener("keypress", event => {
     }
 });
 
-const shareBtn = document.getElementById("side2");
+const shareBtn = document.getElementById("share");
 shareBtn.addEventListener("click", event => {
+    console.log("Click");
     event.preventDefault();
     sendCommunityMessage(messageArea.value);
     messageArea.value = "";

@@ -17,7 +17,7 @@ function loadFooter() {
     fetch("/text/footer.html").then(footer => {
         footer.text().then(footerHtml => {
             document.querySelector("footer").innerHTML = footerHtml;
-            document.getElementById("add").addEventListener("click", () => {document.getElementById("dropdown").classList.toggle("show");})
+            document.getElementById("add").addEventListener("click", () => { document.getElementById("dropdown").classList.toggle("show"); })
         });
     });
 }
@@ -45,7 +45,7 @@ const minuteMillis = 60_000;
 const hourMillis = minuteMillis * 60;
 const dayMillis = hourMillis * 24;
 const weekMillis = dayMillis * 7;
-const monthMillis =  weekMillis * 4.345;
+const monthMillis = weekMillis * 4.345;
 const yearMillis = monthMillis * 12;
 function getTimeAgo(millisecondsAgo) {
     if (millisecondsAgo / yearMillis >= 1) {
@@ -69,5 +69,33 @@ function getTimeAgo(millisecondsAgo) {
 }
 
 const docExists = async (docName, docId) => (await db.collection(docName).doc(docId).get()).exists;
+
+async function sendMessage(to_uid, message) {
+    let user = auth.currentUser;
+    let userList = [to_uid, user.uid].sort();
+    let docID = userList[0] + userList[1];
+    let docRef = db.collection("messages").doc(docID);
+    let curDate = new Date();
+    if (!await docExists("messages"), docID) {
+        db.collection("messages").doc(docID).set({
+            users: userList,
+            messages: []
+        });
+        await db.collection("users").doc(user.uid).update({
+            messageRooms: firebase.firestore.FieldValue.arrayUnion(docID)
+        });
+        await db.collection("users").doc(to_uid).update({
+            messageRooms: firebase.firestore.FieldValue.arrayUnion(docID)
+        });
+    }
+    docRef.update({
+        messages: firebase.firestore.FieldValue.arrayUnion({
+            from: user.uid,
+            content: message,
+            timestamp: curDate
+        })
+    });
+    
+}
 
 document.title = "JAC";

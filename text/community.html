@@ -31,54 +31,19 @@
   <!-- Google Icons (Material Design)-->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" />
-  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet" />
 
 
   <!-- Link to styles of your own -->
   <link rel="stylesheet" href="/styles/command1.css" />
-  </head>
+</head>
 
-  <body>
-    <!--============================-->
-    <!-- Your HTML Layout goes here -->
-    <!--============================-->
+<body>
+  <!--============================-->
+  <!-- Your HTML Layout goes here -->
+  <!--============================-->
 
-    <nav class="navbar navbar-expand-lg navbar-light bg-light custom-navbar">
-      <div class="container">
-        <a data-bs-toggle="offcanvas" href="#sidebar"><span class="material-icons">menu</span></a>
-        <a href="#"><img class="logo" src="/images/jacLogo.png" height="35" alt="JAC Logo" />
-        </a>
-      </div>
-      <div class="offcanvas offcanvas-start" tabindex="-1" id="sidebar" aria-labelledby="sidebarLabel">
-        <div class="offcanvas-header">
-          <h5 class="offcanvas-title" id="sidebarLabel">Menu</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-        </div>
-        <div class="offcanvas-body">
-          <div>
-            <ul class="navbar-nav">
-              <li class="nav-item">
-                <a class="nav-link" href="profile.html"><span class="material-icons" id="nav1">account_circle
-                  </span>Profile</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="messages.html"><span class="material-icons" id="nav2">chat </span>Messages</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="your_comm.html"><span class="material-icons" id="nav3">groups
-                  </span>Communities</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="events.html"><span class="material-icons" id="nav4">event </span>Events</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#"><span class="material-icons" id="nav5">settings </span>Settings</a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </nav>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light custom-navbar">
     <div class="container">
       <a data-bs-toggle="offcanvas" href="#sidebar"><span class="material-icons">menu</span></a>
       <a href="#"><img class="logo" src="/images/jacLogo.png" height="35" alt="JAC Logo" />
@@ -93,8 +58,8 @@
         <div>
           <ul class="navbar-nav">
             <li class="nav-item">
-              <a class="nav-link" href="profile.html"><span class="material-icons" id="nav1">account_circle </span>Your
-                Profile</a>
+              <a class="nav-link" href="profile.html"><span class="material-icons" id="nav1">account_circle
+                </span>Profile</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="messages.html"><span class="material-icons" id="nav2">chat </span>Messages</a>
@@ -113,9 +78,44 @@
         </div>
       </div>
     </div>
-    </nav>
+  </nav>
+  <div class="container">
+    <a data-bs-toggle="offcanvas" href="#sidebar"><span class="material-icons">menu</span></a>
+    <a href="#"><img class="logo" src="/images/jacLogo.png" height="35" alt="JAC Logo" />
+    </a>
+  </div>
+  <div class="offcanvas offcanvas-start" tabindex="-1" id="sidebar" aria-labelledby="sidebarLabel">
+    <div class="offcanvas-header">
+      <h5 class="offcanvas-title" id="sidebarLabel">Menu</h5>
+      <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+      <div>
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="profile.html"><span class="material-icons" id="nav1">account_circle </span>Your
+              Profile</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="messages.html"><span class="material-icons" id="nav2">chat </span>Messages</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="your_comm.html"><span class="material-icons" id="nav3">groups
+              </span>Communities</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="events.html"><span class="material-icons" id="nav4">event </span>Events</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#"><span class="material-icons" id="nav5">settings </span>Settings</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  </nav>
 
-<div class="main-container">
+  <div class="main-container">
     <div class="sidebar">
       <div class="d-flex flex-column flex-shrink-0 bg-light" style="width: 4.5rem;">
         <a href="/" class="d-block p-3 link-dark text-decoration-none" title="Icon-only" data-bs-toggle="tooltip"
@@ -143,208 +143,211 @@
           </li>
         </ul>
       </div>
-      </div>
+    </div>
 
-      <div class="content">
-        <img class="thumbnail community-picture" src="/images/default.png" alt="Community picture">
-        <h1><span id="title">Insanity in a Game</span> <span class="fancy text-secondary">Community</span></h1>
-        <div class="container bootdey">
-          <div class="col-md-12 bootstrap snippets">
-            <div class="panel">
-              <div class="panel-body">
-                <textarea class="form-control" rows="2" placeholder="What are you thinking?"></textarea>
-                <div class="mar-top clearfix">
-                  <button class="btn btn-sm btn-dark pull-right" type="submit"><i class="fa fa-pencil fa-fw"></i>
-                    Share</button>
-                  <a class="btn btn-trans btn-icon fa fa-video-camera add-tooltip" href="#"></a>
-                  <a class="btn btn-trans btn-icon fa fa-camera add-tooltip" href="#"></a>
-                  <a class="btn btn-trans btn-icon fa fa-file add-tooltip" href="#"></a>
-                </div>
+    <div class="content">
+      <img class="thumbnail community-picture" src="/images/default.png" alt="Community picture">
+      <h1><span id="title">Insanity in a Game</span> <span class="fancy text-secondary">Community</span></h1>
+      <div class="container bootdey">
+        <div class="col-md-12 bootstrap snippets">
+          <div class="panel">
+            <div class="panel-body">
+              <textarea class="form-control" rows="2" placeholder="What are you thinking?"></textarea>
+              <div class="mar-top clearfix">
+                <button class="btn btn-sm btn-dark pull-right" type="submit" id="share"><i
+                    class="fa fa-pencil fa-fw"></i>
+                  Share</button>
+                <a class="btn btn-trans btn-icon fa fa-video-camera add-tooltip" href="#"></a>
+                <a class="btn btn-trans btn-icon fa fa-camera add-tooltip" href="#"></a>
+                <a class="btn btn-trans btn-icon fa fa-file add-tooltip" href="#"></a>
               </div>
             </div>
-            <div class="panel" id="message-div">
-              <div class="panel-body">
-                <!-- Newsfeed Content -->
-                <!--===================================================-->
-                <div class="media-block">
-                  <a class="media-left" href="#"><img class="img-circle img-sm" alt="Profile Picture"
-                      src="/images/pfp1.gif"></a>
-                  <div class="media-body">
-                    <div class="mar-btm">
-                      <a href="#" class="btn-link text-semibold media-heading box-inline">TheGr8Avo.</a>
-                      <p class="text-muted text-sm"><i class="fa fa-mobile fa-lg"></i> - From Mobile - 11 min ago</p>
+          </div>
+          <div class="panel" id="message-div">
+            <div class="panel-body">
+              <!-- Newsfeed Content -->
+              <!--===================================================-->
+              <div class="media-block">
+                <a class="media-left" href="#"><img class="img-circle img-sm" alt="Profile Picture" src=""></a>
+                <div class="media-body">
+                  <div class="mar-btm">
+                    <a href="#" class="btn-link text-semibold media-heading box-inline">TheGr8Avo.</a>
+                    <p class="text-muted text-sm"><i class="fa fa-mobile fa-lg"></i> - From Mobile - 11 min ago</p>
+                  </div>
+                  <p>Does anyone else like avocadoes?</p>
+                  <div class="pad-ver">
+                    <div class="btn-group">
+                      <a class="btn btn-sm btn-default btn-hover-success" href="#"><i class="fa fa-thumbs-up"></i></a>
+                      <a class="btn btn-sm btn-default btn-hover-danger" href="#"><i class="fa fa-thumbs-down"></i></a>
                     </div>
-                    <p>Does anyone else like avocadoes?</p>
-                    <div class="pad-ver">
-                      <div class="btn-group">
-                        <a class="btn btn-sm btn-default btn-hover-success" href="#"><i class="fa fa-thumbs-up"></i></a>
-                        <a class="btn btn-sm btn-default btn-hover-danger" href="#"><i
-                            class="fa fa-thumbs-down"></i></a>
+                    <a class="btn btn-sm btn-default btn-hover-primary" href="#">Comment</a>
+                  </div>
+                  <hr>
+
+                  <!-- Comments -->
+                  <div>
+                    <div class="media-block">
+                      <a class="media-left" href="#"><img class="img-circle img-sm" alt="Profile Picture" src=""></a>
+                      <div class="media-body">
+                        <div class="mar-btm">
+                          <a href="#" class="btn-link text-semibold media-heading box-inline">KPS</a>
+                          <p class="text-muted text-sm"><i class="fa fa-mobile fa-lg"></i> - From Mobile - 7 min ago
+                          </p>
+                        </div>
+                        <p>Stop.</p>
+                        <div class="pad-ver">
+                          <div class="btn-group">
+                            <a class="btn btn-sm btn-default btn-hover-success active" href="#"><i
+                                class="fa fa-thumbs-up"></i> You Like it</a>
+                            <a class="btn btn-sm btn-default btn-hover-danger" href="#"><i
+                                class="fa fa-thumbs-down"></i></a>
+                          </div>
+                          <a class="btn btn-sm btn-default btn-hover-primary" href="#">Comment</a>
+                        </div>
+                        <hr>
                       </div>
-                      <a class="btn btn-sm btn-default btn-hover-primary" href="#">Comment</a>
                     </div>
-                    <hr>
 
-                    <!-- Comments -->
-                    <div>
-                      <div class="media-block">
-                        <a class="media-left" href="#"><img class="img-circle img-sm" alt="Profile Picture"
-                            src="/images/pfp3.jpg"></a>
-                        <div class="media-body">
-                          <div class="mar-btm">
-                            <a href="#" class="btn-link text-semibold media-heading box-inline">KPS</a>
-                            <p class="text-muted text-sm"><i class="fa fa-mobile fa-lg"></i> - From Mobile - 7 min ago
-                            </p>
-                          </div>
-                          <p>Stop.</p>
-                          <div class="pad-ver">
-                            <div class="btn-group">
-                              <a class="btn btn-sm btn-default btn-hover-success active" href="#"><i
-                                  class="fa fa-thumbs-up"></i> You Like it</a>
-                              <a class="btn btn-sm btn-default btn-hover-danger" href="#"><i
-                                  class="fa fa-thumbs-down"></i></a>
-                            </div>
-                            <a class="btn btn-sm btn-default btn-hover-primary" href="#">Comment</a>
-                          </div>
-                          <hr>
+                    <div class="media-block">
+                      <a class="media-left" href="#"><img class="img-circle img-sm" alt="Profile Picture" src="">
+                      </a>
+                      <div class="media-body">
+                        <div class="mar-btm">
+                          <a href="#" class="btn-link text-semibold media-heading box-inline">TomADoe</a>
+                          <p class="text-muted text-sm"><i class="fa fa-globe fa-lg"></i> - From Web - 2 min ago</p>
                         </div>
-                      </div>
-
-                      <div class="media-block">
-                        <a class="media-left" href="#"><img class="img-circle img-sm" alt="Profile Picture"
-                            src="/images/pfp2.webp">
-                        </a>
-                        <div class="media-body">
-                          <div class="mar-btm">
-                            <a href="#" class="btn-link text-semibold media-heading box-inline">TomADoe</a>
-                            <p class="text-muted text-sm"><i class="fa fa-globe fa-lg"></i> - From Web - 2 min ago</p>
+                        <p>Tomatoes > Avocadoes</p>
+                        <div class="pad-ver">
+                          <div class="btn-group">
+                            <a class="btn btn-sm btn-default btn-hover-success" href="#"><i
+                                class="fa fa-thumbs-up"></i></a>
+                            <a class="btn btn-sm btn-default btn-hover-danger" href="#"><i
+                                class="fa fa-thumbs-down"></i></a>
                           </div>
-                          <p>Tomatoes > Avocadoes</p>
-                          <div class="pad-ver">
-                            <div class="btn-group">
-                              <a class="btn btn-sm btn-default btn-hover-success" href="#"><i
-                                  class="fa fa-thumbs-up"></i></a>
-                              <a class="btn btn-sm btn-default btn-hover-danger" href="#"><i
-                                  class="fa fa-thumbs-down"></i></a>
-                            </div>
-                            <a class="btn btn-sm btn-default btn-hover-primary" href="#">Comment</a>
-                          </div>
-                          <hr>
+                          <a class="btn btn-sm btn-default btn-hover-primary" href="#">Comment</a>
                         </div>
+                        <hr>
                       </div>
                     </div>
                   </div>
                 </div>
-                <!--===================================================-->
-                <!-- End Newsfeed Content -->
-
-
-                <!-- Newsfeed Content -->
-                <!--===================================================-->
-                <div class="media-block pad-all">
-                  <a class="media-left" href="#"><img class="img-circle img-sm" alt="Profile Picture"
-                      src="/images/pfp2.webp"></a>
-                  <div class="media-body">
-                    <div class="mar-btm">
-                      <a href="#" class="btn-link text-semibold media-heading box-inline">TomADoe</a>
-                      <p class="text-muted text-sm"><i class="fa fa-mobile fa-lg"></i> - From Mobile - 11 min ago</p>
-                    </div>
-                    <p>Coding be like:</p>
-                    <img class="img-responsive thumbnail" src="/images/pfp4.png" alt="Image">
-                    <div class="pad-ver">
-                      <span class="tag tag-sm"><i class="fa fa-heart text-danger"></i> 250 Likes</span>
-                      <div class="btn-group">
-                        <a class="btn btn-sm btn-default btn-hover-success" href="#"><i class="fa fa-thumbs-up"></i></a>
-                        <a class="btn btn-sm btn-default btn-hover-danger" href="#"><i
-                            class="fa fa-thumbs-down"></i></a>
-                      </div>
-                      <a class="btn btn-sm btn-default btn-hover-primary" href="#">Comment</a>
-                    </div>
-                    <hr>
-
-                    <!-- Comments -->
-                    <div>
-                      <div class="media-block pad-all pb-5">
-                        <a class="media-left" href="#"><img class="img-circle img-sm" alt="Profile Picture"
-                            src="/images/pfp3.jpg"></a>
-                        <div class="media-body">
-                          <div class="mar-btm">
-                            <a href="#" class="btn-link text-semibold media-heading box-inline">KPS</a>
-                            <p class="text-muted text-sm"><i class="fa fa-globe fa-lg"></i> - From Web - 2 min ago</p>
-                          </div>
-                          <p>Preach</p>
-                          <div>
-                            <div class="btn-group">
-                              <a class="btn btn-sm btn-default btn-hover-success" href="#"><i
-                                  class="fa fa-thumbs-up"></i></a>
-                              <a class="btn btn-sm btn-default btn-hover-danger" href="#"><i
-                                  class="fa fa-thumbs-down"></i></a>
-                            </div>
-                            <a class="btn btn-sm btn-default btn-hover-primary" href="#">Comment</a>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <!--===================================================-->
-                <!-- End Newsfeed Content -->
               </div>
+              <!--===================================================-->
+              <!-- End Newsfeed Content -->
+
+
+              <!-- Newsfeed Content -->
+              <!--===================================================-->
+              <div class="media-block pad-all">
+                <a class="media-left" href="#"><img class="img-circle img-sm" alt="Profile Picture" src=""></a>
+                <div class="media-body">
+                  <div class="mar-btm">
+                    <a href="#" class="btn-link text-semibold media-heading box-inline">TomADoe</a>
+                    <p class="text-muted text-sm"><i class="fa fa-mobile fa-lg"></i> - From Mobile - 11 min ago</p>
+                  </div>
+                  <p>Coding be like:</p>
+                  <img class="img-responsive thumbnail" src="" alt="Image">
+                  <div class="pad-ver">
+                    <span class="tag tag-sm"><i class="fa fa-heart text-danger"></i> 250 Likes</span>
+                    <div class="btn-group">
+                      <a class="btn btn-sm btn-default btn-hover-success" href="#"><i class="fa fa-thumbs-up"></i></a>
+                      <a class="btn btn-sm btn-default btn-hover-danger" href="#"><i class="fa fa-thumbs-down"></i></a>
+                    </div>
+                    <a class="btn btn-sm btn-default btn-hover-primary" href="#">Comment</a>
+                  </div>
+                  <hr>
+
+                  <!-- Comments -->
+                  <div>
+                    <div class="media-block pad-all pb-5">
+                      <a class="media-left" href="#"><img class="img-circle img-sm" alt="Profile Picture" src=""></a>
+                      <div class="media-body">
+                        <div class="mar-btm">
+                          <a href="#" class="btn-link text-semibold media-heading box-inline">KPS</a>
+                          <p class="text-muted text-sm"><i class="fa fa-globe fa-lg"></i> - From Web - 2 min ago</p>
+                        </div>
+                        <p>Preach</p>
+                        <div>
+                          <div class="btn-group">
+                            <a class="btn btn-sm btn-default btn-hover-success" href="#"><i
+                                class="fa fa-thumbs-up"></i></a>
+                            <a class="btn btn-sm btn-default btn-hover-danger" href="#"><i
+                                class="fa fa-thumbs-down"></i></a>
+                          </div>
+                          <a class="btn btn-sm btn-default btn-hover-primary" href="#">Comment</a>
+                        </div>
+                      </div>
+                    </div>
+                    <div>
+
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!--===================================================-->
+              <!-- End Newsfeed Content -->
             </div>
           </div>
         </div>
       </div>
+    </div>
   </div>
 
-    <footer>
-      <nav class="navbar pb-0" style="background-color: white">
-        <div class="container">
-          <a href="/text/main.html"><span class="material-icons">home</span></a>
-          <div class="dropdown">
-            <button id="myBtn" class="dropbtn material-icons">add</button>
-            <div id="myDropdown" class="dropdown-content">
-              <a href="add_community.html">Create Community</a>
-            </div>
+  <footer>
+    <nav class="navbar pb-0" style="background-color: white">
+      <div class="container">
+        <a href="/text/main.html"><span class="material-icons">home</span></a>
+        <div class="dropdown">
+          <button id="myBtn" class="dropbtn material-icons">add</button>
+          <div id="myDropdown" class="dropdown-content">
+            <a href="add_community.html">Create Community</a>
           </div>
-          <a href="/text/search.html"><span class="material-icons"><span class="material-symbols-outlined">
-                person_search
-              </span></span></a>
         </div>
-      </nav>
-    </footer>
-
-    <template id="message-template">
-      <div class="media-block">
-        <a class="media-left" href="#"><img class="img-circle img-sm user-picture" alt="Profile Picture"
-            src="/images/pfp1.gif"></a>
-        <div class="media-body">
-          <div class="mar-btm">
-            <a href="#" class="btn-link text-semibold media-heading box-inline user-name">TheGr8Avo.</a>
-            <p class="text-muted text-sm"><i class="fa fa-mobile fa-lg"></i> - From Mobile - <span class="time-ago">11
-                minutes</span> ago</p>
-          </div>
-          <p class="message-content">Does anyone else like avocadoes?</p>
-          <div class="pad-ver">
-            <div class="btn-group">
-              <a class="btn btn-sm btn-default btn-hover-success" href="#"><i class="fa fa-thumbs-up"></i></a>
-              <a class="btn btn-sm btn-default btn-hover-danger" href="#"><i class="fa fa-thumbs-down"></i></a>
-            </div>
-            <a class="btn btn-sm btn-default btn-hover-primary" href="#">Comment</a>
-          </div>
-
-        </div>
+        <a href="/text/search.html"><span class="material-icons"><span class="material-symbols-outlined">
+              person_search
+            </span></span></a>
       </div>
-    </template>
+    </nav>
+  </footer>
 
-    <!--==========================================-->
-    <!-- Your own JavaScript functions go here    -->
-    <!--==========================================-->
-    <!-- Link to scripts of your own -->
-    <!-- <script src="./scripts/script.js"></script> -->
-    <script src="/scripts/firebaseAPI_config.js"></script>
-    <script src="/scripts/functions.js"></script>
-    <script src="/scripts/add.js"></script>
-    <script src="/scripts/community.js"></script>
-  </body>
+  <template id="message-template">
+    <div class="media-block">
+      <a class="media-left" href="#"><img class="img-circle img-sm user-picture" alt="Profile Picture" src=""></a>
+      <div class="media-body">
+        <div class="mar-btm">
+          <a href="#" class="btn-link text-semibold media-heading box-inline user-name">TheGr8Avo.</a>
+          <p class="text-muted text-sm"><i class="fa fa-mobile fa-lg"></i> - From Mobile - <span class="time-ago">11
+              minutes</span> ago</p>
+        </div>
+        <p class="message-content">Does anyone else like avocadoes?</p>
+        <div class="pad-ver">
+          <div class="btn-group">
+            <a class="btn btn-sm btn-default btn-hover-success" href="#"><i class="fa fa-thumbs-up"></i></a>
+            <a class="btn btn-sm btn-default btn-hover-danger" href="#"><i class="fa fa-thumbs-down"></i></a>
+          </div>
+          <a class="btn btn-sm btn-default btn-hover-primary" href="#">Comment</a>
+        </div>
+
+      </div>
+    </div>
+  </template>
+
+  <div class="container click-user h-25" style="position:absolute; display:none; height:30%; width:10%; background-color:#006466;">
+    <img src="" alt="User image" class="user-img w-25 mt-2 rounded-circle img-fluid"><strong class="text-light username">Just_Iced</strong><br> 
+    <textarea type="text" class="messageInput" style="width:90%;"></textarea>
+    <button class="sendMessage">Send</button>
+  </div>
+
+  <!--==========================================-->
+  <!-- Your own JavaScript functions go here    -->
+  <!--==========================================-->
+  <!-- Link to scripts of your own -->
+  <!-- <script src="./scripts/script.js"></script> -->
+  <script src="/scripts/firebaseAPI_config.js"></script>
+  <script src="/scripts/functions.js"></script>
+  <script src="/scripts/add.js"></script>
+  <script src="/scripts/community.js"></script>
+</body>
 
 </html>
