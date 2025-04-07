@@ -1,5 +1,7 @@
 h1, h2 {
   font-family: 'Press Start 2P', cursive;
+  margin-top: 12%;
+  margin-bottom: 5%;
 }
 
 body {
@@ -163,4 +165,9 @@ footer {
 
 #banners {
   font-size: 10px;
+}
+.custom-navbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
 }

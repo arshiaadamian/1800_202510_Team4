@@ -305,9 +305,6 @@ ul {
     box-shadow: none;
 }
 
-/*
-    User Cards
-    */
 #user-cards {
     margin-left: -4%;
     margin-top: -5%;
@@ -361,7 +358,10 @@ body {
     font-size: 40px;
   }
 
-* {
+.container {
     font-size: 10px;
-    text-align: right;
-  }
+}
+
+.custom-navbar {
+    margin-top: -20%;
+}
