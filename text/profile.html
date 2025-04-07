@@ -138,22 +138,16 @@
                     accept="image/png"
                   />
                 </div>
-                <div class="about">
-                  <h5 class="mb-2 text-primary text-white">About</h5>
-                  <p class="text-white">
-                    <span id="description"
-                      >I'm Yuki. I enjoy casual fun games and role-playing
-                      games. I like to make new friends!</span
-                    >
-                  </p>
-                </div>
+              </div>
+              <div id="upload-message" style="display: none; color: green; text-align: center; margin-top: 1rem;">
+                Profile uploaded!
               </div>
             </div>
           </div>
         </div>
         <div class="col-xl-9 col-lg-9 col-md-12 col-sm-12 col-12">
           <div class="card h-100">
-            <fieldset class="mb-3" id="profileInfo">
+            <fieldset class="mb-3 text-white" id="profileInfo" disabled>
             <div class="card-body">
               <div class="row gutters">
                 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
@@ -187,11 +181,11 @@
                   <h6 class="mb-3 text-white">A Little About Yourself</h6>
                 </div>
                 <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-                  <div class="form-group text-white">
+                  <div class="form-group">
                     <label for="Country">Country</label>
                     <input
                       type="text"
-                      class="form-control text-white"
+                      class="form-control"
                       id="Country"
                       placeholder="Enter Country"
                     />
@@ -228,9 +222,10 @@
                 <button type="button" class="btn btn-info" id="submit1" name="subtmi1">Save</button>
             </div>
              
+            
               <div id="filter" class="filter1">
-                <fieldset id="profileInfo2">
-                  <h1>Your Gaming <span class="fancy">Preferences</span></h1>
+                <fieldset id="profileInfo1" disabled>
+                  <h1>Your Gaming <span class="fancy" id="h21">Preferences</span></h1>
                   <input class="form-check-input" type="checkbox" id="pref1" name="pref1" value="fps" />
                   <label for="pref1"> First Person Shooter</label><br />
                   <input class="form-check-input" type="checkbox" id="pref2" name="pref2" value="rp" />
@@ -242,10 +237,9 @@
                   <input class="form-check-input" type="checkbox" id="pref5" name="pref5" value="horror" />
                   <label for="pref3"> Horror</label><br />
                 </fieldset>
+                <p id="error-message" class="text-danger mt-3" style="display: none;">Please choose a maximum of two checkboxes.</p>
                 <div class="d-flex justify-content-center mt-5">
-                  <button type="button" class="btn btn-secondary" onclick="editUserInfo2()">Edit</button>
-                  <span style="width: 10px"></span>
-                  <button type="button" class="btn btn-info" id="submit2" name="submit2">Save</button>
+                  <button type="button" class="btn btn-secondary" onclick="editUserInfo2()">Edit</button>                  <button type="button" class="btn btn-info" id="submit2" name="submit2">Save</button>
                 </div>
             </div>
           </div>

@@ -37,11 +37,8 @@ h2, h1 {
     vertical-align: middle;
 }
 
-@media (max-width: 767px) {
-    .chat-search-box {
-        display: none;
-    }
-}
+
+
 
 .users-container {
     position: relative;
@@ -161,12 +158,6 @@ h2, h1 {
     .users .person .user img {
         width: 30px;
         height: 30px;
-    }
-    .users .person p.name-time {
-        display: none;
-    }
-    .users .person p.name-time .time {
-        display: none;
     }
 }
 
@@ -288,46 +279,6 @@ h2, h1 {
     margin: 0 15px 0 0;
 }
 
-@media (max-width: 767px) {
-    .chat-container li.chat-left,
-    .chat-container li.chat-right {
-        flex-direction: column;
-        margin-bottom: 30px;
-    }
-    .chat-container li img {
-        width: 32px;
-        height: 32px;
-    }
-    .chat-container li.chat-left .chat-avatar {
-        margin: 0 0 5px 0;
-        display: flex;
-        align-items: center;
-    }
-    .chat-container li.chat-left .chat-hour {
-        justify-content: flex-end;
-    }
-    .chat-container li.chat-left .chat-name {
-        margin-left: 5px;
-    }
-    .chat-container li.chat-right .chat-avatar {
-        order: -1;
-        margin: 0 0 5px 0;
-        align-items: center;
-        display: flex;
-        justify-content: right;
-        flex-direction: row-reverse;
-    }
-    .chat-container li.chat-right .chat-hour {
-        justify-content: flex-start;
-        order: 2;
-    }
-    .chat-container li.chat-right .chat-name {
-        margin-right: 5px;
-    }
-    .chat-container li .chat-text {
-        font-size: .8rem;
-    }
-}
 
 .chat-form {
     padding: 15px;
@@ -400,5 +351,17 @@ body {
       background-repeat: round;
       background-position: 0em;
     }
+  }
 
+  h1 {
+    font-size: 40px;
+  }
+
+  #h12 {
+    font-size: 40px;
+  }
+
+* {
+    font-size: 10px;
+    text-align: right;
   }

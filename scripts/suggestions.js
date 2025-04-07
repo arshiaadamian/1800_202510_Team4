@@ -103,18 +103,22 @@ function applyNow(owner) {
         .then((doc) => {
           ownername = doc.data().name;
           owneremail = doc.data().email;
-
-          // window.open('mailto:test@example.com?subject=subject&body=body');
+          ownerAge = doc.data().age;
+          ownerCountry = doc.data().country;
 
           window.open(
-            "mailto:" +
-              owneremail +
-              "?subject=Friend Request&body=" +
-              "Dear " +
-              ownername +
-              " Would you like to play video games together? " +
-              "Sincerely "
-          );
+            "mailto:" + owneremail + 
+            "?subject=Friend Request" + 
+            "&body=" + encodeURIComponent(
+              "Dear " + ownername + ",\r\n\r\n" +
+              "Would you like to play video games together?\r\n\r\n" +
+              "Sincerely,\r\n" +
+              "[Your Name]\r\n" +
+              "Age: " + ownerAge + "\r\nCountry: " + ownerCountry + "\r\n\r\n" +
+              "Match. Chat. Game. Repeat.\r\n\r\n" +
+              "Sponsored by JAC - Connecting Gamers Around the World\r\n\r\n" +
+              "   (•ᴗ•)   \r\n" 
+            ))
         });
     }
   });

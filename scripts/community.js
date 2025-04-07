@@ -110,3 +110,4 @@ shareBtn.addEventListener("click", event => {
     sendCommunityMessage(messageArea.value);
     messageArea.value = "";
 });
+
