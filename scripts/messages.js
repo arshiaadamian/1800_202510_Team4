@@ -102,6 +102,14 @@ async function populateMessages(otherUserID) {
                         let dateSplit = messageDate.toLocaleString().split(",");
                         newMessage.querySelector(".chat-hour").innerHTML = new Date().toLocaleDateString() == messageDate.toLocaleDateString() ? dateSplit[1] : dateSplit[0];
                         newMessage.querySelector(".chat-text").innerHTML = message.content;
+                        newMessage.querySelector(".trash").addEventListener("click", event => {
+                            event.preventDefault();
+                            
+                            event.target.parentNode.parentNode.remove();
+                            db.collection("messages").doc(roomID).update({
+                                messages: firebase.firestore.FieldValue.arrayRemove(message)
+                            });
+                        });
                         messagesDiv.appendChild(newMessage);
                     });
                 }
