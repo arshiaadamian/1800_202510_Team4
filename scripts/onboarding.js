@@ -17,7 +17,7 @@ function limitSelections(checkboxGroup, maxSelections) {
 const checkboxes = document.querySelectorAll('.btn-check');
 checkboxes.forEach(checkbox => {
     checkbox.addEventListener('change', function () {
-        limitSelections(checkboxes, 2);
+        limitSelections(checkboxes, 5);
     });
 });
 

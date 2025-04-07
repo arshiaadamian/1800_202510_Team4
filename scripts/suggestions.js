@@ -82,7 +82,7 @@ function createUserCard(user) {
     <div class="card-body">
       <h5 class="card-title">${user.username}</h5>
       <p class="card-text">${user.description}</p>
-      <a href="#" class="btn btn-primary contact">contact</a>
+      <a href="#" class="btn btn-primary contact">Contact</a>
     </div>
   `;
 

@@ -5,25 +5,6 @@ const cardLocation = document.getElementById("user-cards");
 const usersLocation = document.querySelector(".users");
 const userTemplate = document.querySelector(".user-template");
 
-async function sendMessage(to_uid, message) {
-    let user = auth.currentUser;
-    let userList = [to_uid, user.uid].sort();
-    let docID = userList[0] + userList[1];
-    let docRef = db.collection("messages").doc(docID);
-    let curDate = new Date();
-    docRef.update({
-        messages: firebase.firestore.FieldValue.arrayUnion({
-            from: user.uid,
-            content: message,
-            timestamp: curDate
-        })
-    });
-    let userCard = document.getElementById("user-" + to_uid);
-    userCard.parentNode.querySelector(".time").innerHTML = curDate.toLocaleTimeString().split(",")[0];
-    userCard.parentNode.querySelector(".time").name = curDate.valueOf();
-    usersLocation.insertBefore(userCard.parentNode.parentNode.parentNode, usersLocation.firstChild);
-}
-
 async function populateFriends() {
     auth.onAuthStateChanged(async (user) => {
         let userID = user.uid;
@@ -64,7 +45,7 @@ async function populateFriends() {
 
                         users.push(newUser.firstElementChild);
                     }
-                    
+
                     users.sort((a, b) => {
                         return b.querySelector(".time").name - a.querySelector(".time").name;
                     });
@@ -200,6 +181,10 @@ messageArea.addEventListener("keypress", (event) => {
         let id = toID.id;
         if (id) {
             msg_id = sendMessage(id, messageArea.value);
+            let userCard = document.getElementById("user-" + to_uid);
+            userCard.parentNode.querySelector(".time").innerHTML = curDate.toLocaleTimeString().split(",")[0];
+            userCard.parentNode.querySelector(".time").name = curDate.valueOf();
+            usersLocation.insertBefore(userCard.parentNode.parentNode.parentNode, usersLocation.firstChild);
         }
         messageArea.value = "";
     }
