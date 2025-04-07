@@ -181,7 +181,8 @@ messageArea.addEventListener("keypress", (event) => {
         let id = toID.id;
         if (id) {
             msg_id = sendMessage(id, messageArea.value);
-            let userCard = document.getElementById("user-" + to_uid);
+            let userCard = document.getElementById("user-" + id);
+            let curDate = new Date();
             userCard.parentNode.querySelector(".time").innerHTML = curDate.toLocaleTimeString().split(",")[0];
             userCard.parentNode.querySelector(".time").name = curDate.valueOf();
             usersLocation.insertBefore(userCard.parentNode.parentNode.parentNode, usersLocation.firstChild);

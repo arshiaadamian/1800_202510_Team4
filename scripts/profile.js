@@ -152,27 +152,27 @@ updateButton2.addEventListener("click", async () => {
 
 
 
-  window.onload = function() {
-    document.getElementById('profileInfo').disabled = true;
-    document.getElementById('profileInfo1').disabled = true;
-    document.getElementById('submit1').disabled = true;
-    document.getElementById('submit2').disabled = true;
-  };
+window.onload = function () {
+  document.getElementById('profileInfo').disabled = true;
+  document.getElementById('profileInfo1').disabled = true;
+  document.getElementById('submit1').disabled = true;
+  document.getElementById('submit2').disabled = true;
+};
 
-  function editUserInfo() {
-    var form = document.getElementById('profileInfo');
-    form.disabled = !form.disabled;
-    document.getElementById('submit1').disabled = !form.disabled;
-  }
+function editUserInfo() {
+  var form = document.getElementById('profileInfo');
+  form.disabled = !form.disabled;
+  document.getElementById('submit1').disabled = !form.disabled;
+}
 
-  function editUserInfo2() {
-    var form = document.getElementById('profileInfo1');
-    form.disabled = !form.disabled;
-    document.getElementById('submit2').disabled = !form.disabled;
-  }
+function editUserInfo2() {
+  var form = document.getElementById('profileInfo1');
+  form.disabled = !form.disabled;
+  document.getElementById('submit2').disabled = !form.disabled;
+}
 
 
-var currentUser;              
+var currentUser;
 function populateUserInfo() {
   firebase.auth().onAuthStateChanged(user => {
     if (user) {
@@ -186,7 +186,7 @@ function populateUserInfo() {
           if (userData.age) document.getElementById("age").value = userData.age;
           if (userData.country) document.getElementById("Country").value = userData.country;
           if (userData.language) document.getElementById("lang").value = userData.language;
-          
+
           if (userData.genres) {
             firstPersonShooter.checked = userData.genres.firstPersonShooter;
             rolePlay.checked = userData.genres.rolePlaying;
@@ -235,25 +235,25 @@ function populateUserAbout() {
 function limitSelections(checkboxGroup, maxSelections) {
   let selectedCount = 0;
   const errorMessage = document.getElementById("error-message");
-  
+
   for (let i = 0; i < checkboxGroup.length; i++) {
-      if (checkboxGroup[i].checked) {
-          selectedCount++;
-          if (selectedCount > maxSelections) {
-              checkboxGroup[i].checked = false;
-              errorMessage.style.display = "block";
-              break;
-          } else {
-              errorMessage.style.display = "none";
-          }
+    if (checkboxGroup[i].checked) {
+      selectedCount++;
+      if (selectedCount > maxSelections) {
+        checkboxGroup[i].checked = false;
+        errorMessage.style.display = "block";
+        break;
+      } else {
+        errorMessage.style.display = "none";
       }
+    }
   }
 }
 
 const checkboxes = document.querySelectorAll('#profileInfo1 .form-check-input');
 checkboxes.forEach(checkbox => {
-  checkbox.addEventListener('change', function() {
-      limitSelections(checkboxes, 5);
+  checkbox.addEventListener('change', function () {
+    limitSelections(checkboxes, 5);
   });
 });
 
@@ -261,32 +261,32 @@ const submitButton = document.getElementById("submit2");
 submitButton.addEventListener("click", async () => {
   const errorMessage = document.getElementById("error-message");
   const checkedCount = Array.from(checkboxes).filter(cb => cb.checked).length;
-  
+
   if (checkedCount > 5) {
-      errorMessage.style.display = "block";
-      return;
+    errorMessage.style.display = "block";
+    return;
   }
 
   const user = auth.currentUser;
   if (!user) return;
 
   try {
-      await db.collection("users").doc(user.uid).update({
-          genres: {
-              firstPersonShooter: document.getElementById("pref1").checked,
-              rolePlaying: document.getElementById("pref2").checked,
-              massMultiplayer: document.getElementById("pref3").checked,
-              casual: document.getElementById("pref4").checked,
-              horror: document.getElementById("pref5").checked
-          }
-      });
-      
-      submitButton.innerHTML = "Submitted!";
-      submitButton.style.backgroundColor = "green";
-      submitButton.disabled = true;
-      document.getElementById('profileInfo1').disabled = true;
+    await db.collection("users").doc(user.uid).update({
+      genres: {
+        firstPersonShooter: document.getElementById("pref1").checked,
+        rolePlaying: document.getElementById("pref2").checked,
+        massMultiplayer: document.getElementById("pref3").checked,
+        casual: document.getElementById("pref4").checked,
+        horror: document.getElementById("pref5").checked
+      }
+    });
+
+    submitButton.innerHTML = "Submitted!";
+    submitButton.style.backgroundColor = "green";
+    submitButton.disabled = true;
+    document.getElementById('profileInfo1').disabled = true;
   } catch (error) {
-      console.error("Error updating preferences:", error);
+    console.error("Error updating preferences:", error);
   }
 });
 
@@ -294,7 +294,7 @@ submitButton.addEventListener("click", async () => {
 function editUserInfo2() {
   const profileInfo = document.getElementById('profileInfo1');
   profileInfo.disabled = !profileInfo.disabled;
-  
+
   const submitBtn = document.getElementById("submit2");
   submitBtn.innerHTML = "Save";
   submitBtn.style.backgroundColor = "";
