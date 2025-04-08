@@ -117,6 +117,10 @@ leaveCom.addEventListener("click", event => {
     db.collection("users").doc(auth.currentUser.uid).update({
         communities: firebase.firestore.FieldValue.arrayRemove(communityID)
     }).then(() => {
-        window.location.href = "/text/your-communities.html";
-    })
+        db.collection("community").doc(communityID).update({
+            members: firebase.firestore.FieldValue.arrayRemove(auth.currentUser.uid)
+        }).then(() => {
+            window.location.href = "/text/your-communities.html";
+        }); 
+    });
 });

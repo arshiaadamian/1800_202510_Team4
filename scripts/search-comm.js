@@ -24,7 +24,11 @@ function displayCardsDynamically(collection) {
                         db.collection("users").doc(auth.currentUser.uid).update({
                             communities: firebase.firestore.FieldValue.arrayUnion(doc.id)
                         }).then(() => {
-                            window.location.href = `community.html?communityID=${doc.id}`;
+                            db.collection("community").doc(doc.id).update({
+                                members: firebase.firestore.FieldValue.arrayUnion(auth.currentUser.uid)
+                            }).then(() => {
+                                window.location.href = `community.html?communityID=${doc.id}`;
+                            });
                         });
                     });
                     newFigure.querySelector(".com-click").addEventListener("click", event => {
@@ -32,7 +36,11 @@ function displayCardsDynamically(collection) {
                         db.collection("users").doc(auth.currentUser.uid).update({
                             communities: firebase.firestore.FieldValue.arrayUnion(doc.id)
                         }).then(() => {
-                            window.location.href = `community.html?communityID=${doc.id}`;
+                            db.collection("community").doc(doc.id).update({
+                                members: firebase.firestore.FieldValue.arrayUnion(auth.currentUser.uid)
+                            }).then(() => {
+                                window.location.href = `community.html?communityID=${doc.id}`;
+                            });
                         });
                     });
                     let storageRef = storage.ref('community_pics/' + doc.id);
