@@ -1,278 +1,169 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <title>My BCIT Project</title>
-    <meta name="comp1800 template" content="My 1800 App" />
+    <head>
+        <title>My BCIT Project</title>
+        <meta name="comp1800 template" content="My 1800 App" />
 
-    <!-- Required meta tags -->
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <!-- Required meta tags -->
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <!-- Bootstrap Library CSS CDN go here -->
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
-      crossorigin="anonymous"
-    />
+        <!-- Bootstrap Library CSS CDN -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
 
-    <!-- Boostrap Library JS CDN  go here -->
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
-      crossorigin="anonymous"
-    ></script>
+        <!-- Bootstrap Library JS CDN -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 
-    <!-- Bootstrap Library FIREBASE CDN go here -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.js"></script>
-    <link
-      type="text/css"
-      rel="stylesheet"
-      href="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.css"
-    />
+        <!-- Firebase Libraries -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.js"></script>
+        <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.css" />
 
-    <!-- Other libraries go here -->
-    <!-- Google Icons (Material Design)-->
-    <link
-      href="https://fonts.googleapis.com/icon?family=Material+Icons"
-      rel="stylesheet"
-    />
-    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet"/>
+        <!-- Google Icons & Fonts -->
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet" />
 
+        <!-- Custom Styles -->
+        <link rel="stylesheet" href="/styles/style.css" />
+        <link rel="stylesheet" href="/styles/profile.css" />
+    </head>
 
-    <!-- Link to styles of your own -->
-    <link rel="stylesheet" href="/styles/style.css" />
-    <link rel="stylesheet" href="/styles/profile.css" />
-    
-  </head>
+    <body>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light custom-navbar" style="z-index: 3;"></nav>
 
-  <body>
-    <!--============================-->
-    <!-- Your HTML Layout goes here -->
-    <!--============================-->
-
-    <nav class="navbar navbar-expand-lg navbar-light bg-light custom-navbar" style="z-index:3">
-      
-      <div class="container">
-        <a data-bs-toggle="offcanvas" href="#sidebar"
-          ><span class="material-icons">menu</span></a
-        >
-        <a href="#"
-          ><img
-            class="logo"
-            src="/images/jacLogo.png"
-            height="35"
-            alt="JAC Logo"
-          />
-        </a>
-      </div>
-      <div
-        class="offcanvas offcanvas-start"
-        tabindex="-1"
-        id="sidebar"
-        aria-labelledby="sidebarLabel">
-        <div class="offcanvas-header">
-          <h5 class="offcanvas-title" id="sidebarLabel">Menu</h5>
-          <button
-            type="button"
-            class="btn-close"
-            data-bs-dismiss="offcanvas"
-            aria-label="Close"
-          ></button>
-        </div>
-        <div class="offcanvas-body">
-          <div>
-            <ul class="navbar-nav">
-              <li class="nav-item">
-                <a class="nav-link" href="profile.html">
-                  <img class="pfp" src="" id="pfp" alt="Profile Picture" />Profile</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="messages.html">
-                  <span class="material-icons" id="nav2">chat </span>Messages</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="your_comm.html">
-                  <span class="material-icons" id="nav3">groups </span>Communities</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="events.html">
-                  <span class="material-icons" id="nav4">event </span>Events</a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </nav>
-
-    <div class="profile">
-      <div class="row gutters">
-        <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12">
-          <div class="card h-100">
-            <div class="card-body">
-              <div class="account-settings">
-                <div class="user-profile">
-                  <div class="user-avatar">
-                    <img
-                      id="pfp"
-                      alt="Maxwell Admin"
-                      class="pfp"
-                    />
-                  </div>
-                  <h5 class="user-name text-white">
-                    <span id="name-goes-here">Yuki Hayashi</span>
-                  </h5>
-                  <label id="up_title" for="avatar"
-                    >Choose a profile picture:</label
-                  >
-                  <input
-                    id="pfp-input"
-                    type="file"
-                    id="avatar"
-                    name="avatar"
-                    accept="image/png"
-                  />
+        <div class="profile">
+            <div class="row gutters">
+                <!-- Left column -->
+                <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <div class="account-settings">
+                                <div class="user-profile">
+                                    <div class="user-avatar">
+                                        <img id="pfp" alt="Admin" class="pfp" src="#" />
+                                    </div>
+                                    <h5 class="user-name text-white">
+                                        <span id="name-goes-here">Yuki Hayashi</span>
+                                    </h5>
+                                    <label id="up_title" for="pfp-input">Choose a profile picture:</label>
+                                    <input id="pfp-input" type="file" name="avatar" accept="image/png" />
+                                </div>
+                            </div>
+                            <div id="upload-message" class="text-success text-center mt-3" style="display: none;">
+                                Profile uploaded!
+                            </div>
+                        </div>
+                    </div>
                 </div>
-              </div>
-              <div id="upload-message" style="display: none; color: green; text-align: center; margin-top: 1rem;">
-                Profile uploaded!
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-xl-9 col-lg-9 col-md-12 col-sm-12 col-12">
-          <div class="card h-100">
-            <fieldset class="mb-3 text-white" id="profileInfo" disabled>
-            <div class="card-body">
-              <div class="row gutters">
-                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                  <h6 class="mb-3 text-white">Personal Details</h6>
-                </div>
-                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-                  <div class="form-group text-white">
-                    <label for="fullName">Name</label>
-                    <input
-                      type="text"
-                      class="form-control"
-                      id="fullName"
-                      placeholder="Enter name"
-                    />
-                  </div>
-                </div>
-                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-                  <div class="form-group text-white">
-                    <label for="email">Email</label>
-                    <input
-                      type="text"
-                      class="form-control"
-                      id="email"
-                      placeholder="Enter email ID"
-                    />
-                  </div>
-                </div>
-              </div>
-              <div class="row gutters">
-                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                  <h6 class="mb-3 text-white">A Little About Yourself</h6>
-                </div>
-                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-                  <div class="form-group">
-                    <label for="Country">Country</label>
-                    <input
-                      type="text"
-                      class="form-control"
-                      id="Country"
-                      placeholder="Enter Country"
-                    />
-                  </div>
-                </div>
-                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-                  <div class="form-group text-white">
-                    <label for="lang">Language</label>
-                    <input
-                      type="text"
-                      class="form-control"
-                      id="lang"
-                      placeholder="Enter Language"
-                    />
-                  </div>
-                </div>
-                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-                  <div class="form-group text-white">
-                    <label for="age">Age</label>
-                    <input
-                      type="text"
-                      class="form-control"
-                      id="age"
-                      placeholder="Enter Age"
-                    />
-                  </div>
-                </div>
-              </div>
-            </fieldset>
 
-              <div class="d-flex justify-content-center mt-5">
-                <button type="button" class="btn btn-secondary" onclick="editUserInfo()">Edit</button>
-                <span style="width: 10px"></span>
-                <button type="button" class="btn btn-info" id="submit1" name="subtmi1">Save</button>
-            </div>
-             
-            
-              <div id="filter" class="filter1">
-                <fieldset id="profileInfo1" disabled>
-                  <h1>Your Gaming <span class="fancy" id="h21">Preferences</span></h1>
-                  <input class="form-check-input" type="checkbox" id="pref1" name="pref1" value="fps" />
-                  <label for="pref1"> First Person Shooter</label><br />
-                  <input class="form-check-input" type="checkbox" id="pref2" name="pref2" value="rp" />
-                  <label for="pref2"> Role-Playing</label><br />
-                  <input class="form-check-input" type="checkbox" id="pref3" name="pref3" value="mmo" />
-                  <label for="pref3"> Mass Multiplayer</label><br />
-                  <input class="form-check-input" type="checkbox" id="pref4" name="pref4" value="casual" />
-                  <label for="pref3"> Casual</label><br />
-                  <input class="form-check-input" type="checkbox" id="pref5" name="pref5" value="horror" />
-                  <label for="pref3"> Horror</label><br />
-                </fieldset>
-                <p id="error-message" class="text-danger mt-3" style="display: none;">Please choose a maximum of two checkboxes.</p>
-                <div class="d-flex justify-content-center mt-5">
-                  <button type="button" class="btn btn-secondary" onclick="editUserInfo2()">Edit</button><button type="button" class="btn btn-info" id="submit2" name="submit2">Save</button>
+                <!-- Right column -->
+                <div class="col-xl-9 col-lg-9 col-md-12 col-sm-12 col-12">
+                    <div class="card h-100">
+                        <fieldset class="mb-3 text-white" id="profileInfo" disabled>
+                            <div class="card-body">
+                                <div class="row gutters">
+                                    <div class="col-12">
+                                        <h6 class="mb-3 text-white">Personal Details</h6>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group text-white">
+                                            <label for="fullName">Name</label>
+                                            <input type="text" class="form-control" id="fullName" placeholder="Enter name" />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group text-white">
+                                            <label for="email">Email</label>
+                                            <input type="text" class="form-control" id="email" placeholder="Enter email ID" />
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row gutters">
+                                    <div class="col-12">
+                                        <h6 class="mb-3 text-white">A Little About Yourself</h6>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group text-white">
+                                            <label for="Country">Country</label>
+                                            <input type="text" class="form-control" id="Country" placeholder="Enter Country" />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group text-white">
+                                            <label for="lang">Language</label>
+                                            <input type="text" class="form-control" id="lang" placeholder="Enter Language" />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group text-white">
+                                            <label for="age">Age</label>
+                                            <input type="text" class="form-control" id="age" placeholder="Enter Age" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+
+                        <!-- Edit & Save Buttons -->
+                        <div class="d-flex justify-content-center mt-5">
+                            <button type="button" class="btn btn-secondary" onclick="editUserInfo()">Edit</button>
+                            <span style="width: 10px;"></span>
+                            <button type="button" class="btn btn-info" id="submit1" name="submit1">Save</button>
+                        </div>
+
+                        <!-- Gaming Preferences -->
+                        <div id="filter" class="filter1 mt-5">
+                            <fieldset id="profileInfo1" disabled>
+                                <h1>Your Gaming <span class="fancy" id="h21">Preferences</span></h1>
+                                <input class="form-check-input" type="checkbox" id="pref1" name="pref1" value="fps" />
+                                <label for="pref1"> First Person Shooter</label><br />
+                                <input class="form-check-input" type="checkbox" id="pref2" name="pref2" value="rp" />
+                                <label for="pref2"> Role-Playing</label><br />
+                                <input class="form-check-input" type="checkbox" id="pref3" name="pref3" value="mmo" />
+                                <label for="pref3"> Mass Multiplayer</label><br />
+                                <input class="form-check-input" type="checkbox" id="pref4" name="pref4" value="casual" />
+                                <label for="pref4"> Casual</label><br />
+                                <input class="form-check-input" type="checkbox" id="pref5" name="pref5" value="horror" />
+                                <label for="pref5"> Horror</label><br />
+                            </fieldset>
+                            <p id="error-message" class="text-danger mt-3" style="display: none;">Please choose a maximum of two checkboxes.</p>
+                            <div class="d-flex justify-content-center mt-4">
+                                <button type="button" class="btn btn-secondary" onclick="editUserInfo2()">Edit</button>
+                                <span style="width: 10px;"></span>
+                                <button type="button" class="btn btn-info" id="submit2" name="submit2">Save</button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-          </div>
         </div>
-      </div>
 
-    <footer>
-      <nav class="navbar" style="background-color: white">
-        <div class="container">
-          <a href="main.html"
-            ><span class="material-icons">home</span></a
-          >
-          <div class="dropdown">
-            <button id="myBtn" class="dropbtn material-icons">add</button>
-            <div id="myDropdown" class="dropdown-content">
-              <a href="/text/search-community.html">Join Community</a>
-              <a href="/text/create-comm.html">Create Community</a>
-            </div>
-          </div>
-          <a href="/text/search.html">
-            <span class="material-icons" id="nav4">person_search </span></a>
-        </div>
-      </nav>
-    </footer>
+        <!-- Footer -->
+        <footer>
+            <nav class="navbar" style="background-color: white;">
+                <div class="container">
+                    <a href="main.html"><span class="material-icons">home</span></a>
+                    <div class="dropdown">
+                        <button id="myBtn" class="dropbtn material-icons">add</button>
+                        <div id="myDropdown" class="dropdown-content">
+                            <a href="/text/search-community.html">Join Community</a>
+                            <a href="/text/create-comm.html">Create Community</a>
+                        </div>
+                    </div>
+                    <a href="/text/search.html"><span class="material-icons" id="nav4">person_search</span></a>
+                </div>
+            </nav>
+        </footer>
 
-    <!--==========================================-->
-    <!-- Your own JavaScript functions go here    -->
-    <!--==========================================-->
-    <!-- Link to scripts of your own -->
-    <!-- <script src="./scripts/script.js"></script> -->
-    <script src="/scripts/firebaseAPI_config.js"></script>
-    <script src="/scripts/main.js"></script>
-    <script src="/scripts/functions.js"></script>
-    <script src="/scripts/profile.js"></script>
-  </body>
+        <!-- Scripts -->
+        <script src="/scripts/firebaseAPI_config.js"></script>
+        <script src="/scripts/main.js"></script>
+        <script src="/scripts/functions.js"></script>
+        <script src="/scripts/profile.js"></script>
+    </body>
 </html>
