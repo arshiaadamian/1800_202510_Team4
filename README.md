@@ -100,6 +100,7 @@ Example:
 
 - Code snippets for \_\_\_ algoirthm were adapted from resources such as [Stack Overflow](https://stackoverflow.com/) and [W3Schools](https://w3schools.com/) and [BootStrap](https://getbootstrap.com/docs/)
 - Profile coding snippets from [BootDey](https://www.bootdey.com/snippets/view/account-setting-or-edit-profile)
+- Profile CSS coding snippets from [BootDey](https://www.bootdey.com/snippets/view/account-setting-or-edit-profile)
 - Messaging coding snippets from [BootDey](https://www.bootdey.com/snippets/view/bs4-simple-chat-app)
 - Font sourced from [Google Fonts](https://fonts.googleapis.com) and image carousal from [Behance](https://www.behance.net/)
 - Pacman sourced from [CodePen](https://codepen.io/mickaellherminez/pen/xbxxqdJ)

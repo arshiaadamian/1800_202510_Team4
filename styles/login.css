@@ -81,7 +81,6 @@ body {
       box-shadow: 0 5px 15px 0px rgba(0,0,0,0.6);
       transform: translatey(0px);
       animation: float 6s ease-in-out infinite;
-      img { width: 100%; height: auto; }
   }
   
   @keyframes float {
@@ -223,12 +222,10 @@ body {
 }
 
 @keyframes blink {
-
     0%,
     100% {
         opacity: 1;
     }
-
     50% {
         opacity: 0;
     }
@@ -238,19 +235,15 @@ body {
     0% {
         clip-path: polygon(100% 0, 50% 50%, 100% 100%, 0 100%, 0 0);
     }
-
     25% {
         clip-path: polygon(100% 0, 75% 50%, 100% 100%, 0 100%, 0 0);
     }
-
     50% {
         clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 0);
     }
-
     75% {
         clip-path: polygon(100% 0, 75% 50%, 100% 100%, 0 100%, 0 0);
     }
-
     100% {
         clip-path: polygon(100% 0, 50% 50%, 100% 100%, 0 100%, 0 0);
     }
@@ -260,23 +253,19 @@ body {
     0% {
         transform: translateX(0);
     }
-
     50% {
         transform: translateX(20px);
     }
-
     100% {
         transform: translateX(0);
     }
 }
 
 @keyframes ghost-float {
-
     0%,
     100% {
         transform: translateY(0) scaleY(1);
     }
-
     50% {
         transform: translateY(-10px) scaleY(0.95);
     }
@@ -286,15 +275,12 @@ body {
     0% {
         border-color: var(--ghost-blue);
     }
-
     33% {
         border-color: var(--ghost-pink);
     }
-
     66% {
         border-color: var(--ghost-orange);
     }
-
     100% {
         border-color: var(--ghost-blue);
     }

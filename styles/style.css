@@ -12,7 +12,6 @@ body {
   font-family: 'Press Start 2P', cursive;
 }
 
-
 a {
   text-decoration: none;
   color: black;
@@ -24,7 +23,6 @@ a {
 
 .nav-item {
   font-family: 'Press Start 2P', cursive;
-  position: inline;
   font-size: 15px;
 }
 
@@ -52,8 +50,8 @@ footer {
 }
 
 .hero {
-    margin-top: 0; 
-    text-align: center;
+  margin-top: 0; 
+  text-align: center;
 }
 
 
@@ -91,7 +89,7 @@ footer {
     0px 14.318181818181818px 0px hsla(236, 73%, 5%, 1),
     0px 14.318181818181818px 0px hsla(236, 0%, 5%, 1),
     0px 15px 0px hsla(238, 73%, 4%, 1);
-    text-shadow: white 1px;
+    text-shadow: white;
     padding-bottom: 5%;
     margin-top: 5%;
 }
@@ -166,6 +164,7 @@ footer {
 #banners {
   font-size: 10px;
 }
+
 .custom-navbar {
   position: sticky;
   top: 0;
