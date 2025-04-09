@@ -10,9 +10,9 @@ function displayCardsDynamically(collection) {
             document.getElementById(collection + "-go-here").innerHTML = "";
             allCommunity.forEach(doc => { //iterate thru each doc
                 if (curCom > maxDisplayedComms * curPage && curCom <= (curPage + 1) * maxDisplayedComms) {
-                    var title = doc.data().name;       // get value of the "name" key 
-                    var members = doc.data().members;
-                    var detail = doc.data().detail;
+                    let title = doc.data().name;       // get value of the "name" key 
+                    let members = doc.data().members;
+                    let detail = doc.data().detail;
                     let newFigure = figureTemplate.content.cloneNode(true);
 
                     //update title and text and image
@@ -24,7 +24,23 @@ function displayCardsDynamically(collection) {
                         db.collection("users").doc(auth.currentUser.uid).update({
                             communities: firebase.firestore.FieldValue.arrayUnion(doc.id)
                         }).then(() => {
-                            window.location.href = `community.html?communityID=${doc.id}`;
+                            db.collection("community").doc(doc.id).update({
+                                members: firebase.firestore.FieldValue.arrayUnion(auth.currentUser.uid)
+                            }).then(() => {
+                                window.location.href = `community.html?communityID=${doc.id}`;
+                            });
+                        });
+                    });
+                    newFigure.querySelector(".com-click").addEventListener("click", event => {
+                        event.preventDefault();
+                        db.collection("users").doc(auth.currentUser.uid).update({
+                            communities: firebase.firestore.FieldValue.arrayUnion(doc.id)
+                        }).then(() => {
+                            db.collection("community").doc(doc.id).update({
+                                members: firebase.firestore.FieldValue.arrayUnion(auth.currentUser.uid)
+                            }).then(() => {
+                                window.location.href = `community.html?communityID=${doc.id}`;
+                            });
                         });
                     });
                     let storageRef = storage.ref('community_pics/' + doc.id);

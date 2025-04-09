@@ -17,7 +17,6 @@ function loadFooter() {
     fetch("/text/footer.html").then(footer => {
         footer.text().then(footerHtml => {
             document.querySelector("footer").innerHTML = footerHtml;
-            document.getElementById("add").addEventListener("click", () => { document.getElementById("dropdown").classList.toggle("show"); })
         });
     });
 }
@@ -76,7 +75,7 @@ async function sendMessage(to_uid, message) {
     let docID = userList[0] + userList[1];
     let docRef = db.collection("messages").doc(docID);
     let curDate = new Date();
-    if (!await docExists("messages"), docID) {
+    if (!await docExists("messages", docID)) {
         db.collection("messages").doc(docID).set({
             users: userList,
             messages: []

@@ -111,3 +111,16 @@ shareBtn.addEventListener("click", event => {
     messageArea.value = "";
 });
 
+const leaveCom = document.querySelector(".leave-com");
+leaveCom.addEventListener("click", event => {
+    event.preventDefault();
+    db.collection("users").doc(auth.currentUser.uid).update({
+        communities: firebase.firestore.FieldValue.arrayRemove(communityID)
+    }).then(() => {
+        db.collection("community").doc(communityID).update({
+            members: firebase.firestore.FieldValue.arrayRemove(auth.currentUser.uid)
+        }).then(() => {
+            window.location.href = "/text/your-communities.html";
+        }); 
+    });
+});

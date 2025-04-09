@@ -102,6 +102,14 @@ async function populateMessages(otherUserID) {
                         let dateSplit = messageDate.toLocaleString().split(",");
                         newMessage.querySelector(".chat-hour").innerHTML = new Date().toLocaleDateString() == messageDate.toLocaleDateString() ? dateSplit[1] : dateSplit[0];
                         newMessage.querySelector(".chat-text").innerHTML = message.content;
+                        newMessage.querySelector(".trash").addEventListener("click", event => {
+                            event.preventDefault();
+                            
+                            event.target.parentNode.parentNode.remove();
+                            db.collection("messages").doc(roomID).update({
+                                messages: firebase.firestore.FieldValue.arrayRemove(message)
+                            });
+                        });
                         messagesDiv.appendChild(newMessage);
                     });
                 }
@@ -181,7 +189,8 @@ messageArea.addEventListener("keypress", (event) => {
         let id = toID.id;
         if (id) {
             msg_id = sendMessage(id, messageArea.value);
-            let userCard = document.getElementById("user-" + to_uid);
+            let userCard = document.getElementById("user-" + id);
+            let curDate = new Date();
             userCard.parentNode.querySelector(".time").innerHTML = curDate.toLocaleTimeString().split(",")[0];
             userCard.parentNode.querySelector(".time").name = curDate.valueOf();
             usersLocation.insertBefore(userCard.parentNode.parentNode.parentNode, usersLocation.firstChild);
